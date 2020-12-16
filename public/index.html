@@ -1,3 +1,4 @@
+<!-- // cSpell:enableCompoundWords -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,20 +25,36 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Gaetano Jones - Experience Design</title>
   </head>
-  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    <body>
+		<nav id="mySidenav" class="sidenav">
+			<button href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</button>
+			<button id="btn" class="openbtn" onclick="openNav()">&#9776;</button>
+			<div id="nav">
+				<a class="logo"><u class="redunder" href="home">Gaetano</u><br>Jones</a>
+				<a href="about.html">About Me</a>
+				<a href="#">My Work</a>
+				<a href="#">Contact</a>
+			</div>
+		</nav>
+	
+		<main data-router-wrapper>
+			<section data-router-view="welcome" class="welcome">
+				<div onscroll="welcomeScroll()" class="container">
+					<div class="homeheader1"> Wel<br>come.</div>
+					<div class="homeheader2"> To The Web<br>To Design<br>To Me</div>
+	
+					<!--				<div class="homescroll"><button onclick="welcomeScroll()">Scroll</button><br> \/ </div>-->
+	
+					<div class="homescroll"> <a href="home.html">Scroll<br> \/ </a></div>
+	
+					<div class="homeheader3">:&#41;</div>
+				</div>
+				<hr class="basebar" />
+			</section>
+		</main>
+	</body>
 </html>
