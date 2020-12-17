@@ -1,27 +1,33 @@
 // cSpell:enableCompoundWords
 
 import React, { Component } from "react";
-import Home from "./Home";
-import Welcome from "./Welcome";
-import Sidenav from "./Sidenav";
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Sidenav from "./components/Sidenav";
+import Home from "./components/Home";
+import Welcome from "./components/Welcome";
+import Contact from "./components/Contact"
+
 
 class App extends Component {
-
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			user: null
 		}
 	}
 
 	render() {
 		return (
-			<div>
+			<Router>
 				<Sidenav />
-				{!this.state.user && <Welcome user={this.state.user} />}
-				<Home user={this.state.user} />
-				{/* <Home /> */}
-			</div>
+				<Switch>
+					<Route exact path="/" component={Welcome} />
+					<Route exact path="/Home" component={Home} />
+					<Route exact path="/Contact" component={Contact} />
+				</Switch>
+
+			</Router>
 		);
 	}
 }
