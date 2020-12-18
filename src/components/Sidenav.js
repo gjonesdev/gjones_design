@@ -1,20 +1,24 @@
 // cSpell:enableCompoundWords
 import React from "react";
 import { Link } from "react-router-dom";
-import { slide as Menu } from "react-burger-menu";
+import { GoThreeBars, GoX } from "react-icons/go";
 
-function Sidenav() {
+import "./Sidenav.css";
+
+function Sidenav(props) {
 	return (
-		// <div className="sidenav">
 		<div>
-			<Menu width={310} >
-				{/*
-				<a className="menu-item" href="/about">About Me</a>
-				<a className="menu-item" href="/work">My Work</a>
-				<a className="menu-item" href="/contact">Contact</a> */}
-				<Link to="/Home" className="menu-item logo"><u className="redunder">Gaetano</u><br />Jones</Link>
-				<Link to="/Contact">Contact</Link>
-			</Menu>
+			<div id="sidenav" className="overlay">
+				<GoThreeBars id="navopenbtn" onClick={() => props.openNav()} />
+				<GoX id="navclosebtn" onClick={() => props.closeNav()} />
+				<div id="overlay-content">
+					<a href="/about">About Me</a>
+					<a href="/work">My Work</a>
+					<a href="/contact">Contact</a>
+				</div>
+			</div>
+			<div id="dim">
+			</div>
 			<hr className="basebar" />
 		</div>
 	)

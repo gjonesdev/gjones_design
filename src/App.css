@@ -29,81 +29,7 @@ u {
 	border-bottom: 1px dashed red;
 }
 
-/* .sidenav {
-	position: absolute;
-	width: 75px;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 120000;
-	text-align: center;
-	overflow: hidden;
-	background-color: #151515;
-} */
 
-.bm-burger-button {
-	position: fixed;
-	width: 36px;
-	height: 30px;
-	left: 20px;
-	top: 20px;
-}
-
-.bm-burger-bars {
-	background: #ffffff;
-}
-
-.bm-burger-bars-hover {
-	background: #f1f1f1;
-}
-
-.bm-cross-button {
-	height: 74px;
-	width: 74px;
-}
-
-.bm-cross {
-	background: #ffffff;
-}
-
-.bm-menu-wrap {
-	position: fixed;
-	height: 100%;
-}
-
-.bm-menu {
-	background: #151515;
-	padding-top: 15px;
-	font-size: 1.15em;
-}
-
-.bm-item-list {
-	color: #ffffff;
-	padding: 8px 8px 8px 32px;
-}
-
-.bm-item {
-	display: inline-block;
-}
-
-.bm-overlay {
-	background: rgba(0, 0, 0, 0.3);
-}
-
-.bm-item {
-	display: inline-block;
-	color: #818181;
-	margin-bottom: 10px;
-	text-align: left;
-	text-decoration: none;
-	transition: color 0.2s;
-}
-
-.logo {
-	font-family: Helvetica Neue;
-	font-size: 60px !important;
-	font-weight: Bold;
-}
 
 .textcenter {
 	text-align: center;
@@ -165,18 +91,7 @@ u {
 	margin-bottom: 100px;
 }
 
-.basebar {
-	background-color: #06CCCC;
-	color: #06CCCC;
-	border: none;
-	height: 20px;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	z-index: 3;
-	margin: 0;
-}
+
 
 #hometext {
 	height: 100vh;

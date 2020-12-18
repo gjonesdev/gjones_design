@@ -1,0 +1,109 @@
+/* // cSpell:enableCompoundWords */
+
+.overlay {
+	height: 100%;
+	width: 3%;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: black;
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+#overlay-content {
+	position: relative;
+	top: 25%;
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+	visibility: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+}
+
+#dim {
+	height: 0%;
+	width: 100%;
+	position: fixed;
+	z-index: 0;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	transition: 0.4s;
+}
+
+.overlay a {
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	color: #818181;
+	display: block;
+	transition: 0.12s;
+}
+
+.overlay a:hover,
+overlay a:focus {
+	color: white;
+}
+
+.overlay .closebtn {
+	position: absolute;
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+	cursor: pointer;
+}
+
+@media screen and (max-height: 450px) {
+	.overlay a {
+		font-size: 20px;
+	}
+
+	.overlay .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+}
+
+#navclosebtn {
+	position: fixed;
+	width: 35px;
+	height: 35px;
+	left: 10px;
+	top: 10px;
+	color: white;
+	visibility: hidden;
+	cursor: pointer;
+}
+
+#navopenbtn {
+	position: fixed;
+	width: 35px;
+	height: 35px;
+	left: 10px;
+	top: 10px;
+	color: white;
+	cursor: pointer;
+}
+
+.basebar {
+	background-color: #06CCCC;
+	color: #06CCCC;
+	border: none;
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 3;
+	margin: 0;
+}
+
+.logo {
+	font-family: Helvetica Neue;
+	font-size: 60px !important;
+	font-weight: Bold;
+}
