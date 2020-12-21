@@ -8,14 +8,14 @@ import Loading from "./components/Loading";
 import Sidenav from "./components/Sidenav";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
-import Contact from "./components/Contact"
+import Contact from "./components/Contact";
+import NotFound from "./components/NotFound";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			loading: true,
-			visible: true,
 		}
 		this.openNav = this.openNav.bind(this);
 		this.closeNav = this.closeNav.bind(this);
@@ -24,12 +24,10 @@ class App extends Component {
 		setTimeout(() => this.setState({ loading: false }), 3000);
 	}
 
-
-
 	openNav() {
 		document.getElementById("navopenbtn").style.visibility = "hidden";
 		document.getElementById("navclosebtn").style.visibility = "visible";
-		document.getElementById("sidenav").style.width = "16%";
+		document.getElementById("overlay").style.width = "16%";
 		document.getElementById("dim").style.height = "100%";
 		document.getElementById("overlay-content").style.visibility = "visible";
 	}
@@ -38,7 +36,7 @@ class App extends Component {
 		document.getElementById("navclosebtn").style.visibility = "hidden";
 		document.getElementById("navopenbtn").style.visibility = "visible";
 		document.getElementById("overlay-content").style.visibility = "hidden";
-		document.getElementById("sidenav").style.width = "3%";
+		document.getElementById("overlay").style.width = "3%";
 		document.getElementById("dim").style.height = "0%";
 	}
 

@@ -1,10 +1,10 @@
 /* // cSpell:enableCompoundWords */
 
-.overlay {
+#overlay {
 	height: 100%;
 	width: 3%;
 	position: fixed;
-	z-index: 1;
+	z-index: 98;
 	left: 0;
 	top: 0;
 	background-color: black;
@@ -27,14 +27,14 @@
 	height: 0%;
 	width: 100%;
 	position: fixed;
-	z-index: 0;
+	z-index: 97;
 	left: 0;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.3);
 	transition: 0.4s;
 }
 
-.overlay a {
+#overlay a {
 	padding: 8px;
 	text-decoration: none;
 	font-size: 36px;
@@ -43,12 +43,12 @@
 	transition: 0.12s;
 }
 
-.overlay a:hover,
+#overlay a:hover,
 overlay a:focus {
 	color: white;
 }
 
-.overlay .closebtn {
+#overlay .closebtn {
 	position: absolute;
 	top: 20px;
 	right: 45px;
@@ -98,7 +98,7 @@ overlay a:focus {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	z-index: 3;
+	z-index: 99;
 	margin: 0;
 }
 

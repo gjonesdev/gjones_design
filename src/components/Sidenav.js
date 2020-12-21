@@ -8,13 +8,14 @@ import "./Sidenav.css";
 function Sidenav(props) {
 	return (
 		<div>
-			<div id="sidenav" className="overlay">
+			<div id="overlay">
 				<GoThreeBars id="navopenbtn" onClick={() => props.openNav()} />
 				<GoX id="navclosebtn" onClick={() => props.closeNav()} />
 				<div id="overlay-content">
-					<a href="/about">About Me</a>
-					<a href="/work">My Work</a>
-					<a href="/contact">Contact</a>
+					<Link to="/Home" onClick={() => props.closeNav()} >Home</Link>
+					<Link to="/About" onClick={() => props.closeNav()} >About Me</Link>
+					<Link to="/Work" onClick={() => props.closeNav()} >My Work</Link>
+					<Link to="/Contact" onClick={() => props.closeNav()} >Contact</Link>
 				</div>
 			</div>
 			<div id="dim">
