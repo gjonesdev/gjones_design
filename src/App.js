@@ -46,12 +46,14 @@ function App() {
 	return (
 		<Router>
 			<Sidenav />
-			<Switch>
-				<Route exact path="/" component={Welcome} />
-				<Route exact path="/Home" component={Home} />
-				<Route exact path="/Contact" component={Contact} />
-				<Route component={NotFound} />
-			</Switch>
+			<div className="outer-container">
+				<Switch>
+					<Route exact path="/" component={Welcome} />
+					<Route exact path="/Home" component={Home} />
+					<Route exact path="/Contact" component={Contact} />
+					<Route component={NotFound} />
+				</Switch>
+			</div>
 		</Router>
 
 	);
