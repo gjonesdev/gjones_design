@@ -40,16 +40,16 @@ u {
 	text-decoration: none;
 }
 
-.outer-container {
-	padding-left: 3%;
+.red-under {
+	padding-bottom: 0px;
+	border-bottom: 1px dashed red;
 }
 
-.main-container {
-	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: 2fr 4fr 3fr;
-	justify-content: center;
+.name-under {
+	padding-bottom: 10px;
 }
+
+
 
 .red-under {
 	padding-bottom: 0px;
@@ -60,27 +60,72 @@ u {
 	padding-bottom: 10px;
 }
 
-.text-center {
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: 0;
+}
+
+.outer-container {
+	padding-left: 3%;
+	height: 100vh;
+}
+
+.container {
 	text-align: center;
 }
 
 .main-text {
-	grid-row: 2/3;
+	display: inline-block;
+	text-align: left;
+	font-size: 3rem;
 	text-transform: uppercase;
-	font-size: 3.0rem;
-	/* font-size: 2.5vw; */
+	margin-top: 5%;
 }
 
-#welcome-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 50% 30% 20%;
-	justify-items: end;
+.wrapper {
+	display: flex;
+	height: 100%;
 	align-items: center;
-	height: 100vh;
+	text-align: center;
+}
+
+.welcome-container {
+	display: inline-block;
+	width: 50%;
 }
 
 #welcome-header1 {
+	float: right;
+	text-align: left;
+	font-size: 13rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 88%;
+	margin-top: -20px;
+}
+
+#welcome-header2 {
+	float: right;
+	text-align: left;
+	font-size: 7rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 88%;
+	color: #ACACAC;
+}
+
+#welcome-header3 {
+	font-size: 23rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: -50px;
+}
+
+
+/* #welcome-header1 {
 	grid-column: 1/2;
 	grid-row: 1/2;
 	font-size: 11vw;
@@ -104,13 +149,10 @@ u {
 #welcome-header3 {
 	grid-column: 2/3;
 	grid-row: 1/ 4;
-	font-size: 20vw;
-	font-weight: bold;
-	text-transform: uppercase;
 	justify-self: center;
 	align-self: center;
 	margin-top: -60px;
-}
+} */
 
 #homescroll {
 	grid-column: 1/3;
@@ -121,4 +163,41 @@ u {
 	justify-self: center;
 	align-self: flex-end;
 	margin-bottom: 100px;
+}
+
+.block {
+	width: 0%;
+	height: 3.0rem;
+	background: #09CCCC;
+	position: absolute;
+	animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+}
+
+@keyframes mainBlock {
+	0% {
+		width: 0%;
+		left: 0;
+
+	}
+
+	50% {
+		width: 100%;
+		left: 0;
+
+	}
+
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+
+@keyframes mainFadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
