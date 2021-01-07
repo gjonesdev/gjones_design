@@ -81,8 +81,9 @@ h5 {
 	display: inline-block;
 	text-align: left;
 	font-size: 3rem;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	margin-top: 5%;
+	/* animation: mainFadeIn 2s cubic-bezier(.74, .06, .4, .92) forwards; */
 }
 
 .wrapper {
@@ -165,15 +166,15 @@ h5 {
 	margin-bottom: 100px;
 }
 
-.block {
+/* .block {
 	width: 0%;
 	height: 3.0rem;
 	background: #09CCCC;
 	position: absolute;
 	animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
-}
+} */
 
-@keyframes mainBlock {
+/* @keyframes mainBlock {
 	0% {
 		width: 0%;
 		left: 0;
@@ -200,4 +201,4 @@ h5 {
 	100% {
 		opacity: 1;
 	}
-}
+} */
