@@ -31,6 +31,7 @@ function Sidenav(props) {
 					<Link to="/Home" onClick={() => closeNav()} >Home</Link>
 					<Link to="/About" onClick={() => closeNav()} >About Me</Link>
 					<Link to="/Work" onClick={() => closeNav()} >My Work</Link>
+					<Link to="/OtherStuff" onClick={() => closeNav()} >Other Stuff</Link>
 					<Link to="/Contact" onClick={() => closeNav()} >Contact</Link>
 				</div>
 			</div>

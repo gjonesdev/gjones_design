@@ -16,7 +16,7 @@
 	position: relative;
 	top: 25%;
 	width: 100%;
-	text-align: center;
+	text-align: left;
 	margin-top: 30px;
 	visibility: hidden;
 	white-space: nowrap;
@@ -38,14 +38,16 @@
 	padding: 8px;
 	text-decoration: none;
 	font-size: 36px;
-	color: #818181;
+	color: #ffffff;
 	display: block;
 	transition: 0.12s;
+	border-bottom: none;
 }
 
 #overlay a:hover,
 overlay a:focus {
-	color: white;
+	color: #09CCCC;
+	border-bottom: none;
 }
 
 #overlay .closebtn {

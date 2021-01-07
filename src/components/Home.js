@@ -11,7 +11,7 @@ function Home() {
 				<p>Hello There. <br />My name is <u className="name-under"><u className="red-under">GAETANO</u> JONES</u>, but you can call me Guy.<br /> <br />I am a designer and developer.
 				<br />
 					<br />
-					<Link to="/Work" className="link"><a>UI AND WEB DESIGN</a></Link> are my primary focuses, <br /> but I like to make <Link to="/otherstuff" className="link">OTHER STUFF</Link> too.</p>
+					<Link to="/Work">UI AND WEB DESIGN</Link> are my primary focuses, <br /> but I like to make <Link to="/OtherStuff">OTHER STUFF</Link> too.</p>
 			</div>
 		</div>
 	)

@@ -9,6 +9,12 @@ import Sidenav from "./components/Sidenav";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
 import Contact from "./components/Contact";
+import Work from "./components/Work";
+import OtherStuff from "./components/OtherStuff";
+import LogoDesign from "./components/LogoDesign";
+import GraphicDesign from "./components/GraphicDesign";
+import AugmentedReality from "./components/AugmentedReality";
+import CreativeCoding from "./components/CreativeCoding";
 import NotFound from "./components/NotFound";
 
 // class App extends Component {
@@ -51,6 +57,14 @@ function App() {
 					<Route exact path="/" component={Welcome} />
 					<Route exact path="/Home" component={Home} />
 					<Route exact path="/Contact" component={Contact} />
+					<Route exact path="/Work" component={Work} />
+					<Route exact path="/OtherStuff" component={OtherStuff} />
+					<Route exact path="/LogoDesign" component={LogoDesign} />
+					<Route exact path="/GraphicDesign" component={GraphicDesign} />
+					<Route exact path="/AugmentedReality" component={AugmentedReality} />
+					<Route exact path="/CreativeCoding" component={CreativeCoding} />
+					{/* <Route exact path="/" component={Contact} />
+					<Route exact path="/" component={Contact} /> */}
 					<Route component={NotFound} />
 				</Switch>
 			</div>

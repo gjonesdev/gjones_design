@@ -24,20 +24,26 @@ body {
 }
 
 u {
-	border-bottom: 1px dashed #54C74F;
-	text-decoration: none;
-}
-
-.link {
-	color: #09CCCC;
 	border-bottom: 1px dashed #09CCCC;
 	text-decoration: none;
 }
 
-.link:visited {
+a {
+	border-bottom: 1px dashed #09CCCC;
+	text-decoration: none;
+}
+
+a:visited {
 	color: #818181;
 	border-bottom: 1px dashed #818181;
-	text-decoration: none;
+}
+
+a:visited:hover {
+	color: #09CCCC;
+}
+
+a:hover {
+	color: #09CCCC;
 }
 
 .red-under {
