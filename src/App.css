@@ -1,4 +1,8 @@
 /* // cSpell:enableCompoundWords */
+* {
+	margin: 0;
+	padding: 0;
+}
 
 html {
 	height: 100%;
@@ -31,6 +35,7 @@ u {
 a {
 	border-bottom: 1px dashed #09CCCC;
 	text-decoration: none;
+	color: whitesmoke;
 }
 
 a:visited {
@@ -46,20 +51,9 @@ a:hover {
 	color: #09CCCC;
 }
 
-.red-under {
-	padding-bottom: 0px;
-	border-bottom: 1px dashed red;
-}
-
 .name-under {
 	padding-bottom: 10px;
 }
-
-.name-under {
-	padding-bottom: 10px;
-}
-
-
 
 h1,
 h2,
@@ -70,7 +64,7 @@ h5 {
 }
 
 .outer-container {
-	padding-left: 3%;
+	padding-left: 55px;
 	height: 100vh;
 }
 
@@ -139,8 +133,8 @@ h5 {
 }
 
 .page-title {
-	margin-left: 7%;
-	margin-top: 3%;
+	padding-left: 7%;
+	padding-top: 3%;
 	text-transform: uppercase;
 }
 
@@ -151,4 +145,32 @@ h5 {
 .page-title h2 {
 	color: #ACACAC;
 	font-size: 2rem;
+}
+
+.nav-list {
+	margin-left: 7%;
+	padding: 0px;
+	font-size: 3rem;
+	text-align: left;
+	list-style: none;
+}
+
+.nav-list li {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+}
+
+.category-link {
+	display: flex;
+	padding-left: 7%;
+	padding-right: 7%;
+	justify-content: space-between;
+}
+
+.category-link a {
+	margin-top: 40px;
+	display: inline-block;
+	font-size: 3rem;
+	text-transform: uppercase;
 }

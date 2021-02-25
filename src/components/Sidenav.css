@@ -1,8 +1,8 @@
 /* // cSpell:enableCompoundWords */
 
-#overlay {
+#sidenav {
 	height: 100%;
-	width: 3%;
+	width: 55px;
 	position: fixed;
 	z-index: 98;
 	left: 0;
@@ -10,17 +10,6 @@
 	background-color: black;
 	overflow-x: hidden;
 	transition: 0.5s;
-}
-
-#overlay-content {
-	position: relative;
-	top: 25%;
-	width: 100%;
-	text-align: left;
-	margin-top: 30px;
-	visibility: hidden;
-	white-space: nowrap;
-	text-overflow: clip;
 }
 
 #dim {
@@ -34,40 +23,44 @@
 	transition: 0.4s;
 }
 
-#overlay a {
-	padding: 8px;
+#sidenav-content {
+	width: max-content;
+	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	visibility: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+	transition: 0.12s;
+	text-transform: uppercase;
+}
+
+#sidenav-content a {
+	padding: 5px;
 	text-decoration: none;
-	font-size: 36px;
+	font-size: 2rem;
 	color: #ffffff;
 	display: block;
-	transition: 0.12s;
 	border-bottom: none;
 }
 
-#overlay a:hover,
-overlay a:focus {
+.logo {
+	font-family: Helvetica Neue;
+	font-size: 3rem;
+	line-height: 60px;
+	margin-bottom: 60px;
+	cursor: default;
+}
+
+.red-under {
+	padding-bottom: 0px;
+	border-bottom: 1px dashed red;
+}
+
+#sidenav a:hover,
+sidenav a:focus {
 	color: #09CCCC;
 	border-bottom: none;
-}
-
-#overlay .closebtn {
-	position: absolute;
-	top: 20px;
-	right: 45px;
-	font-size: 60px;
-	cursor: pointer;
-}
-
-@media screen and (max-height: 450px) {
-	.overlay a {
-		font-size: 20px;
-	}
-
-	.overlay .closebtn {
-		font-size: 40px;
-		top: 15px;
-		right: 35px;
-	}
 }
 
 #navclosebtn {
@@ -95,7 +88,7 @@ overlay a:focus {
 	background-color: #06CCCC;
 	color: #06CCCC;
 	border: none;
-	height: 2%;
+	height: 20px;
 	width: 100%;
 	position: absolute;
 	bottom: 0;
@@ -104,8 +97,14 @@ overlay a:focus {
 	margin: 0;
 }
 
-.logo {
-	font-family: Helvetica Neue;
-	font-size: 60px !important;
-	font-weight: Bold;
+@media screen and (max-height: 450px) {
+	.sidenav a {
+		font-size: 20px;
+	}
+
+	.sidenav .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
 }
