@@ -8,7 +8,7 @@ function Work() {
 		<div>
 			<div className="page-title">
 				{/* <span className="block"></span> */}
-				<h1>UI and Web Design.</h1><h2>Designer by day, developer also by day.</h2>
+				<h1>UI and Web Design<span className="period">.</span></h1><h2>Designer by day, developer also by day.</h2>
 			</div>
 			<div className="container">
 				<div className="main-text">

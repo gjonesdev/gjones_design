@@ -18,7 +18,7 @@ function OtherStuff() {
 				</ul>
 			</div> */}
 			<div className="page-title">
-				<h1>Other Stuff.</h1><h2>Everyone has a junk drawer... <br />I just have some cool junk.</h2>
+				<h1>Other Stuff<span className="period">.</span></h1><h2>Everyone has a junk drawer.</h2>
 			</div>
 			<div class="category-link">
 				<Link to="/LogoDesign">Logo<br />Design</Link>

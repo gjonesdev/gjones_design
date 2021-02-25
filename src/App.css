@@ -174,3 +174,8 @@ h5 {
 	font-size: 3rem;
 	text-transform: uppercase;
 }
+
+.period {
+	color: #09CCCC;
+	margin-left: 1px;
+}
