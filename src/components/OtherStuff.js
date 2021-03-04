@@ -18,13 +18,13 @@ function OtherStuff() {
 				</ul>
 			</div> */}
 			<div className="page-title">
-				<h1>Other Stuff<span className="period">.</span></h1><h2>Everyone has a junk drawer.</h2>
+				<h1>Other Stuff<span className="period">.</span></h1><h2>Everyone has a junk drawer, right?</h2>
 			</div>
 			<div class="category-link">
-				<Link to="/LogoDesign">Logo<br />Design</Link>
-				<Link to="/GraphicDesign">Graphic<br />Design</Link>
-				<Link to="/AugmentedReality">Augmented<br />Reality</Link>
-				<Link to="/CreativeCoding">Creative<br />Coding</Link>
+				<div><Link to="/LogoDesign">Logo<br />Design<span className="period">.</span></Link><img src="#" alt="#" /></div>
+				<div><Link to="/GraphicDesign">Graphic<br />Design<span className="period">.</span></Link><img src="#" alt="#" /></div>
+				<div><Link to="/AugmentedReality">Augmented<br />Reality<span className="period">.</span></Link><img src="#" alt="#" /></div>
+				<div><Link to="/CreativeCoding">Creative<br />Coding<span className="period">.</span></Link><img src="#" alt="#" /></div>
 			</div>
 			{/* <span className="block"></span> */}
 			{/* <span className="block"></span> */}

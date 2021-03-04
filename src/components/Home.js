@@ -8,7 +8,7 @@ function Home() {
 		<div className="container">
 			<div className="main-text">
 				{/* <span className="block"></span> */}
-				<p>Hello There. <br />My name is <Link to="/About" className="link name-under"><u className="red-under">GAETANO</u> JONES</Link>, but you can call me Guy.<br /> <br />I am a designer and developer.
+				<p>Hello there. <br />My name is <Link to="/About" className="link name-under"><u className="red-under">GAETANO</u> JONES</Link>, but you can call me Guy.<br /> <br />I am a designer and developer.
 				<br />
 					<br />
 					<Link to="/Work" className="link" >UI AND WEB DESIGN</Link> are my primary focuses, <br /> but sometimes I like to make <Link to="/OtherStuff" className="link">OTHER STUFF</Link> too.</p>

@@ -10,11 +10,12 @@ function Work() {
 				{/* <span className="block"></span> */}
 				<h1>UI and Web Design<span className="period">.</span></h1><h2>Designer by day, developer also by day.</h2>
 			</div>
-			<div className="container">
-				<div className="main-text">
-					<Link to="/" className="link">thing 1</Link>
-					<Link to="/" className="link">thing 2</Link>
-				</div>
+			<div className="site-link">
+				<div><Link to="/">SwapStop<span className="period">.</span></Link><img src="#" alt="#" /></div>
+				<div><Link to="/">Flett Exchange<span className="period">.</span></Link><img src="#" alt="#" /></div>
+			</div>
+			<div className="site-link">
+				Some other non ui stuff blah blah blah
 			</div>
 		</div>
 	)
