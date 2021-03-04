@@ -5,14 +5,18 @@ import Typist from "react-typist";
 
 function Home() {
 	return (
-		<div className="container">
-			<div className="main-text">
+		<div>
+			<div className="page-title">
 				{/* <span className="block"></span> */}
-				<p>Hello there. <br />My name is <Link to="/About" className="link name-under"><u className="red-under">GAETANO</u> JONES</Link>, but you can call me Guy.<br /> <br />I am a designer and developer.
-				<br />
-					<br />
-					<Link to="/Work" className="link" >UI AND WEB DESIGN</Link> are my primary focuses, <br /> but sometimes I like to make <Link to="/OtherStuff" className="link">OTHER STUFF</Link> too.</p>
+				<h1>Hi there<span className="period">.</span></h1><h2>How is your week going?</h2>
 			</div>
+			<div className="main-text">
+				<p>My name is <Link to="/About" className="link name-under"><u className="red-under">GAETANO</u> JONES</Link>, but you can call me Guy.</p>
+				<br />
+				<p>I am a designer and developer. Specifically, I do <Link to="/Work" className="link" >UI/UX DESIGN</Link> and <br /><Link to="/Work" className="link" >FRONT END DEVELOPMENT</Link>.</p>
+				<br />
+				<p>Sometimes I like to make <Link to="/OtherStuff" className="link">OTHER STUFF</Link> too.</p>
+			</div >
 		</div>
 	)
 }
