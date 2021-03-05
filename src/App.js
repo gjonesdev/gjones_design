@@ -4,19 +4,19 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Loading from "./components/Loading";
-import Sidenav from "./components/Sidenav";
+import Loading from "./components/navigation/Loading";
+import Sidenav from "./components/navigation/Sidenav";
 import Welcome from "./components/Welcome";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Work from "./components/Work";
 import OtherStuff from "./components/OtherStuff";
-import LogoDesign from "./components/LogoDesign";
-import GraphicDesign from "./components/GraphicDesign";
-import AugmentedReality from "./components/AugmentedReality";
-import CreativeCoding from "./components/CreativeCoding";
-import NotFound from "./components/NotFound";
+import LogoDesign from "./components/otherstuff/LogoDesign";
+import GraphicDesign from "./components/otherstuff/GraphicDesign";
+import AugmentedReality from "./components/otherstuff/AugmentedReality";
+import CreativeCoding from "./components/otherstuff/CreativeCoding";
+import NotFound from "./components/navigation/NotFound";
 
 
 function App() {

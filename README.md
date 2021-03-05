@@ -1,4 +1,4 @@
-# Getting Started with Create React App G
+This website was made by Gaetano Jones using react, and belongs in full to him. The following information is basic information pertaining to the react functionality present on this site and will be left as reference for future use:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
