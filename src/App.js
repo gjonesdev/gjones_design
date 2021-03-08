@@ -11,6 +11,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Work from "./components/Work";
+import FlettExchange from "./components/work/FlettExchange";
+import SwapStop from "./components/work/SwapStop";
 import OtherStuff from "./components/OtherStuff";
 import LogoDesign from "./components/otherstuff/LogoDesign";
 import GraphicDesign from "./components/otherstuff/GraphicDesign";
@@ -30,6 +32,8 @@ function App() {
 					<Route exact path="/About" component={About} />
 					<Route exact path="/Contact" component={Contact} />
 					<Route exact path="/Work" component={Work} />
+					<Route exact path="/FlettExchange" component={FlettExchange} />
+					<Route exact path="/SwapStop" component={SwapStop} />
 					<Route exact path="/OtherStuff" component={OtherStuff} />
 					<Route exact path="/LogoDesign" component={LogoDesign} />
 					<Route exact path="/GraphicDesign" component={GraphicDesign} />

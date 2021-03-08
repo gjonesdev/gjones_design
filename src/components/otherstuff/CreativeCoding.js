@@ -2,11 +2,10 @@
 import React from "react";
 
 function CreativeCoding() {
-	return ( <
-		div >
-		<
-		h1 id = "homeheader1" > code < /h1> <
-		/div>
+	return (
+		<div>
+			<h1 id="homeheader1">code</h1>
+		</div>
 	)
 }
 

@@ -24,6 +24,9 @@ function About() {
 				<br />
 				<p>Check out  this picture of my keyboard:</p> */}
 			</div>
+			<div id="home-scroll">
+				<p>Wanna know more?<br /> \/</p>
+			</div>
 		</div>
 	)
 }

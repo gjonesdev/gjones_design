@@ -97,6 +97,18 @@ h5 {
 	/* animation: mainFadeIn 2s cubic-bezier(.74, .06, .4, .92) forwards; */
 }
 
+.work-text {
+	display: inline-block;
+	text-align: left;
+	font-size: 2.3rem;
+	/* text-transform: uppercase; */
+	padding-left: 7%;
+	padding-right: 7%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	/* animation: mainFadeIn 2s cubic-bezier(.74, .06, .4, .92) forwards; */
+}
+
 .about-text ul {
 	margin-left: 2.5%;
 }
@@ -232,6 +244,16 @@ h5 {
 
 .site-link img {
 	margin-top: 40px;
+	display: block;
+	width: 600px;
+	height: 320px;
+	background-color: #09CCCC;
+}
+
+.carousel-image {
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 	width: 600px;
 	height: 320px;
