@@ -5,27 +5,37 @@ var position = window.pageYOffset || document.documentElement.scrollTop;
 var drag = 10;
 var currentScroll = "section-1";
 
-if (window.location.pathname === "/About") {
-	window.onscroll = function (e) {
-		// var em = window.location.href = "./About";
-		// console.log(em);
-		var scroll = window.pageYOffset || document.documentElement.scrollTop;
-
-		console.log(currentScroll);
-		if (scroll > position + drag) {
-			currentScroll = "section-2";
-			document.getElementById("section-2").scrollIntoView({ behavior: 'smooth', block: 'center' });
-		} else if (scroll < position - drag) {
-			document.getElementById("section-1").scrollIntoView({ behavior: 'smooth', block: 'center' });
-			currentScroll = "section-1";
-		}
-		document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-		position = scroll;
-	}
-}
+// function aboutScroll() {
+// 	// if (window.location.pathname === "/About") {
+// 	window.onscroll = function (e) {
+// 		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
+// 			var scroll = window.pageYOffset || document.documentElement.scrollTop;
+// 			if (scroll > position + drag) {
+// 				currentScroll = "section-2";
+// 			} else if (scroll < position - drag) {
+// 				currentScroll = "section-1";
+// 			}
+// 			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
+// 			position = scroll;
+// 		}
+// 	}
+// }
 
 
 function About() {
+	// aboutScroll();
+	window.onscroll = function (e) {
+		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
+			var scroll = window.pageYOffset || document.documentElement.scrollTop;
+			if (scroll > position + drag) {
+				currentScroll = "section-2";
+			} else if (scroll < position - drag) {
+				currentScroll = "section-1";
+			}
+			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
+			position = scroll;
+		}
+	}
 	return (
 		<div>
 			<div id="section-1">
