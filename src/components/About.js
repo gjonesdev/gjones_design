@@ -29,13 +29,16 @@ function About() {
 			var scroll = window.pageYOffset || document.documentElement.scrollTop;
 			if (scroll > position + drag) {
 				currentScroll = "section-2";
+				console.log(currentScroll);
 			} else if (scroll < position - drag) {
 				currentScroll = "section-1";
+				console.log(currentScroll);
 			}
 			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
 			position = scroll;
 		}
 	}
+
 	return (
 		<div>
 			<div id="section-1">

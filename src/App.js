@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 
 import Loading from "./components/navigation/Loading";
 import Sidenav from "./components/navigation/Sidenav";
