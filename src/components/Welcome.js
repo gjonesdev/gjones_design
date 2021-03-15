@@ -26,6 +26,9 @@ function Welcome() {
 
 	return (
 		<div>
+			<script src="libraries/p5.min.js"></script>
+			<script src="libraries/p5.sound.min.js"></script>
+			<script src="asterisk.js"></script>
 			<div id="section-1" className="wrapper">
 				<div className="welcome-container">
 					<h1 id="welcome-header1">Wel<br />come<span className="period">.</span></h1>
