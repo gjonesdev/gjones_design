@@ -1,7 +1,7 @@
 // cSpell:enableCompoundWords
 import React from "react";
 import { Link } from "react-router-dom";
-import Asterisk from "./Asterisk";
+import Asterisk from "./asterisk";
 import P5Wrapper from "react-p5-wrapper";
 
 var position = window.pageYOffset || document.documentElement.scrollTop;
