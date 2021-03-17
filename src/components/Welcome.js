@@ -1,6 +1,8 @@
 // cSpell:enableCompoundWords
 import React from "react";
 import { Link } from "react-router-dom";
+import Asterisk from "./Asterisk";
+import P5Wrapper from "react-p5-wrapper";
 
 var position = window.pageYOffset || document.documentElement.scrollTop;
 var drag = 10;
@@ -8,38 +10,39 @@ var currentScroll = "section-1";
 
 function Welcome() {
 
-	window.onscroll = function (e) {
-		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
-			var scroll = window.pageYOffset || document.documentElement.scrollTop;
+	// window.onscroll = function (e) {
+	// 	if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
+	// 		var scroll = window.pageYOffset || document.documentElement.scrollTop;
 
-			if (scroll > position + drag) {
-				currentScroll = "section-2";
-				console.log(currentScroll);
-			} else if (scroll < position - drag) {
-				currentScroll = "section-1";
-				console.log(currentScroll);
-			}
-			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-			position = scroll;
-		}
-	}
+	// 		if (scroll > position + drag) {
+	// 			currentScroll = "section-2";
+	// 			console.log(currentScroll);
+	// 		} else if (scroll < position - drag) {
+	// 			currentScroll = "section-1";
+	// 			console.log(currentScroll);
+	// 		}
+	// 		document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
+	// 		position = scroll;
+	// 	}
+	// }
 
 	return (
 		<div>
-			<script src="libraries/p5.min.js"></script>
-			<script src="libraries/p5.sound.min.js"></script>
-			<script src="asterisk.js"></script>
+
 			<div id="section-1" className="wrapper">
 				<div className="welcome-container">
-					<h1 id="welcome-header1">Wel<br />come<span className="period">.</span></h1>
-					<h2 id="welcome-header2">To The Web<br />To Design<br />To Me</h2>
+					<h1 id="welcome-header1">Welcome<span className="period">.</span></h1>
+					{/* <h2 id="welcome-header2">To The Web<br />To Design<br />To Me</h2> */}
 				</div>
-				<div className="welcome-container">
+				<div>
+					<P5Wrapper sketch={Asterisk} />
+				</div>
+				{/* <div className="welcome-container">
 					<div id="welcome-header3">:&#41;</div>
-				</div>
-				<div id="home-scroll">
+				</div> */}
+				{/* <div id="home-scroll">
 					<p> Let's get started <br /> \/</p>
-				</div>
+				</div> */}
 
 			</div>
 

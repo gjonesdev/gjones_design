@@ -1,304 +1,331 @@
-// PImage img;
-// var showboot = true;
-// SoundFile shootsound;
-// SoundFile hitsound;
-// SoundFile damagesound;
-// SoundFile startsound;
-// SoundFile gameoversound;
+import React from "react";
 
-function setup() {
-	size(960, 540);
-	noCursor();
-	// img = loadImage("screen.png");
-	// img.resize(960, 540);
-	background(0);
+function Asterisk(p) {
 
-	// shootsound = new SoundFile(this, "shoot.wav");
-	// hitsound = new SoundFile(this, "asthit.wav");
-	// damagesound = new SoundFile(this, "playhit.wav");
-	// gameoversound = new SoundFile(this, "gameover.wav");
-	// startsound = new SoundFile(this, "start.wav");
+	// PImage img;
 
-	// PFont font = loadFont("8BITWONDERNominal-48.vlw");
-	textFont(font, 12);
+	// SoundFile shootsound;
+	// SoundFile hitsound;
+	// SoundFile damagesound;
+	// SoundFile startsound;
+	// SoundFile gameoversound;
 
-	obstacles = new ArrayList < Obstacle > ();
-	for (var i = 0; i < 10; i++) {
-		Obstacle o = new Obstacle();
-		obstacles.add(o);
+	//////////////
+	//variables//
+	/////////////
+
+	var obstacles = [];
+	var bullets = [];
+
+	var xback = 20;
+	var xfront = xback + 20;
+
+	var bullet = xfront;
+	var lives = 3;
+
+	var up = false;
+	var down = false;
+	var shoot = false;
+
+	var points = 0;
+	var showboot = true;
+	var gameover = false;
+	var oversound = true;
+
+	var ytop;
+	var ybot;
+	var ymid;
+
+	var boottop;
+	var bootbot;
+	var bootmid;
+
+	var bootback;
+	var bootfront;
+
+	/////////
+	//main//
+	////////
+
+	p.setup = function () {
+		p.createCanvas(960, 540);
+
+		// img = loadImage("screen.png");
+		// img.resize(960, 540);
+		p.background(0);
+
+		// shootsound = new SoundFile(this, "shoot.wav");
+		// hitsound = new SoundFile(this, "asthit.wav");
+		// damagesound = new SoundFile(this, "playhit.wav");
+		// gameoversound = new SoundFile(this, "gameover.wav");
+		// startsound = new SoundFile(this, "start.wav");
+
+		// PFont font = loadFont("8BITWONDERNominal-48.vlw");
+		// textFont(font, 12);
+
+		ytop = p.height / 2 - 10;
+		ybot = p.height / 2 + 10;
+		ymid = p.height / 2;
+
+		boottop = p.height - 25;
+		bootbot = p.height + 25;
+		bootmid = p.height;
+
+		bootback = p.width * 2.2;
+		bootfront = bootback + 50;
+
+		for (var i = 0; i < 10; i++) {
+			var size = p.random(10, 30);
+			var o = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
+			obstacles.push(o);
+		}
 	}
 
-	bullets = new ArrayList < Bullet > ();
-}
+	p.draw = function () {
 
-function draw() {
+		if (showboot) {
+			p.push();
+			p.bootscreen();
+			p.pop();
+		} else {
+			p.push();
+			p.translate(160, 100);
+			p.asterisk();
+			p.pop();
+		}
 
-	if (showboot) {
-		pushMatrix();
-		boot();
-		popMatrix();
-		if (keyPressed) {
-			if (key == 10) {
-				startsound.play();
+		// image(img, 0, 0);
+	}
+
+	///////////
+	//classes//
+	//////////
+
+	class Bullet {
+		constructor(speed, x, y, w, h) {
+			this.speed = speed;
+			this.x = x
+			this.y = y;
+			this.w = w;
+			this.h = h;
+		}
+
+		display() {
+			p.rectMode(p.CENTER);
+			p.fill("white");
+			p.noStroke();
+			p.rect(this.x, this.y, this.w, this.h);
+		}
+
+		update() {
+			this.x += this.speed;
+		}
+	}
+
+	class Obstacle {
+		constructor(speed, x, y, w, h) {
+			this.speed = speed;
+			this.x = x
+			this.y = y;
+			this.w = w;
+			this.h = h
+		}
+
+		display() {
+			p.fill("white");
+			p.noStroke();
+			p.rect(this.x, this.y, this.w, this.h);
+		}
+
+		update() {
+			this.x -= this.speed;
+		}
+	}
+
+	///////////
+	//visuals//
+	//////////
+
+	p.bootscreen = function () {
+		p.translate(160, 100);
+		p.background(0);
+
+		p.textAlign(p.CENTER);
+		p.fill("white");
+		p.triangle(bootback, boottop, bootfront, bootmid, bootback, bootbot);
+		p.text("PRESS ENTER TO PLAY ASTERISK'", p.width / 4, p.height / 3);
+		p.text("W = Up", p.width / 4, p.height / 2.5);
+		p.text("S = Down", p.width / 4, p.height / 2.3);
+		p.text("Space = Shoot", p.width / 4, p.height / 2.1);
+
+		if (p.keyPressed) {
+			if (p.keyCode == p.ENTER) {
+				// startsound.play();
 				showboot = false;
 			}
 		}
-	} else {
-		pushMatrix();
-		translate(160, 100);
-		asterisk();
-		popMatrix();
 	}
 
-	image(img, 0, 0);
-}
-
-////
-
-var points = 0;
-var gameover = false;
-var oversound = true;
-
-function asterisk() {
-	if (lives == 0) {
-		gameover = true;
-	} else {
-		gameover = false;
-	}
-	if (gameover) {
-		if (oversound == true) {
-			gameoversound.play();
-			oversound = false;
+	p.player = function () {
+		p.background(0);
+		if (up && ytop > -15) {
+			ytop = ytop -= 5;
+			ybot = ybot -= 5;
+			ymid = ymid -= 5;
 		}
-		gameover();
-		if (keyPressed) {
-			if (key == 10) {
-				oversound = true;
-				startsound.play();
-				lives = 3;
-				points = 0;
+
+		if (down && ybot < p.height - 210) {
+			ytop = ytop += 5;
+			ybot = ybot += 5;
+			ymid = ymid += 5;
+		}
+
+		p.triangle(xback, ytop, xfront, ymid, xback, ybot);
+	}
+
+	p.gameoverscreen = function () {
+		p.background(0);
+		p.fill("white");
+		p.textAlign(p.CENTER);
+		p.text("GAMEOVER", p.width / 4, p.height / 4);
+		p.text("PRESS ENTER TO PLAY AGAIN", p.width / 4, p.height / 3);
+	}
+
+
+
+	//////////////////
+	//game mechanics//
+	/////////////////
+
+	p.asterisk = function () {
+		if (lives == 0) {
+			gameover = true;
+		} else {
+			gameover = false;
+		}
+		if (gameover) {
+			if (oversound == true) {
+				// gameoversound.play();
+				oversound = false;
+			}
+			p.gameoverscreen();
+			if (p.keyPressed) {
+				if (p.keyCode == p.ENTER) {
+					oversound = true;
+					// startsound.play();
+					lives = 3;
+					points = 0;
+				}
+			}
+		} else {
+			p.player();
+			p.obstdraw();
+			p.shootdraw();
+			p.text(points, p.width / 3, p.height / 1.7);
+			p.text("Lives: " + lives, p.width / 6, p.height / 1.7);
+		}
+	}
+
+	p.shootdraw = function () {
+		for (var i = 0; i < bullets.length; i++) {
+			var b = bullets[i];
+			b.update();
+			b.display();
+
+			if (b.x > p.width) {
+				bullets.splice(i, 1);
+			}
+			for (var j = 0; j < obstacles.length; j++) {
+				var o = obstacles[j];
+				if (b.x + b.w > o.x && b.x < o.x + o.w &&
+					b.y + b.h > o.y && b.y < o.y + o.h) {
+					// hitsound.play();
+					obstacles.splice(j, 1);
+					bullets.splice(i, 1);
+					var size = p.random(10, 30);
+					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
+					obstacles.push(newObs);
+					points += 100;
+					break;
+				}
+				if (xfront > o.x && xfront < o.x + o.w &&
+					ymid > o.y && ymid < o.y + o.h) {
+					lives--;
+					obstacles.splice(j, 1);
+					var size = p.random(10, 30);
+					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
+					obstacles.push(newObs);
+				}
 			}
 		}
-	} else {
-		player();
-		obstdraw();
-		shoot();
-		text(points, width / 3, height / 1.7);
-		text("Lives: " + lives, width / 6, height / 1.7);
 	}
-}
 
-/////
+	p.obstdraw = function () {
+		for (var i = 0; i < obstacles.length; i++) {
+			var o = obstacles[i];
+			// print(o);
+			o.update();
+			o.display();
 
-
-var boottop = height - 25;
-var bootbot = height + 25;
-var bootmid = height;
-
-var bootback = width * 2.2;
-var bootfront = bootback + 50;
-
-function boot() {
-	translate(160, 100);
-	background(0);
-	textAlign(CENTER);
-	triangle(bootback, boottop, bootfront, bootmid, bootback, bootbot);
-	text("PRESS ENTER TO PLAY ASTERISK'", width / 4, height / 3);
-	text("W = Up", width / 4, height / 2.5);
-	text("S = Down", width / 4, height / 2.3);
-	text("Space = Shoot", width / 4, height / 2.1);
-}
-
-////
-
-ArrayList < Bullet > bullets;
-
-function shoot() {
-	for (var i = 0; i < bullets.size(); i++) {
-		Bullet b = bullets.get(i);
-		b.update();
-		b.display();
-
-		if (b.x > width) {
-			bullets.remove(i);
+			if (o.x < 0) {
+				obstacles.splice(i, 1);
+				var size = p.random(10, 30);
+				var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
+				obstacles.push(newObs);
+			}
+			if (o.x < xfront && xback < o.x + o.w) {
+				if ((ymid > o.y && ymid < o.y + o.h) ||
+					(ybot + 10 > o.y && ybot + 10 < o.y + o.h) ||
+					(ytop > o.y && ytop < o.y + o.h)) {
+					// damagesound.play();
+					obstacles.splice(i, 1);
+					var size = p.random(10, 30);
+					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
+					obstacles.push(newObs);
+					lives--;
+					break;
+				}
+			}
 		}
-		for (var j = 0; j < obstacles.size(); j++) {
-			Obstacle o = obstacles.get(j);
-			if (b.x + b.w > o.x && b.x < o.x + o.w &&
-				b.y + b.h > o.y && b.y < o.y + o.h) {
-				hitsound.play();
-				obstacles.remove(j);
-				bullets.remove(i);
-				Obstacle newObs = new Obstacle();
-				obstacles.add(newObs);
-				points += 100;
+	}
+
+	/////////////
+	//controls//
+	////////////
+
+	p.keyPressed = function () {
+		switch (p.key) {
+			case 1:
+			case 'W':
+			case 'w':
+				up = true;
 				break;
-			}
-			if (xfront > o.x && xfront < o.x + o.w &&
-				ymid > o.y && ymid < o.y + o.h) {
-				lives--;
-				obstacles.remove(j);
-				Obstacle newObs = new Obstacle();
-				obstacles.add(newObs);
-			}
-		}
-	}
-}
-
-class Bullet {
-	var speed = 6;
-	var x, y;
-	var w, h;
-
-	Bullet() {
-		x = xfront;
-		y = ymid;
-		w = 5;
-		h = w;
-	}
-
-	function display() {
-		rectMode(CENTER);
-		fill(255);
-		noStroke();
-		rect(x, y, w, h);
-	}
-
-	function update() {
-		x += speed;
-	}
-}
-
-////
-
-function gameover() {
-	background(0);
-	textAlign(CENTER);
-	text("GAMEOVER", width / 4, height / 4);
-	text("PRESS ENTER TO PLAY AGAIN", width / 4, height / 3);
-}
-
-////
-
-ArrayList < Obstacle > obstacles;
-
-function obstdraw() {
-	for (var i = 0; i < obstacles.size(); i++) {
-		Obstacle o = obstacles.get(i);
-		o.update();
-		o.display();
-
-
-		println(o.x);
-		println(xfront);
-
-		if (o.x < 0) {
-			obstacles.remove(i);
-			Obstacle newObs = new Obstacle();
-			obstacles.add(newObs);
-		}
-		if (o.x < xfront && xback < o.x + o.w) {
-			if ((ymid > o.y && ymid < o.y + o.h) ||
-				(ybot + 10 > o.y && ybot + 10 < o.y + o.h) ||
-				(ytop > o.y && ytop < o.y + o.h)) {
-				damagesound.play();
-				obstacles.remove(i);
-				Obstacle newObs = new Obstacle();
-				obstacles.add(newObs);
-				lives--;
+			case 's':
+			case 'S':
+				down = true;
 				break;
-			}
+		}
+		switch (p.key) {
+			case 'p':
+				// shootsound.play();
+				var newbull = new Bullet(6, xfront, ymid, 5, 5);
+				bullets.push(newbull);
+				break;
+		}
+	}
+
+	p.keyReleased = function () {
+		switch (p.key) {
+			case 'w':
+			case 'W':
+				up = false;
+				break;
+			case 's':
+			case 'S':
+				down = false;
+				break;
 		}
 	}
 }
 
-class Obstacle {
-	var speed = 3;
-	var x, y;
-	var w, h;
-
-	Obstacle() {
-		x = random(width, width * 2);
-		y = random(0, height);
-		w = random(10, 30);
-		h = w;
-	}
-
-	function display() {
-		fill(255);
-		noStroke();
-		rect(x, y, w, h);
-	}
-
-	function update() {
-		x -= speed;
-	}
-}
-
-////
-
-var ytop = height / 2 - 10;
-var ybot = height / 2 + 10;
-var ymid = height / 2;
-
-var xback = 20;
-var xfront = xback + 20;
-
-var bullet = xfront;
-var lives = 3;
-
-var up = false;
-var down = false;
-var shoot = false;
-
-function player() {
-	background(0);
-	if (up && ytop > -15) {
-		ytop = ytop -= 5;
-		ybot = ybot -= 5;
-		ymid = ymid -= 5;
-	}
-
-	if (down && ybot < height - 210) {
-		ytop = ytop += 5;
-		ybot = ybot += 5;
-		ymid = ymid += 5;
-	}
-
-	triangle(xback, ytop, xfront, ymid, xback, ybot);
-}
-
-
-function keyPressed() {
-	switch (key) {
-		case 1:
-		case 'W':
-		case 'w':
-			up = true;
-			break;
-		case 's':
-		case 'S':
-			down = true;
-			break;
-	}
-	switch (key) {
-		case ' ':
-			shootsound.play();
-			Bullet newbull = new Bullet();
-			bullets.add(newbull);
-			break;
-	}
-}
-
-function keyReleased() {
-	switch (key) {
-		case 'w':
-		case 'W':
-			up = false;
-			break;
-		case 's':
-		case 'S':
-			down = false;
-			break;
-	}
-}
+export default Asterisk;
