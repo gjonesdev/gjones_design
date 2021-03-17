@@ -48,7 +48,7 @@ function Asterisk(p) {
 	////////
 
 	p.setup = function () {
-		p.createCanvas(960, 540);
+		p.createCanvas(p.windowWidth - 50, p.windowHeight);
 
 		// img = loadImage("screen.png");
 		// img.resize(960, 540);

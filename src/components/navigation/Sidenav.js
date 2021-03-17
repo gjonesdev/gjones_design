@@ -29,11 +29,11 @@ function Sidenav(props) {
 				<GoX id="navclosebtn" onClick={() => closeNav()} />
 				<div id="sidenav-content">
 					<div className="logo"><u className="red-under">Gaetano</u><br />Jones</div>
-					<Link to="/Home" onClick={() => closeNav()} >Home</Link>
-					<Link to="/About" onClick={() => closeNav()} >About Me</Link>
-					<Link to="/Work" onClick={() => closeNav()} >My Work</Link>
-					<Link to="/OtherStuff" onClick={() => closeNav()} >Other Stuff</Link>
-					<Link to="/Contact" onClick={() => closeNav()} >Contact</Link>
+					<Link to="/Home" onClick={() => closeNav()} title="Home">Home</Link>
+					<Link to="/About" onClick={() => closeNav()} title="About Me">About Me</Link>
+					<Link to="/Work" onClick={() => closeNav()} title="My Work">My Work</Link>
+					<Link to="/OtherStuff" onClick={() => closeNav()} title="Other Stuff">Other Stuff</Link>
+					<Link to="/Contact" onClick={() => closeNav()} title="Contact">Contact</Link>
 				</div>
 			</div>
 			<div id="dim">

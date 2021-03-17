@@ -26,11 +26,11 @@
 #sidenav-content {
 	width: max-content;
 	margin-top: 80px;
-	margin-left: auto;
+	margin-left: 30px;
 	margin-right: auto;
 	visibility: hidden;
 	white-space: nowrap;
-	text-overflow: clip;
+	text-overflow: hidden;
 	transition: 0.12s;
 	text-transform: uppercase;
 }
@@ -46,11 +46,13 @@
 
 .logo {
 	font-family: Helvetica Neue;
-	font-size: 3rem;
+	font-size: 3rem !important;
 	line-height: 60px;
 	margin-bottom: 60px;
 	cursor: default;
 }
+
+
 
 .red-under {
 	padding-bottom: 0px;
@@ -59,6 +61,7 @@
 
 #sidenav a:hover,
 sidenav a:focus {
+	padding-bottom: 8px;
 	color: #09CCCC;
 	border-bottom: none;
 }

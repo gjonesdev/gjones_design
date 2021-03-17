@@ -20,6 +20,11 @@ html {
 	font-weight: Bold;
 }
 
+@font-face {
+	font-family: "GarisLengkung";
+	src: local("GarisLengkung"), url("./fonts/GarisLengkung.otf");
+}
+
 body {
 	background-color: #222222;
 	font-family: Helvetica Neue, sans-serif;
@@ -49,6 +54,27 @@ a:visited:hover {
 
 a:hover {
 	color: #09CCCC;
+	font-family: GarisLengkung, sans-serif;
+	padding-bottom: 5px;
+}
+
+a::after {
+	font-family: GarisLengkung, sans-serif;
+	display: block;
+	content: attr(title);
+	height: 1px;
+	overflow: hidden;
+	visibility: hidden;
+
+}
+
+.aug::after {
+	font-size: 2.5rem !important;
+}
+
+.aug:hover {
+	padding-bottom: 13px !important;
+	font-size: 2.8rem !important;
 }
 
 .name-under {
@@ -125,6 +151,7 @@ h5 {
 }
 
 #welcome-header1 {
+	position: absolute;
 	float: right;
 	text-align: left;
 	font-weight: bold;
@@ -219,6 +246,7 @@ h5 {
 .period {
 	color: #09CCCC;
 	margin-left: 1px;
+	font-family: Helvetica Neue, sans-serif;
 }
 
 .site-link {
@@ -271,4 +299,5 @@ h5 {
 canvas {
 	margin-left: auto;
 	margin-right: auto;
+	z-index: -1;
 }
