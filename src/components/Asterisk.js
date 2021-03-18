@@ -16,15 +16,10 @@ function Asterisk(p) {
 
 	var obstacles = [];
 	var bullets = [];
+	var pl;
 
-	var xback = 20;
-	var xfront = xback + 20;
-
-	var bullet = xfront;
 	var lives = 3;
 
-	var up = false;
-	var down = false;
 	var shoot = false;
 
 	var points = 0;
@@ -32,27 +27,17 @@ function Asterisk(p) {
 	var gameover = false;
 	var oversound = true;
 
-	var ytop;
-	var ybot;
-	var ymid;
-
-	var boottop;
-	var bootbot;
-	var bootmid;
-
-	var bootback;
-	var bootfront;
+	var font
 
 	/////////
 	//main//
 	////////
 
 	p.setup = function () {
-		p.createCanvas(960, 540);
-
-		// img = loadImage("screen.png");
-		// img.resize(960, 540);
+		p.createCanvas(p.windowWidth / 1.2, p.windowHeight / 1.3);
 		p.background(0);
+		p.fill("white");
+		p.noStroke();
 
 		// shootsound = new SoundFile(this, "shoot.wav");
 		// hitsound = new SoundFile(this, "asthit.wav");
@@ -61,18 +46,10 @@ function Asterisk(p) {
 		// startsound = new SoundFile(this, "start.wav");
 
 		// PFont font = loadFont("8BITWONDERNominal-48.vlw");
-		// textFont(font, 12);
-
-		ytop = p.height / 2 - 10;
-		ybot = p.height / 2 + 10;
-		ymid = p.height / 2;
-
-		boottop = p.height - 25;
-		bootbot = p.height + 25;
-		bootmid = p.height;
-
-		bootback = p.width * 2.2;
-		bootfront = bootback + 50;
+		// font = p.loadFont('src/fonts/HelveticaNeue.otf');
+		p.textSize(24);
+		p.rectMode(p.CENTER);
+		pl = new Player(0, p.height / 2 - 10, p.height / 2, p.height / 2 + 10, 40, 60);
 
 		for (var i = 0; i < 10; i++) {
 			var size = p.random(10, 30);
@@ -82,38 +59,50 @@ function Asterisk(p) {
 	}
 
 	p.draw = function () {
-
+		p.background(0);
 		if (showboot) {
-			p.push();
 			p.bootscreen();
-			p.pop();
 		} else {
-			p.push();
-			p.translate(160, 100);
 			p.asterisk();
-			p.pop();
 		}
-
-		// image(img, 0, 0);
 	}
 
 	///////////
 	//classes//
 	//////////
 
+	class Player {
+		constructor(move, ytop, ymid, ybot, xback, xfront) {
+			this.move = move;
+			this.ytop = ytop;
+			this.ymid = ymid;
+			this.ybot = ybot;
+			this.xback = xback;
+			this.xfront = xfront;
+		}
+
+		display() {
+			p.triangle(this.xback, this.ytop, this.xfront, this.ymid, this.xback, this.ybot);
+		}
+
+		update() {
+			// if (pl.ytop < 30 && pl.ybot > p.height - 30) {
+			this.ytop += this.move;
+			this.ymid += this.move;
+			this.ybot += this.move;
+		}
+	}
+
 	class Bullet {
 		constructor(speed, x, y, w, h) {
 			this.speed = speed;
-			this.x = x
+			this.x = x;
 			this.y = y;
 			this.w = w;
 			this.h = h;
 		}
 
 		display() {
-			p.rectMode(p.CENTER);
-			p.fill("white");
-			p.noStroke();
 			p.rect(this.x, this.y, this.w, this.h);
 		}
 
@@ -125,15 +114,13 @@ function Asterisk(p) {
 	class Obstacle {
 		constructor(speed, x, y, w, h) {
 			this.speed = speed;
-			this.x = x
+			this.x = x;
 			this.y = y;
 			this.w = w;
-			this.h = h
+			this.h = h;
 		}
 
 		display() {
-			p.fill("white");
-			p.noStroke();
 			p.rect(this.x, this.y, this.w, this.h);
 		}
 
@@ -147,16 +134,14 @@ function Asterisk(p) {
 	//////////
 
 	p.bootscreen = function () {
-		p.translate(160, 100);
 		p.background(0);
-
 		p.textAlign(p.CENTER);
 		p.fill("white");
-		p.triangle(bootback, boottop, bootfront, bootmid, bootback, bootbot);
-		p.text("PRESS ENTER TO PLAY ASTERISK'", p.width / 4, p.height / 3);
-		p.text("W = Up", p.width / 4, p.height / 2.5);
-		p.text("S = Down", p.width / 4, p.height / 2.3);
-		p.text("Space = Shoot", p.width / 4, p.height / 2.1);
+		// p.triangle(bootback, boottop, bootfront, bootmid, bootback, bootbot);
+		p.text("PRESS ENTER TO PLAY ASTERISK*", p.width / 2, p.height / 2);
+		p.text("W = Up", p.width / 2, p.height / 3.5);
+		p.text("S = Down", p.width / 2, p.height / 3);
+		p.text("B = Shoot", p.width / 2, p.height / 2.5);
 
 		if (p.keyPressed) {
 			if (p.keyCode == p.ENTER) {
@@ -166,32 +151,13 @@ function Asterisk(p) {
 		}
 	}
 
-	p.player = function () {
-		p.background(0);
-		if (up && ytop > -15) {
-			ytop = ytop -= 5;
-			ybot = ybot -= 5;
-			ymid = ymid -= 5;
-		}
-
-		if (down && ybot < p.height - 210) {
-			ytop = ytop += 5;
-			ybot = ybot += 5;
-			ymid = ymid += 5;
-		}
-
-		p.triangle(xback, ytop, xfront, ymid, xback, ybot);
-	}
-
 	p.gameoverscreen = function () {
 		p.background(0);
 		p.fill("white");
 		p.textAlign(p.CENTER);
-		p.text("GAMEOVER", p.width / 4, p.height / 4);
-		p.text("PRESS ENTER TO PLAY AGAIN", p.width / 4, p.height / 3);
+		p.text("GAMEOVER", p.width / 2, p.height / 2.5);
+		p.text("PRESS ENTER TO PLAY AGAIN", p.width / 2, p.height / 1.5);
 	}
-
-
 
 	//////////////////
 	//game mechanics//
@@ -218,12 +184,19 @@ function Asterisk(p) {
 				}
 			}
 		} else {
-			p.player();
+			p.playerdraw();
 			p.obstdraw();
 			p.shootdraw();
-			p.text(points, p.width / 3, p.height / 1.7);
-			p.text("Lives: " + lives, p.width / 6, p.height / 1.7);
+			p.text(points, p.width / 1.5, p.height - 30);
+			p.text("Lives: " + lives, p.width / 2.5, p.height - 30);
 		}
+	}
+
+	p.playerdraw = function () {
+		pl.update();
+		pl.display();
+		console.log(pl.move);
+		console.log(pl);
 	}
 
 	p.shootdraw = function () {
@@ -248,8 +221,8 @@ function Asterisk(p) {
 					points += 100;
 					break;
 				}
-				if (xfront > o.x && xfront < o.x + o.w &&
-					ymid > o.y && ymid < o.y + o.h) {
+				if (pl.xfront > o.x && pl.xfront < o.x + o.w &&
+					pl.ymid > o.y && pl.ymid < o.y + o.h) {
 					lives--;
 					obstacles.splice(j, 1);
 					var size = p.random(10, 30);
@@ -273,10 +246,10 @@ function Asterisk(p) {
 				var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
 				obstacles.push(newObs);
 			}
-			if (o.x < xfront && xback < o.x + o.w) {
-				if ((ymid > o.y && ymid < o.y + o.h) ||
-					(ybot + 10 > o.y && ybot + 10 < o.y + o.h) ||
-					(ytop > o.y && ytop < o.y + o.h)) {
+			if (o.x < pl.xfront && pl.xback < o.x + o.w) {
+				if ((pl.ymid > o.y && pl.ymid < o.y + o.h) ||
+					(pl.ybot + 10 > o.y && pl.ybot + 10 < o.y + o.h) ||
+					(pl.ytop > o.y && pl.ytop < o.y + o.h)) {
 					// damagesound.play();
 					obstacles.splice(i, 1);
 					var size = p.random(10, 30);
@@ -295,20 +268,20 @@ function Asterisk(p) {
 
 	p.keyPressed = function () {
 		switch (p.key) {
-			case 1:
 			case 'W':
 			case 'w':
-				up = true;
+				pl.move = -5;
 				break;
 			case 's':
 			case 'S':
-				down = true;
+				pl.move = 5;
 				break;
 		}
 		switch (p.key) {
-			case 'p':
+			case 'b':
+			case 'B':
 				// shootsound.play();
-				var newbull = new Bullet(6, xfront, ymid, 5, 5);
+				var newbull = new Bullet(6, pl.xfront, pl.ymid, 5, 5);
 				bullets.push(newbull);
 				break;
 		}
@@ -318,11 +291,11 @@ function Asterisk(p) {
 		switch (p.key) {
 			case 'w':
 			case 'W':
-				up = false;
+				pl.move = 0;
 				break;
 			case 's':
 			case 'S':
-				down = false;
+				pl.move = 0;
 				break;
 		}
 	}

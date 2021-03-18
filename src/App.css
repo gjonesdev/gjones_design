@@ -113,28 +113,29 @@ h5 {
 	margin-left: 2.5%;
 }
 
+/* 
 .wrapper {
-	/* display: flex; */
 	height: 100vh;
 	align-items: center;
 	text-align: center;
-}
+} */
 
+/* 
 .welcome-container {
 	display: inline-block;
-}
+} */
 
-#welcome-header1 {
-	float: right;
-	text-align: left;
+#welcome-header {
+	/* position: absolute; */
+	width: min-content;
+	margin: 40px auto 40px auto !important;
 	font-weight: bold;
 	text-transform: uppercase;
-	line-height: 88%;
-	margin-top: -20px;
+	font-size: 3.6rem !important;
 	border-bottom: 10px solid #09CCCC;
 }
 
-#welcome-header2 {
+/* #welcome-header2 {
 	float: right;
 	text-align: left;
 	font-size: 7rem;
@@ -142,14 +143,14 @@ h5 {
 	text-transform: uppercase;
 	line-height: 88%;
 	color: #ACACAC;
-}
+} */
 
-#welcome-header3 {
+/* #welcome-header3 {
 	font-size: 23rem;
 	font-weight: bold;
 	text-transform: uppercase;
 	margin-top: -50px;
-}
+} */
 
 
 #home-scroll {
@@ -268,7 +269,15 @@ h5 {
 
 }
 
-canvas {
-	margin-left: auto;
-	margin-right: auto;
+.asterisk canvas {
+	display: block;
+	margin: auto;
+	top: 50%;
 }
+
+/* #p5_loading {
+	text-align: center;
+	width: max-content;
+	margin: auto;
+	padding: 100px;
+} */

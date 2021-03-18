@@ -1,7 +1,7 @@
 // cSpell:enableCompoundWords
 import React from "react";
 import { Link } from "react-router-dom";
-import Asterisk from "./asterisk";
+import Asterisk from "./Asterisk";
 import P5Wrapper from "react-p5-wrapper";
 
 var position = window.pageYOffset || document.documentElement.scrollTop;
@@ -28,25 +28,17 @@ function Welcome() {
 
 	return (
 		<div>
-
 			<div id="section-1" className="wrapper">
-				<div className="welcome-container">
-					<h1 id="welcome-header1">Welcome<span className="period">.</span></h1>
-					{/* <h2 id="welcome-header2">To The Web<br />To Design<br />To Me</h2> */}
-				</div>
 				<div>
+					<h1 id="welcome-header">Welcome<span className="period">.</span></h1>
+				</div>
+				<div className="asterisk" >
 					<P5Wrapper sketch={Asterisk} />
 				</div>
-				{/* <div className="welcome-container">
-					<div id="welcome-header3">:&#41;</div>
-				</div> */}
-				{/* <div id="home-scroll">
-					<p> Let's get started <br /> \/</p>
-				</div> */}
-
+				{/* <div id="p5_loading">Loading Asterisk*<br />Please Wait</div> */}
 			</div>
 
-			<div id="section-2"><div>
+			<div id="section-2">
 				<div className="page-title">
 					{/* <span className="block"></span> */}
 					<h1>Hi there<span className="period">.</span></h1><h2>How is your week going?</h2>
@@ -58,7 +50,6 @@ function Welcome() {
 					<br />
 					<p>Sometimes I like to make <Link to="/OtherStuff" className="link">OTHER STUFF</Link> too.</p>
 				</div >
-			</div>
 			</div>
 		</div>
 	)
