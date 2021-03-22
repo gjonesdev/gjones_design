@@ -1,5 +1,3 @@
-import React from "react";
-
 function Asterisk(p) {
 
 	// PImage img;
@@ -14,13 +12,20 @@ function Asterisk(p) {
 	//variables//
 	/////////////
 
+	p.disableFriendlyErrors = true;
+
 	var obstacles = [];
 	var bullets = [];
 	var pl;
+	var size;
+	var obst;
+	var bull;
 
 	var lives = 3;
 
 	var shoot = false;
+	var up = false;
+	var down = false;
 
 	var points = 0;
 	var showboot = true;
@@ -49,22 +54,19 @@ function Asterisk(p) {
 		// font = p.loadFont('src/fonts/HelveticaNeue.otf');
 		p.textSize(24);
 		p.rectMode(p.CENTER);
-		pl = new Player(0, p.height / 2 - 10, p.height / 2, p.height / 2 + 10, 40, 60);
+		pl = new Player(5, p.height / 2 - 10, p.height / 2, p.height / 2 + 10, 40, 60);
 
 		for (var i = 0; i < 10; i++) {
-			var size = p.random(10, 30);
-			var o = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
-			obstacles.push(o);
+			size = p.random(10, 30);
+			obst = new Obstacle(3, p.random(p.width, p.width * 2), p.random(45, p.height - 45), size, size);
+			obstacles.push(obst);
 		}
 	}
 
 	p.draw = function () {
 		p.background(0);
-		if (showboot) {
-			p.bootscreen();
-		} else {
-			p.asterisk();
-		}
+		p.asterisk();
+		// console.log(p.frameRate());
 	}
 
 	///////////
@@ -86,10 +88,17 @@ function Asterisk(p) {
 		}
 
 		update() {
-			// if (pl.ytop < 30 && pl.ybot > p.height - 30) {
-			this.ytop += this.move;
-			this.ymid += this.move;
-			this.ybot += this.move;
+			if (pl.ytop > 30 && up === true) {
+				this.ytop -= this.move;
+				this.ymid -= this.move;
+				this.ybot -= this.move;
+			}
+
+			if (pl.ybot < p.height - 30 && down === true) {
+				this.ytop += this.move;
+				this.ymid += this.move;
+				this.ybot += this.move;
+			}
 		}
 	}
 
@@ -144,7 +153,7 @@ function Asterisk(p) {
 		p.text("B = Shoot", p.width / 2, p.height / 2.5);
 
 		if (p.keyPressed) {
-			if (p.keyCode == p.ENTER) {
+			if (p.keyCode === p.ENTER) {
 				// startsound.play();
 				showboot = false;
 			}
@@ -164,70 +173,71 @@ function Asterisk(p) {
 	/////////////////
 
 	p.asterisk = function () {
-		if (lives == 0) {
-			gameover = true;
+		if (showboot) {
+			p.bootscreen();
 		} else {
-			gameover = false;
-		}
-		if (gameover) {
-			if (oversound == true) {
-				// gameoversound.play();
-				oversound = false;
+			if (lives === 0) {
+				gameover = true;
+			} else {
+				gameover = false;
 			}
-			p.gameoverscreen();
-			if (p.keyPressed) {
-				if (p.keyCode == p.ENTER) {
-					oversound = true;
-					// startsound.play();
-					lives = 3;
-					points = 0;
+			if (gameover) {
+				// if (oversound === true) {
+				// 	gameoversound.play();
+				// 	oversound = false;
+				// }
+				p.gameoverscreen();
+				obstacles = [];
+				bullets = [];
+				if (p.keyPressed) {
+					if (p.keyCode === p.ENTER) {
+						// oversound = true;
+						// startsound.play();
+						for (var i = 0; i < 10; i++) {
+							size = p.random(10, 30);
+							obst = new Obstacle(3, p.random(p.width, p.width * 2), p.random(45, p.height - 45), size, size);
+							obstacles.push(obst);
+						}
+						lives = 3;
+						points = 0;
+					}
 				}
+			} else {
+				p.playerdraw();
+				p.obstdraw();
+				p.shootdraw();
+				p.text(points, p.width / 1.5, p.height - 30);
+				p.text("Lives: " + lives, p.width / 2.5, p.height - 30);
 			}
-		} else {
-			p.playerdraw();
-			p.obstdraw();
-			p.shootdraw();
-			p.text(points, p.width / 1.5, p.height - 30);
-			p.text("Lives: " + lives, p.width / 2.5, p.height - 30);
 		}
 	}
 
 	p.playerdraw = function () {
 		pl.update();
 		pl.display();
-		console.log(pl.move);
-		console.log(pl);
 	}
 
 	p.shootdraw = function () {
 		for (var i = 0; i < bullets.length; i++) {
-			var b = bullets[i];
-			b.update();
-			b.display();
+			bull = bullets[i];
+			bull.update();
+			bull.display();
 
-			if (b.x > p.width) {
+			if (bull.x > p.width) {
 				bullets.splice(i, 1);
 			}
 			for (var j = 0; j < obstacles.length; j++) {
-				var o = obstacles[j];
-				if (b.x + b.w > o.x && b.x < o.x + o.w &&
-					b.y + b.h > o.y && b.y < o.y + o.h) {
+				obst = obstacles[j];
+				if (bull.x - bull.w / 2 >= obst.x - obst.w &&
+					bull.y - bull.h / 2 <= obst.y + obst.h / 2 && bull.y + bull.h / 2 >= obst.y - obst.h / 2) {
 					// hitsound.play();
 					obstacles.splice(j, 1);
 					bullets.splice(i, 1);
-					var size = p.random(10, 30);
-					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
-					obstacles.push(newObs);
+					size = p.random(10, 30);
+					obst = new Obstacle(3, p.random(p.width, p.width * 2), p.random(45, p.height - 45), size, size);
+					obstacles.push(obst);
 					points += 100;
 					break;
-				}
-				if (pl.xfront > o.x && pl.xfront < o.x + o.w &&
-					pl.ymid > o.y && pl.ymid < o.y + o.h) {
-					lives--;
-					obstacles.splice(j, 1);
-					var size = p.random(10, 30);
-					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
-					obstacles.push(newObs);
 				}
 			}
 		}
@@ -235,30 +245,26 @@ function Asterisk(p) {
 
 	p.obstdraw = function () {
 		for (var i = 0; i < obstacles.length; i++) {
-			var o = obstacles[i];
-			// print(o);
-			o.update();
-			o.display();
+			obst = obstacles[i];
+			obst.update();
+			obst.display();
 
-			if (o.x < 0) {
+			if (obst.x < 0) {
 				obstacles.splice(i, 1);
-				var size = p.random(10, 30);
-				var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
-				obstacles.push(newObs);
+				size = p.random(10, 30);
+				obst = new Obstacle(3, p.random(p.width, p.width * 2), p.random(45, p.height - 45), size, size);
+				obstacles.push(obst);
 			}
-			if (o.x < pl.xfront && pl.xback < o.x + o.w) {
-				if ((pl.ymid > o.y && pl.ymid < o.y + o.h) ||
-					(pl.ybot + 10 > o.y && pl.ybot + 10 < o.y + o.h) ||
-					(pl.ytop > o.y && pl.ytop < o.y + o.h)) {
-					// damagesound.play();
-					obstacles.splice(i, 1);
-					var size = p.random(10, 30);
-					var newObs = new Obstacle(3, p.random(p.width, p.width * 2), p.random(0, p.height), size, size);
-					obstacles.push(newObs);
-					lives--;
-					break;
-				}
+			if (obst.x - obst.w / 2 <= pl.xfront && obst.x + obst.w / 2 >= pl.xback && pl.ytop <= obst.y + obst.h / 2 && pl.ybot >= obst.y - obst.h / 2) {
+				// damagesound.play();
+				obstacles.splice(i, 1);
+				size = p.random(10, 30);
+				obst = new Obstacle(3, p.random(p.width, p.width * 2), p.random(45, p.height - 45), size, size);
+				obstacles.push(obst);
+				lives--;
+				break;
 			}
+
 		}
 	}
 
@@ -268,34 +274,37 @@ function Asterisk(p) {
 
 	p.keyPressed = function () {
 		switch (p.key) {
-			case 'W':
+			default:
+				break;
 			case 'w':
-				pl.move = -5;
+				// pl.move = -5;
+				up = true
 				break;
 			case 's':
-			case 'S':
-				pl.move = 5;
+				// pl.move = 5;
+				down = true;
 				break;
-		}
-		switch (p.key) {
 			case 'b':
-			case 'B':
 				// shootsound.play();
-				var newbull = new Bullet(6, pl.xfront, pl.ymid, 5, 5);
-				bullets.push(newbull);
+				bull = new Bullet(6, pl.xfront, pl.ymid, 5, 5);
+				bullets.push(bull);
 				break;
 		}
 	}
 
 	p.keyReleased = function () {
 		switch (p.key) {
+			default:
+				break;
 			case 'w':
 			case 'W':
-				pl.move = 0;
+				// pl.move = 0;
+				up = false;
 				break;
 			case 's':
 			case 'S':
-				pl.move = 0;
+				// pl.move = 0;
+				down = false;
 				break;
 		}
 	}
