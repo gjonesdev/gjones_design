@@ -10,29 +10,29 @@ var currentScroll = "section-1";
 
 function Welcome() {
 
-	// window.onscroll = function (e) {
-	// 	if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
-	// 		var scroll = window.pageYOffset || document.documentElement.scrollTop;
 
-	// 		if (scroll > position + drag) {
-	// 			currentScroll = "section-2";
-	// 			console.log(currentScroll);
-	// 		} else if (scroll < position - drag) {
-	// 			currentScroll = "section-1";
-	// 			console.log(currentScroll);
-	// 		}
-	// 		document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-	// 		position = scroll;
-	// 	}
-	// }
+	window.onscroll = function (e) {
+		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
+			var scroll = window.pageYOffset || document.documentElement.scrollTop;
+
+			if (scroll > position + drag) {
+				currentScroll = "section-2";
+				console.log(currentScroll);
+			} else if (scroll < position - drag) {
+				currentScroll = "section-1";
+				console.log(currentScroll);
+			}
+			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
+			position = scroll;
+		}
+	}
 
 	return (
 		<div>
 			<div id="section-1" className="wrapper">
-				<div>
-					<h1 id="welcome-header">Welcome<span className="period">.</span></h1>
-				</div>
-				<div className="asterisk" >
+				<div className="asterisk">
+					<h1>Welcome<span className="period">.</span></h1>
+					<h2>I hope you like fun.</h2>
 					<P5Wrapper sketch={Asterisk} />
 				</div>
 				{/* <div id="p5_loading">Loading Asterisk*<br />Please Wait</div> */}
@@ -41,7 +41,7 @@ function Welcome() {
 			<div id="section-2">
 				<div className="page-title">
 					{/* <span className="block"></span> */}
-					<h1>Hi there<span className="period">.</span></h1><h2>How is your week going?</h2>
+					<h1>Hi there<span className="period">.</span><h2>How is your week going?</h2></h1>
 				</div>
 				<div className="main-text">
 					<p>My name is <Link to="/About" className="link name-under"><u className="red-under">GAETANO</u> JONES</Link>, but you can call me Guy.</p>

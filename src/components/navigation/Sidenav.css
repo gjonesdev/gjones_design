@@ -1,15 +1,26 @@
 /* // cSpell:enableCompoundWords */
 
-#sidenav {
+/* #sidenav-bar {
 	height: 100%;
 	width: 55px;
 	position: fixed;
-	z-index: 98;
-	left: 0;
 	top: 0;
 	background-color: black;
 	overflow-x: hidden;
 	transition: 0.5s;
+	z-index: 98;
+} */
+
+#sidenav {
+	height: 100%;
+	width: 310px;
+	margin-left: -310px;
+	position: fixed;
+	top: 0;
+	background-color: black;
+	overflow-x: hidden;
+	transition: 0.5s;
+	z-index: 99;
 }
 
 #dim {
@@ -28,20 +39,22 @@
 	margin-top: 80px;
 	margin-left: auto;
 	margin-right: auto;
-	visibility: hidden;
 	white-space: nowrap;
 	text-overflow: clip;
-	transition: 0.12s;
 	text-transform: uppercase;
 }
 
 #sidenav-content a {
 	padding: 5px;
+	margin-bottom: 10px;
 	text-decoration: none;
 	font-size: 2rem;
 	color: #ffffff;
 	display: block;
 	border-bottom: none;
+	background: linear-gradient(to left, transparent 50%, #09CCCC 50%) right;
+	background-size: 200%;
+	transition: .4s ease-out;
 }
 
 .logo {
@@ -59,16 +72,17 @@
 
 #sidenav a:hover,
 sidenav a:focus {
-	color: #09CCCC;
+	/* color: #09CCCC; */
 	border-bottom: none;
+	background-position: left;
 }
 
 #navclosebtn {
 	position: fixed;
 	width: 35px;
-	height: 35px;
-	left: 10px;
-	top: 10px;
+	height: 3rem;
+	left: 15px;
+	top: 5px;
 	color: white;
 	visibility: hidden;
 	cursor: pointer;
@@ -77,12 +91,13 @@ sidenav a:focus {
 #navopenbtn {
 	position: fixed;
 	width: 35px;
-	height: 35px;
-	left: 10px;
-	top: 10px;
+	height: 3rem;
+	left: 15px;
+	top: 5px;
 	color: white;
 	cursor: pointer;
 }
+
 
 .basebar {
 	background-color: #06CCCC;

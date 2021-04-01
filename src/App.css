@@ -64,7 +64,7 @@ h5 {
 }
 
 .outer-container {
-	padding-left: 55px;
+	/* padding-left: 55px; */
 	height: 100vh;
 }
 
@@ -133,6 +133,39 @@ h5 {
 	text-transform: uppercase;
 	font-size: 3.6rem !important;
 	border-bottom: 10px solid #09CCCC;
+}
+
+/* 
+#welcome-subheader {
+
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #ACACAC;
+	font-size: 2rem;
+} */
+
+.asterisk {
+	padding-top: 20px;
+	margin: auto;
+	width: max-content;
+	display: block;
+}
+
+.asterisk h1 {
+	width: min-content;
+	margin: 0px auto 20px auto !important;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 3.6rem !important;
+	border-bottom: 10px solid #09CCCC;
+}
+
+.asterisk h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #ACACAC;
+	font-size: 2rem;
+	float: left;
 }
 
 /* #welcome-header2 {
@@ -265,14 +298,6 @@ h5 {
 
 #section-2 {
 	height: 100vh;
-	background-color: #09CCCC;
-
-}
-
-.asterisk canvas {
-	display: block;
-	margin: auto;
-	top: 50%;
 }
 
 /* #p5_loading {
