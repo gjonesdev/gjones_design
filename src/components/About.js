@@ -7,44 +7,7 @@ import 'swiper/swiper-bundle.css';
 
 SwiperCore.use([Mousewheel]);
 
-var position = window.pageYOffset || document.documentElement.scrollTop;
-var drag = 10;
-var currentScroll = "section-1";
-
-// function aboutScroll() {
-// 	// if (window.location.pathname === "/About") {
-// 	window.onscroll = function (e) {
-// 		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
-// 			var scroll = window.pageYOffset || document.documentElement.scrollTop;
-// 			if (scroll > position + drag) {
-// 				currentScroll = "section-2";
-// 			} else if (scroll < position - drag) {
-// 				currentScroll = "section-1";
-// 			}
-// 			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-// 			position = scroll;
-// 		}
-// 	}
-// }
-
-
 function About() {
-	// aboutScroll();
-	// window.onscroll = function (e) {
-	// 	if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
-	// 		var scroll = window.pageYOffset || document.documentElement.scrollTop;
-	// 		if (scroll > position + drag) {
-	// 			currentScroll = "section-2";
-	// 			console.log(currentScroll);
-	// 		} else if (scroll < position - drag) {
-	// 			currentScroll = "section-1";
-	// 			console.log(currentScroll);
-	// 		}
-	// 		document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-	// 		position = scroll;
-	// 	}
-	// }
-
 	return (
 		<Swiper
 			direction={{ vertical: true }}
@@ -76,15 +39,14 @@ function About() {
 					</ul>
 					<br />
 					<p>Since I have experience with both front end and design, I can fill gaps that you might not have accounted for. Any task you might have, I'm the Guy for it.</p>
-					{/* <p>But you already knew that. But what you didn't know is I love the retro.</p>
-				<br />
-				<p>Check out  this picture of my keyboard:</p> */}
+
 				</div>
 
 			</SwiperSlide>
 			<SwiperSlide>
-				text
-
+				<p>But you already knew that. But what you didn't know is I love the retro.</p>
+				<br />
+				<p>Check out  this picture of my keyboard:</p>
 			</SwiperSlide>
 		</Swiper>
 	)

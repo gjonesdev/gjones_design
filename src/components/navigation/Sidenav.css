@@ -1,16 +1,5 @@
 /* // cSpell:enableCompoundWords */
 
-/* #sidenav-bar {
-	height: 100%;
-	width: 55px;
-	position: fixed;
-	top: 0;
-	background-color: black;
-	overflow-x: hidden;
-	transition: 0.5s;
-	z-index: 98;
-} */
-
 #sidenav {
 	height: 100%;
 	width: 310px;
@@ -53,7 +42,7 @@
 	display: block;
 	border-bottom: none;
 	background: linear-gradient(to left, transparent 50%, #09CCCC 50%) right;
-	background-size: 201%;
+	background-size: 300%;
 	transition: .4s ease-out;
 }
 
