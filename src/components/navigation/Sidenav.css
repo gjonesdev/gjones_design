@@ -53,7 +53,7 @@
 	display: block;
 	border-bottom: none;
 	background: linear-gradient(to left, transparent 50%, #09CCCC 50%) right;
-	background-size: 200%;
+	background-size: 201%;
 	transition: .4s ease-out;
 }
 

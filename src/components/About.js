@@ -1,6 +1,12 @@
 // cSpell:enableCompoundWords
 import React from "react";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Mousewheel } from 'swiper/core';
+import 'swiper/swiper-bundle.css';
+
+SwiperCore.use([Mousewheel]);
+
 var position = window.pageYOffset || document.documentElement.scrollTop;
 var drag = 10;
 var currentScroll = "section-1";
@@ -24,24 +30,36 @@ var currentScroll = "section-1";
 
 function About() {
 	// aboutScroll();
-	window.onscroll = function (e) {
-		if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
-			var scroll = window.pageYOffset || document.documentElement.scrollTop;
-			if (scroll > position + drag) {
-				currentScroll = "section-2";
-				console.log(currentScroll);
-			} else if (scroll < position - drag) {
-				currentScroll = "section-1";
-				console.log(currentScroll);
-			}
-			document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
-			position = scroll;
-		}
-	}
+	// window.onscroll = function (e) {
+	// 	if ((document.getElementById("section-1") && document.getElementById("section-2")) !== null) {
+	// 		var scroll = window.pageYOffset || document.documentElement.scrollTop;
+	// 		if (scroll > position + drag) {
+	// 			currentScroll = "section-2";
+	// 			console.log(currentScroll);
+	// 		} else if (scroll < position - drag) {
+	// 			currentScroll = "section-1";
+	// 			console.log(currentScroll);
+	// 		}
+	// 		document.getElementById(currentScroll).scrollIntoView({ behavior: 'smooth', block: 'center' })
+	// 		position = scroll;
+	// 	}
+	// }
 
 	return (
-		<div>
-			<div id="section-1">
+		<Swiper
+			direction={{ vertical: true }}
+			mousewheel={true}
+			// cssMode={true}
+			// mousewheel={{ releaseOnEdges: true }}
+			slidesPerView={1}
+			spaceBetween={250}
+			// height={0}
+			speed={1000}
+			onSlideChange={() => console.log('slide change')}
+			onSwiper={(swiper) => console.log(swiper)}
+		>
+			<SwiperSlide>
+
 				<div className="page-title">
 					<h1>About Me<span className="period">.</span></h1><h2>Allow me to reintroduce myself:</h2>
 				</div>
@@ -62,13 +80,13 @@ function About() {
 				<br />
 				<p>Check out  this picture of my keyboard:</p> */}
 				</div>
-			</div>
-			<div id="home-scroll">
-				<p>\/</p>
-			</div>
-			<div id="section-2">text
-				</div>
-		</div>
+
+			</SwiperSlide>
+			<SwiperSlide>
+				text
+
+			</SwiperSlide>
+		</Swiper>
 	)
 }
 

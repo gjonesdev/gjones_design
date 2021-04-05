@@ -18,6 +18,7 @@
     "react-tiger-transition": "^4.1.2",
     "react-transition-group": "^4.4.1",
     "react-typist": "^2.0.5",
+    "swiper": "^6.5.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
