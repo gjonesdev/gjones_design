@@ -10,7 +10,10 @@ function Contact() {
 
 			<div>
 				<div>
-					<form method="POST" action="contact.php" id="contact-form">
+					<div className="main-text">
+						<p>This page is still under construction, but in the meantime any inquiries can be directed to my inbox mail@gjones.design.</p>
+					</div >
+					<form method="POST" action="./contact.php" id="contact-form">
 						<h2>Contact us</h2>
 						<p><label>First Name:</label> <input name="name" type="text" /></p>
 						<p><label>Email Address:</label> <input name="email" type="text" /></p>
