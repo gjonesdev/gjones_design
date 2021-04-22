@@ -237,10 +237,30 @@ h5 {
 	background-color: #09CCCC;
 }
 
-.switch-wrapper {
-	position: relative;
+.scroller {
+	overflow: scroll;
+	height: 100vh;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-y: repeat(100vh);
+	scroll-snap-type: y mandatory;
+	/* transition: .4s ease-out; */
 }
 
-.switch-wrapper>div {
-	position: absolute;
+.scroller section {
+	height: 100vh;
+	scroll-snap-align: start;
+}
+
+.fade-in-section {
+	opacity: 0;
+	transform: translateY(20vh);
+	visibility: hidden;
+	transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+	will-change: opacity, visibility;
+}
+
+.fade-in-section.is-visible {
+	opacity: 1;
+	transform: none;
+	visibility: visible;
 }

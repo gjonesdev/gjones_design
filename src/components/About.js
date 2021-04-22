@@ -1,28 +1,10 @@
 // cSpell:enableCompoundWords
 import React from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Mousewheel } from 'swiper/core';
-import 'swiper/swiper-bundle.css';
-
-SwiperCore.use([Mousewheel]);
-
 function About() {
 	return (
-		<Swiper
-			direction={{ vertical: true }}
-			mousewheel={true}
-			// cssMode={true}
-			// mousewheel={{ releaseOnEdges: true }}
-			slidesPerView={1}
-			spaceBetween={250}
-			// height={0}
-			speed={1000}
-			onSlideChange={() => console.log('slide change')}
-			onSwiper={(swiper) => console.log(swiper)}
-		>
-			<SwiperSlide>
-
+		<div class="scroller">
+			<section>
 				<div className="page-title">
 					<h1>About Me<span className="period">.</span></h1><h2>Allow me to reintroduce myself:</h2>
 				</div>
@@ -41,14 +23,14 @@ function About() {
 					<p>Since I have experience with both front end and design, I can fill gaps that you might not have accounted for. Any task you might have, I'm the Guy for it.</p>
 
 				</div>
+			</section>
 
-			</SwiperSlide>
-			<SwiperSlide>
+			<section>
 				<p>But you already knew that. But what you didn't know is I love the retro.</p>
 				<br />
 				<p>Check out  this picture of my keyboard:</p>
-			</SwiperSlide>
-		</Swiper>
+			</section>
+		</div>
 	)
 }
 
