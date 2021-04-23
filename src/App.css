@@ -21,7 +21,7 @@ html {
 }
 
 body {
-	overflow: hidden;
+	/* overflow: hidden; */
 	background-color: #222222;
 	font-family: Helvetica Neue, sans-serif;
 	font-weight: bold;
@@ -243,7 +243,6 @@ h5 {
 	scroll-snap-type: mandatory;
 	scroll-snap-points-y: repeat(100vh);
 	scroll-snap-type: y mandatory;
-	/* transition: .4s ease-out; */
 }
 
 .scroller section {
@@ -251,16 +250,38 @@ h5 {
 	scroll-snap-align: start;
 }
 
-.fade-in-section {
+.fade {
 	opacity: 0;
 	transform: translateY(20vh);
 	visibility: hidden;
-	transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+	/* transition: opacity 1s ease-in, transform 1s ease-out; */
 	will-change: opacity, visibility;
 }
 
-.fade-in-section.is-visible {
+.fade.visible {
 	opacity: 1;
 	transform: none;
+	transition: opacity .6s ease-in, transform 1.5s ease-out;
 	visibility: visible;
 }
+
+/* 
+.fade.visible:nth-of-type(1) {
+	transition-delay: .1s;
+}
+
+.fade.visible:nth-of-type(2) {
+	transition-delay: 1s;
+}
+
+.fade.visible:nth-of-type(3) {
+	transition-delay: 2s;
+}
+
+.fade.visible:nth-of-type(4) {
+	transition-delay: 3s;
+}
+
+.fade.visible:nth-of-type(5) {
+	transition-delay: 4s;
+} */
