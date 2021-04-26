@@ -1,4 +1,4 @@
-// import barba from "./@barba/core";
+// import barba from '@barba/core';
 
 function openNav() {
 	document.getElementById("navclosebtn").style.visibility = "visible";
@@ -17,3 +17,15 @@ function closeNav() {
 window.addEventListener('keydown', function (e) {
 	console.log(`You pressed ${e.key}`);
 }, false);
+
+function changeURL() {
+	//set new path
+	console.log("run");
+	window.location.pathname = data.next.route.name;
+
+	//get new url
+	const newURL = window.location.href;
+
+	return newURL;
+
+}

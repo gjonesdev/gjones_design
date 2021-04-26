@@ -1,5 +1,4 @@
 <?
-
 $to_email = "mail@gjones.design";
 $from_email = "inquiry@gjones.design";
 $sendflag = $_REQUEST['sendflag'];    

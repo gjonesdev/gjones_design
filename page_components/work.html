@@ -50,17 +50,74 @@
 		</div>
 	</main>
 	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
 
 	<script type="text/javascript">
-		barba.init({
-			name: 'default-transition',
-			leave() {
-				// create your stunning leave animation here
-			},
-			enter() {
-				// create your amazing enter animation here
-			}
+		const route_list = [{
+			path: 'index.html',
+			name: 'home'
+		}, {
+			path: '/page_components/work.html',
+			name: 'work'
+		}];
+
+		barba.use(barbaRouter, {
+			routes: route_list
 		});
+
+		barba.init({
+			preventRunning: true,
+
+			views: [{
+				namespace: 'home',
+				beforeEnter({
+					next
+				}) {
+					page_enter();
+					changeURL();
+				},
+
+				namespace: 'home',
+				afterLeave({
+					next
+				}) {
+					page_leave();
+				},
+			}],
+
+			transitions: [{
+					name: 'default-transition',
+					to: {
+						route: ['home']
+					},
+					enter(data) {
+						console.log(data.next.route.name);
+					}
+				},
+				{
+					name: 'default-transition',
+					to: {
+						route: ['work']
+					},
+					enter(data) {
+						console.log(data.next.route.name);
+					}
+				}
+			]
+		});
+
+		var links = document.querySelectorAll('a[href]');
+		var cbk = function (e) {
+			if (e.currentTarget.href === window.location.href) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		};
+
+		for (var i = 0; i < links.length; i++) {
+			links[i].addEventListener('click', cbk);
+		}
 	</script>
 </body>
 
