@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/gjonalpd/dev.gjones.design/
+    - /bin/cp -R * $DEPLOYPATH
