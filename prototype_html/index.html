@@ -1,44 +1,109 @@
-<!-- // cSpell:enableCompoundWords -->
+<!-- cSpell:enableCompoundWords -->
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width = device-width, initial-scale = 1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="styles/styles.css">
-	<script src="scripts/index.js"></script>
-	<title>Gaetano Jones - Experience Design</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles.css">
+	<script src="index.js"></script>
+	<script src="/p5.min.js"></script>
+	<script src="/asterisk.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
-	<nav id="mySidenav" class="sidenav">
-		<button href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</button>
-		<button id="btn" class="openbtn" onclick="openNav()">&#9776;</button>
-		<div id="nav">
-			<a class="logo"><u class="redunder" href="home">Gaetano</u><br>Jones</a>
-			<a href="about.html">About Me</a>
-			<a href="#">My Work</a>
-			<a href="#">Contact</a>
+<body data-barba="wrapper">
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()"> Home </a>
+			<a href="/page_components\about.html" onClick="closeNav()">About Me</a>
+			<a href="/page_components\work.html" onClick="closeNav()">My Work</a>
+			<a href="/page_components\otherstuff.html" onClick="closeNav()">Other Stuff</a>
+			<a href="/page_components\contact.html" onClick="closeNav()">Contact</a>
 		</div>
-	</nav>
-
-	<main data-router-wrapper>
-		<section data-router-view="welcome" class="welcome">
-			<div onscroll="welcomeScroll()" class="container">
-				<div class="homeheader1"> Wel<br>come.</div>
-				<div class="homeheader2"> To The Web<br>To Design<br>To Me</div>
-
-				<!--				<div class="homescroll"><button onclick="welcomeScroll()">Scroll</button><br> \/ </div>-->
-
-				<div class="homescroll"> <a href="home.html">Scroll<br> \/ </a></div>
-
-				<div class="homeheader3">:&#41;</div>
-			</div>
-			<hr class="basebar" />
-		</section>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+	<main data-barba="container" data-barba-namespace="home">
+		<div class="scroller">
+			<section>
+				<div class="asterisk">
+					<h1>Welcome<span class="period">.</span></h1>
+					<h2>I hope you like fun.</h2>
+					<div id="asterisk"></div>
+				</div>
+			</section>
+			<section>
+				<div class="page-title">
+					<h1>Hi there<span class="period">.</span></h1>
+					<h2>How is your week going?</h2>
+				</div>
+				<div class="main-text">
+					<p>My name is
+						<Link to="/About" class="link name-under"><u class="red-under">GAETANO</u> JONES</Link>,
+						but
+						you can call me Guy.</p>
+					<br />
+					<p>I am a designer and developer. Specifically, I do
+						<Link to="/Work" class="link">UI/UX DESIGN</Link> and
+						<Link to="/Work" class="link">FRONT END DEVELOPMENT.</Link>
+					</p>
+					<br />
+					<p>Sometimes I like to make
+						<Link to="/OtherStuff" class="link">OTHER STUFF</Link> too.</p>
+				</div>
+			</section>
+		</div>
 	</main>
-</body>
 
-</html>
+	<script src="https://unpkg.com/@barba/core"></script>
+
+	<script type="text/javascript">
+		barba.init({
+			views: [{
+				namespace: 'home',
+				beforeEnter({
+					next
+				}) {
+					page_enter();
+				},
+
+				namespace: 'home',
+				afterLeave({
+					next
+				}) {
+					page_leave();
+				},
+			}],
+
+
+			preventRunning: true,
+			name: 'default-transition',
+			leave() {
+				// create your stunning leave animation here
+			},
+			enter() {
+				// create your amazing enter animation here
+			}
+		});
+
+		var links = document.querySelectorAll('a[href]');
+		var cbk = function (e) {
+			if (e.currentTarget.href === window.location.href) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		};
+
+		for (var i = 0; i < links.length; i++) {
+			links[i].addEventListener('click', cbk);
+		}
+	</script>
+</body>

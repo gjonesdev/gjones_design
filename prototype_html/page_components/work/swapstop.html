@@ -1,0 +1,57 @@
+<!-- cSpell:enableCompoundWords -->
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles.css">
+	<script src="/index.js"></script>
+	<script src="/p5.min.js"></script>
+	<script src="/asterisk.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body data-barba="wrapper">
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()"> Home </a>
+			<a href="/page_components\about.html" onClick="closeNav()">About Me</a>
+			<a href="/page_components\work.html" onClick="closeNav()">My Work</a>
+			<a href="/page_components\otherstuff.html" onClick="closeNav()">Other Stuff</a>
+			<a href="/page_components\contact.html" onClick="closeNav()">Contact</a>
+		</div>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+	<main data-barba="container" data-barba-namespace="swapstop">
+
+		<div class="page-title">
+			<h1>SwapStop<span class="period">.</span></h1>
+			<h2>Trading your stuff has never been easier.</h2>
+		</div>
+	</main>
+	<script src="https://unpkg.com/@barba/core"></script>
+
+	<script type="text/javascript">
+		barba.init({
+			name: 'default-transition',
+			leave() {
+				// create your stunning leave animation here
+			},
+			enter() {
+				// create your amazing enter animation here
+			}
+		});
+	</script>
+
+</body>
+
+</html>
