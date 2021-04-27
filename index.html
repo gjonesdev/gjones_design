@@ -34,10 +34,25 @@
 	<main data-barba="container" data-barba-namespace="home">
 		<div class="scroller">
 			<section>
-				<div class="asterisk">
+				<div class="welcome">
 					<h1>Welcome<span class="period">.</span></h1>
 					<h2>I hope you like fun.</h2>
-					<div id="asterisk"></div>
+				</div>
+				<div class="asterisk">
+					<div id="bootscreen">
+						<h1>
+
+							Press Enter to play Asterisk*</h1>
+						<h1>W = Up</h1>
+						<h1>S = Down</h1>
+						<h1>B = Shoot</h1>
+					</div>
+					<div id="asterisk-canvas"></div>
+					<div id="stat-container">
+						<p id="lives"></p>
+						<p id="paused">GAME PAUSED</p>
+						<p id="points"></p>
+					</div>
 				</div>
 			</section>
 			<section>
@@ -98,7 +113,6 @@
 					next
 				}) {
 					page_leave();
-					changeURL();
 				},
 			}],
 

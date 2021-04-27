@@ -218,28 +218,55 @@ sidenav a:focus {
 	border-bottom: 10px solid #09CCCC;
 }
 
-.asterisk {
-	padding-top: 20px;
-	margin: auto;
+.welcome {
+	height: 15vh;
+	margin: 10px auto;
 	width: max-content;
-	display: block;
-}
-
-.asterisk h1 {
-	width: min-content;
-	/* margin: 0px auto 20px auto !important; */
+	text-align: center;
 	font-weight: bold;
 	text-transform: uppercase;
+	overflow: hidden;
+}
+
+.welcome h1 {
+	margin-bottom: 20px;
 	font-size: 3.6rem !important;
 	border-bottom: 10px solid #09CCCC;
 }
 
-.asterisk h2 {
+.welcome h2 {
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #ACACAC;
 	font-size: 2rem;
-	float: left;
+}
+
+#bootscreen {
+	display: flex;
+	flex-direction: column;
+	height: 70vh;
+	align-items: center;
+	justify-content: center;
+}
+
+#bootscreen h1 {
+	font-size: 2rem;
+	margin: 20px;
+}
+
+#stat-container {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	bottom: 5%;
+	z-index: 99;
+	margin: 0;
+	font-size: 1.2 rem;
+}
+
+#paused {
+	visibility: hidden;
 }
 
 .asterisk canvas {

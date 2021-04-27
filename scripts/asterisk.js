@@ -27,14 +27,19 @@ var obstacles = [];
 var bullets = [];
 var pl;
 var size;
+var obstspeed;
 var obst;
 var bull;
 
 var lives;
+var obstlimit = 15;
 
 var shoot = false;
 var up = false;
 var down = false;
+
+var game_run;
+var pause;
 
 var points;
 var showboot;
@@ -46,18 +51,18 @@ var showboot;
 ////////
 
 function setup() {
-	var gameCanvas = createCanvas(windowWidth / 1.2, windowHeight / 1.3);
-	gameCanvas.parent("asterisk");
-	background(0);
+	var gameCanvas = createCanvas(windowWidth * .99, windowHeight * 1.8);
+	gameCanvas.parent("asterisk-canvas");
+	showboot = true;
+	background("#222222");
 	fill("white");
 	noStroke();
-	showboot = true;
 	textSize(24);
 	rectMode(CENTER);
 }
 
 function draw() {
-	background(0);
+	background("#222222");
 	if (showboot) {
 		bootscreen();
 	} else if (lives <= 0) {
@@ -151,22 +156,13 @@ class Obstacle {
 
 function bootscreen() {
 	game_run = false;
-	background(0);
-	textAlign(CENTER);
-	fill("white");
-	text("PRESS ENTER TO PLAY ASTERISK*", width / 2, height / 2);
-	text("W = Up", width / 2, height / 3.5);
-	text("S = Down", width / 2, height / 3);
-	text("B = Shoot", width / 2, height / 2.5);
+	document.getElementById("bootscreen").style.display = "flex";
 }
 
 function gameoverscreen() {
 	game_run = false;
-	background(0);
-	fill("white");
-	textAlign(CENTER);
-	text("GAMEOVER", width / 2, height / 2.5);
-	text("PRESS ENTER TO PLAY AGAIN", width / 2, height / 1.5);
+	document.getElementById("lives").innerHTML = "GAMEOVER.";
+	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS. PRESS ENTER TO PLAY AGAIN.";
 }
 
 //////////////////
@@ -177,24 +173,28 @@ function asterisk() {
 	playerdraw();
 	obstdraw();
 	shootdraw();
-	text(points, width / 1.5, height - 30);
-	text("Lives: " + lives, width / 2.5, height - 30);
 }
 
 
 function reset() {
 	obstacles = [];
 	bullets = [];
-	pl = new Player(5, height / 2 - 10, height / 2, height / 2 + 10, 40, 60);
-	for (var i = 0; i < 10; i++) {
-		size = random(10, 30);
-		obst = new Obstacle(3, random(width, width * 2), random(45, height - 45), size, size);
+	pl = new Player(7, height / 5 - 20, height / 5, height / 5 + 20, 40, 80);
+	for (var i = 0; i < obstlimit; i++) {
+		size = random(40, 80);
+		obstspeed = random(3, 7);
+		obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
 		obstacles.push(obst);
 	}
 	lives = 3;
 	points = 0;
+	document.getElementById("lives").innerHTML = "Lives: " + lives;
+	document.getElementById("points").innerHTML = "Points: " + points;
+	document.getElementById("bootscreen").style.display = "none";
+	document.getElementById("stat-container").style.visibility = "visible";
 	showboot = false;
 	game_run = true;
+	pause = false;
 }
 
 function playerdraw() {
@@ -218,10 +218,12 @@ function shootdraw() {
 				// hitsound.play();
 				obstacles.splice(j, 1);
 				bullets.splice(i, 1);
-				size = random(10, 30);
-				obst = new Obstacle(3, random(width, width * 2), random(45, height - 45), size, size);
+				size = random(40, 80);
+				obstspeed = random(3, 7);
+				obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
 				obstacles.push(obst);
 				points += 100;
+				document.getElementById("points").innerHTML = "Points: " + points;
 				break;
 			}
 		}
@@ -236,17 +238,20 @@ function obstdraw() {
 
 		if (obst.x < 0) {
 			obstacles.splice(i, 1);
-			size = random(10, 30);
-			obst = new Obstacle(3, random(width, width * 2), random(45, height - 45), size, size);
+			size = random(40, 80);
+			obstspeed = random(3, 7);
+			obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
 			obstacles.push(obst);
 		}
 		if (obst.x - obst.w / 2 <= pl.xfront && obst.x + obst.w / 2 >= pl.xback && pl.ytop <= obst.y + obst.h / 2 && pl.ybot >= obst.y - obst.h / 2) {
 			// damagesound.play();
 			obstacles.splice(i, 1);
-			size = random(10, 30);
-			obst = new Obstacle(3, random(width, width * 2), random(45, height - 45), size, size);
+			size = random(40, 80);
+			obstspeed = random(3, 7);
+			obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
 			obstacles.push(obst);
 			lives--;
+			document.getElementById("lives").innerHTML = "Lives: " + lives;
 			break;
 		}
 
@@ -268,16 +273,32 @@ function keyPressed() {
 			down = true;
 			break;
 		case 66:
-			// shootsound.play();
-			bull = new Bullet(6, pl.xfront, pl.ymid, 5, 5);
-			bullets.push(bull);
+			if (pause === false) {
+				bull = new Bullet(6, pl.xfront, pl.ymid, 10, 10);
+				bullets.push(bull);
+			}
 			break;
 		case ENTER:
 			if (game_run === false) {
 				reset();
-				break;
 			}
+			break;
+			// case 72:
+			// 	document.getElementById("stat-container").style.visibility = "hidden";
+			// 	break;
+		case 80:
+			if (pause === false) {
+				pause = true;
+				document.getElementById("paused").style.visibility = "visible";
+				noLoop();
+			} else {
+				pause = false;
+				document.getElementById("paused").style.visibility = "hidden";
+				loop();
+			}
+			break;
 	}
+
 }
 
 function keyReleased() {

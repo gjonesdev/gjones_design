@@ -17,15 +17,3 @@ function closeNav() {
 window.addEventListener('keydown', function (e) {
 	console.log(`You pressed ${e.key}`);
 }, false);
-
-function changeURL() {
-	//set new path
-	console.log("run");
-	window.location.pathname = data.next.route.name;
-
-	//get new url
-	const newURL = window.location.href;
-
-	return newURL;
-
-}
