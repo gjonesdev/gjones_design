@@ -6,10 +6,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gaetano Jones</title>
-	<link rel="stylesheet" href="/styles.css">
-	<script src="/index.js"></script>
-	<!-- <script src="/p5.min.js"></script> -->
-
+	<link rel="stylesheet" href="/styles/styles.css">
+	<script src="/scripts/index.js"></script>
+	<script src="/scripts/p5.min.js"></script>
+	<script src="/scripts/asterisk.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -21,33 +21,36 @@
 			<div class="logo">
 				<u class="red-under">Gaetano</u> <br /> Jones </div>
 			<a href="/" onClick="closeNav()"> Home </a>
-			<a href="/page_components\about.html" onClick="closeNav()">About Me</a>
-			<a href="/page_components\work.html" onClick="closeNav()">My Work</a>
-			<a href="/page_components\otherstuff.html" onClick="closeNav()">Other Stuff</a>
-			<a href="/page_components\contact.html" onClick="closeNav()">Contact</a>
+			<a href="/about/index.html" onClick="closeNav()">About Me</a>
+			<a href="/work/index.html" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/index.html" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/index.html" onClick="closeNav()">Contact</a>
 		</div>
 	</div>
 	<div id="sidenav-bar">
 	</div>
 	<div id="dim" onClick="closeNav()"></div>
 	<hr class="basebar" />
-	<main data-barba="container" data-barba-namespace="contact">
+	<main data-barba="container" data-barba-namespace="otherstuff">
 		<div>
 			<div class="page-title">
-				<h1>Contact<span class="period">.</span></h1>
-				<h2>Drop a line.</h2>
+				<h1>Other Stuff<span class="period">.</span></h1>
+				<h2>Everyone has a junk drawer, right?</h2>
 			</div>
-
-			<div>
+			<div class="category-link">
 				<div>
-					<form method="POST" action="contact.php" id="contact-form">
-						<h2>Contact us</h2>
-						<p><label>First Name:</label> <input name="name" type="text" /></p>
-						<p><label>Email Address:</label> <input name="email" type="text" /></p>
-						<p><label>Message:</label> <textarea name="message"></textarea> </p>
-						<p><input name="sendflag" type="submit" value="send" /></p>
-					</form>
+					<Link to="/LogoDesign">Logo<br />Design<span class="period">.</span></Link><img src="#" alt="#" />
 				</div>
+				<div>
+					<Link to="/GraphicDesign">Graphic<br />Design<span class="period">.</span></Link><img src="#"
+						alt="#" />
+				</div>
+				<div>
+					<Link to="/AugmentedReality">Augmented<br />Reality<span class="period">.</span></Link><img src="#"
+						alt="#" /></div>
+				<div>
+					<Link to="/CreativeCoding">Creative<br />Coding<span class="period">.</span></Link><img src="#"
+						alt="#" /></div>
 			</div>
 		</div>
 	</main>
@@ -64,6 +67,7 @@
 			}
 		});
 	</script>
+
 </body>
 
 </html>
