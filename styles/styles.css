@@ -209,15 +209,6 @@ sidenav a:focus {
 	margin-left: 2.5%;
 }
 
-#welcome-header {
-	width: min-content;
-	margin: 40px auto 40px auto !important;
-	font-weight: bold;
-	text-transform: uppercase;
-	font-size: 3.6rem !important;
-	border-bottom: 10px solid #09CCCC;
-}
-
 .welcome {
 	height: 15vh;
 	margin: 10px auto;
@@ -241,6 +232,11 @@ sidenav a:focus {
 	font-size: 2rem;
 }
 
+#asterisk-canvas {
+	position: fixed;
+	z-index: -1;
+}
+
 #bootscreen {
 	display: flex;
 	flex-direction: column;
@@ -259,20 +255,17 @@ sidenav a:focus {
 	display: flex;
 	width: 100%;
 	justify-content: space-around;
+	align-items: flex-end;
 	bottom: 5%;
 	z-index: 99;
 	margin: 0;
-	font-size: 1.2 rem;
+	font-size: 1.2rem;
 }
 
 #paused {
 	visibility: hidden;
+	text-transform: uppercase;
 }
-
-.asterisk canvas {
-	display: block;
-}
-
 
 #home-scroll {
 	bottom: 50px;
@@ -388,7 +381,7 @@ sidenav a:focus {
 }
 
 .scroller section {
-	height: 99vh;
+	height: 100%;
 	scroll-snap-align: start;
 }
 

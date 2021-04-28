@@ -33,24 +33,22 @@
 	<hr class="basebar" />
 	<main data-barba="container" data-barba-namespace="home">
 		<div class="scroller">
+			<div id="asterisk-canvas"></div>
 			<section>
 				<div class="welcome">
 					<h1>Welcome<span class="period">.</span></h1>
 					<h2>I hope you like fun.</h2>
 				</div>
-				<div class="asterisk">
+				<div id="asterisk">
 					<div id="bootscreen">
-						<h1>
-
-							Press Enter to play Asterisk*</h1>
+						<h1>Press Enter to play Asterisk*</h1>
 						<h1>W = Up</h1>
 						<h1>S = Down</h1>
 						<h1>B = Shoot</h1>
 					</div>
-					<div id="asterisk-canvas"></div>
 					<div id="stat-container">
 						<p id="lives"></p>
-						<p id="paused">GAME PAUSED</p>
+						<p id="paused">Game paused. Press P to resume.</p>
 						<p id="points"></p>
 					</div>
 				</div>
@@ -62,17 +60,17 @@
 				</div>
 				<div class="main-text">
 					<p>My name is
-						<Link to="/About" class="link name-under"><u class="red-under">GAETANO</u> JONES</Link>,
+						<a href="/About" class="name-under"><u class="red-under">GAETANO</u> JONES</a>,
 						but
 						you can call me Guy.</p>
 					<br />
 					<p>I am a designer and developer. Specifically, I do
-						<Link to="/Work" class="link">UI/UX DESIGN</Link> and
-						<Link to="/Work" class="link">FRONT END DEVELOPMENT.</Link>
+						<a href="/Work">UI/UX DESIGN</a> and
+						<a href="/Work">FRONT END DEVELOPMENT.</a>
 					</p>
 					<br />
 					<p>Sometimes I like to make
-						<Link to="/OtherStuff" class="link">OTHER STUFF</Link> too.</p>
+						<a href="/OtherStuff">OTHER STUFF</a> too.</p>
 				</div>
 			</section>
 		</div>

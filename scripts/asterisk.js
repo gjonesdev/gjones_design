@@ -33,16 +33,19 @@ var bull;
 
 var lives;
 var obstlimit = 15;
+var screentop;
+var screenbot;
 
 var shoot = false;
 var up = false;
 var down = false;
 
+var on_page;
 var game_run;
-var pause;
+var paused;
 
 var points;
-var showboot;
+var showboot = true;
 
 // var font;
 
@@ -51,9 +54,11 @@ var showboot;
 ////////
 
 function setup() {
-	var gameCanvas = createCanvas(windowWidth * .99, windowHeight * 1.8);
+	var gameCanvas = createCanvas(windowWidth, windowHeight);
 	gameCanvas.parent("asterisk-canvas");
-	showboot = true;
+	on_page = true;
+	screentop = 90;
+	screenbot = height - 80;
 	background("#222222");
 	fill("white");
 	noStroke();
@@ -74,10 +79,21 @@ function draw() {
 
 function page_enter() {
 	setup();
-	loop();
+	if (showboot) {
+		bootscreen();
+	} else if (lives <= 0) {
+		gameoverscreen();
+	} else {
+		document.getElementById("bootscreen").innerHTML = "<h1>Asterisk* is paused. You can resume the game by pressing P.</h1>";
+		document.getElementById("lives").innerHTML = "Lives: " + lives;
+		document.getElementById("points").innerHTML = "Points: " + points;
+		document.getElementById("paused").style.visibility = "visible";
+		paused = true;
+	}
 }
 
 function page_leave() {
+	on_page = false;
 	noLoop();
 }
 
@@ -100,13 +116,13 @@ class Player {
 	}
 
 	update() {
-		if (pl.ytop > 30 && up === true) {
+		if (pl.ytop > screentop && up === true) {
 			this.ytop -= this.move;
 			this.ymid -= this.move;
 			this.ybot -= this.move;
 		}
 
-		if (pl.ybot < height - 30 && down === true) {
+		if (pl.ybot < screenbot && down === true) {
 			this.ytop += this.move;
 			this.ymid += this.move;
 			this.ybot += this.move;
@@ -157,12 +173,17 @@ class Obstacle {
 function bootscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").style.display = "flex";
+	noLoop();
 }
 
 function gameoverscreen() {
 	game_run = false;
+	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points;
+	document.getElementById("bootscreen").style.display = "flex";
+
 	document.getElementById("lives").innerHTML = "GAMEOVER.";
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS. PRESS ENTER TO PLAY AGAIN.";
+	noLoop();
 }
 
 //////////////////
@@ -175,26 +196,48 @@ function asterisk() {
 	shootdraw();
 }
 
+function pause() {
+	if (game_run) {
+		if (!paused) {
+			paused = true;
+			document.getElementById("paused").style.visibility = "visible";
+			document.getElementById("asterisk-canvas").style.visibility = "hidden";
+			document.getElementById("bootscreen").innerHTML = "<h1>Asterisk* is paused. You can resume the game by pressing P.</h1>";
+			document.getElementById("bootscreen").style.display = "flex";
+			noLoop();
+		} else {
+			paused = false;
+			document.getElementById("paused").style.visibility = "hidden";
+			document.getElementById("asterisk-canvas").style.visibility = "visible";
+			document.getElementById("bootscreen").style.display = "none";
+			loop();
+		}
+	}
+}
+
 
 function reset() {
-	obstacles = [];
-	bullets = [];
-	pl = new Player(7, height / 5 - 20, height / 5, height / 5 + 20, 40, 80);
-	for (var i = 0; i < obstlimit; i++) {
-		size = random(40, 80);
-		obstspeed = random(3, 7);
-		obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
-		obstacles.push(obst);
+	if (!game_run && on_page) {
+		obstacles = [];
+		bullets = [];
+		pl = new Player(7, height / 2 - 20, height / 2, height / 2 + 20, 40, 80);
+		for (var i = 0; i < obstlimit; i++) {
+			size = random(40, 80);
+			obstspeed = random(3, 7);
+			obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
+			obstacles.push(obst);
+		}
+		lives = 3;
+		points = 0;
+		document.getElementById("lives").innerHTML = "Lives: " + lives;
+		document.getElementById("points").innerHTML = "Points: " + points;
+		document.getElementById("bootscreen").style.display = "none";
+		document.getElementById("stat-container").style.visibility = "visible";
+		showboot = false;
+		game_run = true;
+		paused = false;
+		loop();
 	}
-	lives = 3;
-	points = 0;
-	document.getElementById("lives").innerHTML = "Lives: " + lives;
-	document.getElementById("points").innerHTML = "Points: " + points;
-	document.getElementById("bootscreen").style.display = "none";
-	document.getElementById("stat-container").style.visibility = "visible";
-	showboot = false;
-	game_run = true;
-	pause = false;
 }
 
 function playerdraw() {
@@ -220,7 +263,7 @@ function shootdraw() {
 				bullets.splice(i, 1);
 				size = random(40, 80);
 				obstspeed = random(3, 7);
-				obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
+				obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
 				obstacles.push(obst);
 				points += 100;
 				document.getElementById("points").innerHTML = "Points: " + points;
@@ -240,7 +283,7 @@ function obstdraw() {
 			obstacles.splice(i, 1);
 			size = random(40, 80);
 			obstspeed = random(3, 7);
-			obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
+			obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
 			obstacles.push(obst);
 		}
 		if (obst.x - obst.w / 2 <= pl.xfront && obst.x + obst.w / 2 >= pl.xback && pl.ytop <= obst.y + obst.h / 2 && pl.ybot >= obst.y - obst.h / 2) {
@@ -248,7 +291,7 @@ function obstdraw() {
 			obstacles.splice(i, 1);
 			size = random(40, 80);
 			obstspeed = random(3, 7);
-			obst = new Obstacle(obstspeed, random(width, width * 2), random(45, height - 45), size, size);
+			obst = new Obstacle(obstspeed, random(width, width * 2), random(screenbot, screentop), size, size);
 			obstacles.push(obst);
 			lives--;
 			document.getElementById("lives").innerHTML = "Lives: " + lives;
@@ -273,29 +316,16 @@ function keyPressed() {
 			down = true;
 			break;
 		case 66:
-			if (pause === false) {
+			if (!paused) {
 				bull = new Bullet(6, pl.xfront, pl.ymid, 10, 10);
 				bullets.push(bull);
 			}
 			break;
 		case ENTER:
-			if (game_run === false) {
-				reset();
-			}
+			reset();
 			break;
-			// case 72:
-			// 	document.getElementById("stat-container").style.visibility = "hidden";
-			// 	break;
 		case 80:
-			if (pause === false) {
-				pause = true;
-				document.getElementById("paused").style.visibility = "visible";
-				noLoop();
-			} else {
-				pause = false;
-				document.getElementById("paused").style.visibility = "hidden";
-				loop();
-			}
+			pause();
 			break;
 	}
 
