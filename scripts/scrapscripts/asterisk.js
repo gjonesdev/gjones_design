@@ -75,6 +75,7 @@ function draw() {
 	} else {
 		asterisk();
 	}
+
 }
 
 function page_enter() {

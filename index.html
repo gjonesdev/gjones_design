@@ -7,13 +7,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gaetano Jones</title>
 	<link rel="stylesheet" href="/styles/styles.css">
-	<script src="scripts/index.js"></script>
-	<script src="/scripts/p5.min.js"></script>
-	<script src="/scripts/asterisk.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" defer></script>
+	<script src="/scripts/p5.min.js" async></script>
 </head>
 
 <body data-barba="wrapper">
+
+	<div class="load-container">
+		<div class="loading-screen"></div>
+	</div>
+
 	<div id="sidenav">
 		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
 		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
@@ -31,120 +40,52 @@
 	</div>
 	<div id="dim" onClick="closeNav()"></div>
 	<hr class="basebar" />
+
 	<main data-barba="container" data-barba-namespace="home">
-		<div class="scroller">
-			<div id="asterisk-canvas"></div>
-			<section>
-				<div class="welcome">
-					<h1>Welcome<span class="period">.</span></h1>
-					<h2>I hope you like fun.</h2>
-				</div>
-				<div id="asterisk">
-					<div id="bootscreen">
-						<h1>Press Enter to play Asterisk*</h1>
-						<h1>W = Up</h1>
-						<h1>S = Down</h1>
-						<h1>B = Shoot</h1>
-					</div>
-					<div id="stat-container">
-						<p id="lives"></p>
-						<p id="paused">Game paused. Press P to resume.</p>
-						<p id="points"></p>
-					</div>
-				</div>
-			</section>
-			<section>
-				<div class="page-title">
-					<h1>Hi there<span class="period">.</span></h1>
-					<h2>How is your week going?</h2>
-				</div>
-				<div class="main-text">
-					<p>My name is
-						<a href="/About" class="name-under"><u class="red-under">GAETANO</u> JONES</a>,
-						but
-						you can call me Guy.</p>
-					<br />
-					<p>I am a designer and developer. Specifically, I do
-						<a href="/Work">UI/UX DESIGN</a> and
-						<a href="/Work">FRONT END DEVELOPMENT.</a>
-					</p>
-					<br />
-					<p>Sometimes I like to make
-						<a href="/OtherStuff">OTHER STUFF</a> too.</p>
-				</div>
-			</section>
-		</div>
+		<!-- <div class="scroller"> -->
+		<div id="asterisk-canvas"></div>
+
+		<section id="asterisk" class="panel load-content">
+			<div id="welcome">
+				<h1>Welcome<span class="period">.</span></h1>
+				<h2>I hope you like fun.</h2>
+			</div>
+			<div id="bootscreen">
+				<h1>Press Enter to play Asterisk*</h1>
+				<h1>W = Up</h1>
+				<h1>S = Down</h1>
+				<h1>B = Shoot</h1>
+			</div>
+			<div id="stat-container">
+				<p id="lives"></p>
+				<p id="paused">Game paused. Press P to resume.</p>
+				<p id="points"></p>
+			</div>
+		</section>
+
+
+		<section class="panel">
+			<div class="page-title">
+				<h1>Hi there<span class="period">.</span></h1>
+				<h2>How is your week going?</h2>
+			</div>
+			<div class="main-text">
+				<p>My name is
+					<a href="/about" class="name-under"><u class="red-under">GAETANO</u> JONES</a>,
+					but
+					you can call me Guy.</p>
+				<br />
+				<p>I am a designer and developer. Specifically, I do
+					<a href="/work">UI/UX DESIGN</a> and
+					<a href="/work">FRONT END DEVELOPMENT.</a>
+				</p>
+				<br />
+				<p>Sometimes I like to make
+					<a href="/other-stuff">OTHER STUFF</a> too.</p>
+			</div>
+		</section>
+
+
+		<!-- </div> -->
 	</main>
-
-	<script src="https://unpkg.com/@barba/core"></script>
-	<script src="https://unpkg.com/@barba/router"></script>
-	<script src="https://unpkg.com/@barba/prefetch"></script>
-
-	<script type="text/javascript">
-		barba.use(barbaPrefetch);
-
-		const route_list = [{
-			path: 'index.html',
-			name: 'home'
-		}, {
-			path: '/page_components/work.html',
-			name: 'work'
-		}];
-
-		barba.use(barbaRouter, {
-			routes: route_list
-		});
-
-		barba.init({
-			preventRunning: true,
-
-			views: [{
-				namespace: 'home',
-				beforeEnter({
-					next
-				}) {
-					page_enter();
-				},
-
-				namespace: 'home',
-				afterLeave({
-					next
-				}) {
-					page_leave();
-				},
-			}],
-
-			transitions: [{
-					name: 'default-transition',
-					to: {
-						route: ['home']
-					},
-					enter(data) {
-						console.log(data.next.route.name);
-					}
-				},
-				{
-					name: 'default-transition',
-					to: {
-						route: ['work']
-					},
-					enter(data) {
-						console.log(data.next.route.name);
-					}
-				}
-			]
-		});
-
-		var links = document.querySelectorAll('a[href]');
-		var cbk = function (e) {
-			if (e.currentTarget.href === window.location.href) {
-				e.preventDefault();
-				e.stopPropagation();
-			}
-		};
-
-		for (var i = 0; i < links.length; i++) {
-			links[i].addEventListener('click', cbk);
-		}
-	</script>
 </body>
