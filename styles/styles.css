@@ -5,6 +5,7 @@
 	--main-color: #09CCCC;
 	--main-underline: 4px solid var(--main-color);
 	--red-underline: 1px dashed red;
+	--background-color: #222222;
 }
 
 * {
@@ -30,7 +31,7 @@ html {
 
 body {
 	/* overflow: hidden; */
-	background-color: #222222;
+	background-color: var(--background-color);
 	font-family: Helvetica Neue, sans-serif;
 	font-weight: bold;
 	color: whitesmoke;
@@ -228,6 +229,8 @@ sidenav a:focus {
 }
 
 #welcome h1 {
+	width: max-content;
+	margin: auto;
 	margin-bottom: 20px;
 	font-size: 3.6rem !important;
 	border-bottom: 10px solid var(--main-color);
@@ -400,12 +403,34 @@ sidenav a:focus {
 	top: 0;
 }
 
-.loading-screen {
+.teal {
+	position: absolute;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	background-color: var(--main-color);
+	/* background-color: #4bedc2; */
+	width: 0%;
+	height: 100%;
+}
+
+/* Top to bottom alternative */
+/* .loading-screen {
 	position: relative;
 	padding-left: 0;
 	padding-right: 0;
 	padding-top: 0;
 	background-color: var(--main-color);
+	width: 100%;
+	height: 0%;
+} */
+
+.gray {
+	position: absolute;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	background-color: black;
 	/* background-color: #4bedc2; */
 	width: 0%;
 	height: 100%;
@@ -418,6 +443,6 @@ sidenav a:focus {
 	width: 100%;
 	height: 100vh;
 	overflow: hidden;
-	z-index: 10;
+	z-index: 100;
 	pointer-events: none;
 }

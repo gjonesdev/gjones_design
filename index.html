@@ -13,14 +13,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-	<script src="/scripts/index.js" defer></script>
+	<script src="/scripts/index.js" async></script>
 	<script src="/scripts/p5.min.js" async></script>
 </head>
 
 <body data-barba="wrapper">
 
 	<div class="load-container">
-		<div class="loading-screen"></div>
+		<div class="teal"></div>
+		<div class="gray"></div>
 	</div>
 
 	<div id="sidenav">
@@ -45,16 +46,18 @@
 		<!-- <div class="scroller"> -->
 		<div id="asterisk-canvas"></div>
 
-		<section id="asterisk" class="panel load-content">
-			<div id="welcome">
-				<h1>Welcome<span class="period">.</span></h1>
-				<h2>I hope you like fun.</h2>
-			</div>
-			<div id="bootscreen">
-				<h1>Press Enter to play Asterisk*</h1>
-				<h1>W = Up</h1>
-				<h1>S = Down</h1>
-				<h1>B = Shoot</h1>
+		<section id="asterisk" class="panel">
+			<div class="load-content">
+				<div id="welcome">
+					<h1>Welcome<span class="period">.</span></h1>
+					<h2>I hope you like fun.</h2>
+				</div>
+				<div id="bootscreen">
+					<h1>Press Enter to play Asterisk*</h1>
+					<h1>W = Up</h1>
+					<h1>S = Down</h1>
+					<h1>B = Shoot</h1>
+				</div>
 			</div>
 			<div id="stat-container">
 				<p id="lives"></p>

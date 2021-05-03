@@ -74,11 +74,12 @@ barba.init({
 		},
 
 		async enter(data) {
+			closeNav();
 			contentAnimation();
 		},
 
 		async once(data) {
-			contentAnimation();
+			reloadContentAnimation();
 		},
 	}]
 });
@@ -100,36 +101,36 @@ for (var i = 0; i < links.length; i++) {
 
 /* Beginning of GSAP Code.------------------------------------------------------*/
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-const firstElem = document.querySelector(".panel");
+// const firstElem = document.querySelector(".panel");
 
-function goToSection(i, anim) {
-	gsap.to(window, {
-		scrollTo: {
-			y: i * innerHeight + firstElem.offsetTop,
-			autoKill: false
-		},
-		duration: 1
-	});
+// function goToSection(i, anim) {
+// 	gsap.to(window, {
+// 		scrollTo: {
+// 			y: i * innerHeight + firstElem.offsetTop,
+// 			autoKill: false
+// 		},
+// 		duration: 1
+// 	});
 
-	if (anim) {
-		anim.restart();
-	}
-}
+// 	if (anim) {
+// 		anim.restart();
+// 	}
+// }
 
-gsap.utils.toArray(".panel").forEach((panel, i) => {
-	ScrollTrigger.create({
-		trigger: panel,
-		onEnter: () => goToSection(i)
-	});
+// gsap.utils.toArray(".panel").forEach((panel, i) => {
+// 	ScrollTrigger.create({
+// 		trigger: panel,
+// 		onEnter: () => goToSection(i)
+// 	});
 
-	ScrollTrigger.create({
-		trigger: panel,
-		start: "bottom bottom",
-		onEnterBack: () => goToSection(i),
-	});
-});
+// 	ScrollTrigger.create({
+// 		trigger: panel,
+// 		start: "bottom bottom",
+// 		onEnterBack: () => goToSection(i),
+// 	});
+// });
 
 function delay(n) {
 	n = n || 2000;
@@ -142,23 +143,47 @@ function delay(n) {
 
 function pageTransition() {
 	var tl = gsap.timeline();
-	tl.to(".loading-screen", {
-		duration: 1.2,
-		width: "100%",
-		left: "0%",
-		ease: "Expo.easeInOut",
-	});
+	tl.to(".load-container div", {
+			duration: .8,
+			width: "100%",
+			left: "0%",
+			stagger: .2,
+			ease: "power3.in",
+		})
+		.to(".load-container div", {
+			duration: 1,
+			width: "100%",
+			left: "100%",
+			stagger: .3,
+			ease: "Expo.easeInOut",
+		})
+		.set(".load-container div", {
+			stagger: .3,
+			left: "-100%"
+		})
 
-	tl.to(".loading-screen", {
-		duration: 1,
-		width: "100%",
-		left: "100%",
-		ease: "Expo.easeInOut",
-		delay: 0.3,
-	});
-	tl.set(".loading-screen", {
-		left: "-100%"
-	});
+
+
+	//top to bottom alternative
+	// function pageTransition() {
+	// 	var tl = gsap.timeline();
+	// 	tl.to(".loading-screen", {
+	// 		duration: 1.2,
+	// 		height: "100%",
+	// 		top: "0%",
+	// 		ease: "Expo.easeInOut",
+	// 	});
+
+	// 	tl.to(".loading-screen", {
+	// 		duration: 1,
+	// 		height: "100%",
+	// 		top: "100%",
+	// 		ease: "Expo.easeInOut",
+	// 		delay: 0.3,
+	// 	});
+	// 	tl.set(".loading-screen", {
+	// 		top: "-100%"
+	// 	});
 }
 
 function contentAnimation() {
@@ -168,7 +193,18 @@ function contentAnimation() {
 		y: 30,
 		opacity: 0,
 		stagger: 0.4,
-		delay: 1.2
+		delay: .3
+	});
+}
+
+function reloadContentAnimation() {
+	var tl = gsap.timeline();
+	tl.from(".load-content", {
+		duration: 1,
+		y: 30,
+		opacity: 0,
+		stagger: 0.4,
+		delay: 0.2
 	});
 }
 
