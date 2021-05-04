@@ -53,6 +53,9 @@ barba.init({
 		beforeEnter({
 			next
 		}) {
+			let script = document.createElement('script');
+			script.src = '/scripts/p5.min.js'; // location of your draggable js file that is responsible for that image loading and dragging functionality
+			next.container.appendChild(script);
 			asterisk_page_enter();
 		},
 
@@ -150,6 +153,7 @@ function pageTransition() {
 			stagger: .2,
 			ease: "power3.in",
 		})
+
 		.to(".load-container div", {
 			duration: 1,
 			width: "100%",
@@ -160,30 +164,7 @@ function pageTransition() {
 		.set(".load-container div", {
 			stagger: .3,
 			left: "-100%"
-		})
-
-
-
-	//top to bottom alternative
-	// function pageTransition() {
-	// 	var tl = gsap.timeline();
-	// 	tl.to(".loading-screen", {
-	// 		duration: 1.2,
-	// 		height: "100%",
-	// 		top: "0%",
-	// 		ease: "Expo.easeInOut",
-	// 	});
-
-	// 	tl.to(".loading-screen", {
-	// 		duration: 1,
-	// 		height: "100%",
-	// 		top: "100%",
-	// 		ease: "Expo.easeInOut",
-	// 		delay: 0.3,
-	// 	});
-	// 	tl.set(".loading-screen", {
-	// 		top: "-100%"
-	// 	});
+		});
 }
 
 function contentAnimation() {
@@ -199,11 +180,11 @@ function contentAnimation() {
 
 function reloadContentAnimation() {
 	var tl = gsap.timeline();
-	tl.from(".load-content", {
+	tl.from(".load-content div", {
 		duration: 1,
 		y: 30,
 		opacity: 0,
-		stagger: 0.4,
+		stagger: 1,
 		delay: 0.2
 	});
 }
@@ -423,7 +404,7 @@ function reset() {
 		document.getElementById("lives").innerHTML = "Lives: " + lives;
 		document.getElementById("points").innerHTML = "Points: " + points;
 		document.getElementById("bootscreen").style.display = "none";
-		document.getElementById("asterisk").style.justifyContent = "start";
+		document.getElementById("welcome").style.top = "0";
 		document.getElementById("stat-container").style.visibility = "visible";
 		showboot = false;
 		game_run = true;
