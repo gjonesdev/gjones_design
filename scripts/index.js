@@ -146,7 +146,10 @@ function delay(n) {
 
 function pageTransition() {
 	var tl = gsap.timeline();
-	tl.to(".load-container div", {
+	tl.set("#dim", {
+			height: "100%"
+		})
+		.to(".load-container div", {
 			duration: .8,
 			width: "100%",
 			left: "0%",
@@ -155,7 +158,7 @@ function pageTransition() {
 		})
 
 		.to(".load-container div", {
-			duration: 1,
+			duration: .8,
 			width: "100%",
 			left: "100%",
 			stagger: .3,
@@ -170,23 +173,31 @@ function pageTransition() {
 function contentAnimation() {
 	var tl = gsap.timeline();
 	tl.from(".load-content", {
-		duration: 1,
-		y: 30,
-		opacity: 0,
-		stagger: 0.4,
-		delay: .3
-	});
+			duration: 1,
+			y: 30,
+			opacity: 0,
+			stagger: 0.4,
+			delay: .3
+		})
+		.from("u", {
+			duration: 1.2,
+			backgroundSize: "0% 2px",
+		}, 1.3);
 }
 
 function reloadContentAnimation() {
 	var tl = gsap.timeline();
 	tl.from(".load-content div", {
-		duration: 1,
-		y: 30,
-		opacity: 0,
-		stagger: 1,
-		delay: 0.2
-	});
+			duration: 1,
+			y: 30,
+			opacity: 0,
+			stagger: .4,
+			delay: 0.2
+		})
+		.from("u", {
+			duration: 1.2,
+			backgroundSize: "0% 2px",
+		}, .8);
 }
 
 /* End of GSAP Code.----------------------------------------------------------------*/
@@ -228,7 +239,7 @@ function setup() {
 	var gameCanvas = createCanvas(windowWidth, windowHeight);
 	gameCanvas.parent("asterisk-canvas");
 	on_page = true;
-	screentop = 90;
+	screentop = 140;
 	screenbot = height - 80;
 	background("#222222");
 	fill("white");
@@ -396,7 +407,7 @@ function reset() {
 		for (var i = 0; i < obstlimit; i++) {
 			size = random(40, 80);
 			obstspeed = random(3, 7);
-			obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
+			obst = new Obstacle(obstspeed, random(width * 1.1, width * 2), random(screentop + 30, screenbot), size, size);
 			obstacles.push(obst);
 		}
 		lives = 3;
@@ -404,8 +415,9 @@ function reset() {
 		document.getElementById("lives").innerHTML = "Lives: " + lives;
 		document.getElementById("points").innerHTML = "Points: " + points;
 		document.getElementById("bootscreen").style.display = "none";
-		document.getElementById("welcome").style.top = "0";
-		document.getElementById("stat-container").style.visibility = "visible";
+		document.getElementById("welcome").style.transition = "all 1s";
+		document.getElementById("welcome").style.paddingTop = "0";
+		document.getElementById("stat-container").style.opacity = "1";
 		showboot = false;
 		game_run = true;
 		paused = false;
@@ -436,7 +448,7 @@ function shootdraw() {
 				bullets.splice(i, 1);
 				size = random(40, 80);
 				obstspeed = random(3, 7);
-				obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
+				obst = new Obstacle(obstspeed, random(width * 1.1, width * 2), random(screentop + 30, screenbot), size, size);
 				obstacles.push(obst);
 				points += 100;
 				document.getElementById("points").innerHTML = "Points: " + points;
@@ -456,7 +468,7 @@ function obstdraw() {
 			obstacles.splice(i, 1);
 			size = random(40, 80);
 			obstspeed = random(3, 7);
-			obst = new Obstacle(obstspeed, random(width, width * 2), random(screentop, screenbot), size, size);
+			obst = new Obstacle(obstspeed, random(width * 1.1, width * 2), random(screentop + 30, screenbot), size, size);
 			obstacles.push(obst);
 		}
 		if (obst.x - obst.w / 2 <= pl.xfront && obst.x + obst.w / 2 >= pl.xback && pl.ytop <= obst.y + obst.h / 2 && pl.ybot >= obst.y - obst.h / 2) {
@@ -464,7 +476,7 @@ function obstdraw() {
 			obstacles.splice(i, 1);
 			size = random(40, 80);
 			obstspeed = random(3, 7);
-			obst = new Obstacle(obstspeed, random(width, width * 2), random(screenbot, screentop), size, size);
+			obst = new Obstacle(obstspeed, random(width * 1.1, width * 2), random(screentop + 30, screenbot), size, size);
 			obstacles.push(obst);
 			lives--;
 			document.getElementById("lives").innerHTML = "Lives: " + lives;
