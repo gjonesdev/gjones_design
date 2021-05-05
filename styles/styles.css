@@ -424,6 +424,12 @@ sidenav a:focus {
 	left: -100%;
 	text-align: center;
 	justify-content: center;
+	align-content: center;
+}
+
+.gray h1 {
+	/* margin-right: -2000px; */
+	padding-bottom: 8.5vw;
 }
 
 .load-container {
