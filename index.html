@@ -32,10 +32,10 @@
 			<div class="logo">
 				<u class="red-under">Gaetano</u> <br /> Jones </div>
 			<a href="/" onClick="closeNav()"> Home </a>
-			<a href="/about" onClick="closeNav()">About Me</a>
-			<a href="/work" onClick="closeNav()">My Work</a>
-			<a href="/other-stuff" onClick="closeNav()">Other Stuff</a>
-			<a href="/contact" onClick="closeNav()">Contact</a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
 		</div>
 	</div>
 	<div id="sidenav-bar">
@@ -43,7 +43,7 @@
 	<div id="dim" onClick="closeNav()"></div>
 	<hr class="basebar" />
 
-	<main data-barba="container" data-barba-namespace="home">
+	<main data-barba="container" data-barba-namespace="home" class="scroller">
 
 		<div id="asterisk-canvas"></div>
 
@@ -58,32 +58,36 @@
 				<h1>S = Down</h1>
 				<h1>B = Shoot</h1>
 			</div>
-			<span id="stat-container">
-				<p id="lives"></p>
-				<p id="paused">Game paused. Press P to resume.</p>
-				<p id="points"></p>
-			</span>
 		</section>
 
+		<span id="stat-container">
+			<p id="lives"></p>
+			<p id="paused">Game paused. Press P to resume.</p>
+			<p id="points"></p>
+		</span>
 
-		<section class="panel">
+
+		<section class="load-content">
 			<div class="page-title">
 				<h1>Hi there<span class="period">.</span></h1>
-				<h2>How is your week going?</h2>
+				<h2>It's nice to meet you.</h2>
 			</div>
-			<div class="main-text">
-				<p>My name is
-					<a href="/about" class="name-under"><u class="red-under">GAETANO</u> JONES</a>,
-					but
-					you can call me Guy.</p>
-				<br />
-				<p>I am a designer and developer. Specifically, I do
-					<a href="/work">UI/UX DESIGN</a> and
-					<a href="/work">FRONT END DEVELOPMENT.</a>
-				</p>
-				<br />
-				<p>Sometimes I like to make
-					<a href="/other-stuff">OTHER STUFF</a> too.</p>
+			<div class="main-content">
+				<div>
+					<p>My name is <a href="/about/"><u class="red-under">Gaetano</u> Jones</a>,
+						but you can call me Guy.</p>
+				</div>
+				<div>
+					<p>I am a Front End Web Developer and UI Designer.</p>
+				</div>
+				<div>
+					<p>I started my career as a design student, but somewhere along the line I decided to be a developer
+						too. It turns out I really, <i>really</i>, like making things work.</p>
+				</div>
+				<div>
+					<p>As I've mentioned, my professional work is mainly <a href="/work/">UI and Front End</a> related
+						projects, but sometimes I like to make <a href="/other-stuff/">other stuff</a> too.</p>
+				</div>
 			</div>
 		</section>
 

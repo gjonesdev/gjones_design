@@ -77,7 +77,6 @@ barba.init({
 		},
 
 		async enter(data) {
-			closeNav();
 			contentAnimation();
 		},
 
@@ -87,7 +86,7 @@ barba.init({
 	}]
 });
 
-var links = document.querySelectorAll('a[href]');
+var as = document.querySelectorAll('a[href]');
 var cbk = function (e) {
 	if (e.currentTarget.href === window.location.href) {
 		e.preventDefault();
@@ -95,10 +94,14 @@ var cbk = function (e) {
 	}
 };
 
-for (var i = 0; i < links.length; i++) {
-	links[i].addEventListener('click', cbk);
+for (var i = 0; i < as.length; i++) {
+	as[i].addEventListener('click', cbk);
 
 }
+
+barba.hooks.enter((data) => {
+	console.log("entered page");
+});
 
 /* End of of Barba Code.--------------------------------------------------------*/
 
@@ -156,7 +159,9 @@ function pageTransition() {
 			stagger: .2,
 			ease: "power3.in",
 		})
-
+		.set("#dim", {
+			height: "0%"
+		})
 		.to(".load-container div", {
 			duration: .8,
 			width: "100%",
@@ -171,18 +176,20 @@ function pageTransition() {
 }
 
 function contentAnimation() {
+	console.log("starting animation");
 	var tl = gsap.timeline();
-	tl.from(".load-content", {
+	tl.from(".load-content div", {
 			duration: 1,
 			y: 30,
 			opacity: 0,
 			stagger: 0.4,
-			delay: .3
+			delay: 0.2,
 		})
 		.from("u", {
 			duration: 1.2,
 			backgroundSize: "0% 2px",
-		}, 1.3);
+			stagger: 0.8,
+		}, .8);
 }
 
 function reloadContentAnimation() {
@@ -191,12 +198,13 @@ function reloadContentAnimation() {
 			duration: 1,
 			y: 30,
 			opacity: 0,
-			stagger: .4,
-			delay: 0.2
+			stagger: 0.4,
+			delay: 0.2,
 		})
 		.from("u", {
 			duration: 1.2,
 			backgroundSize: "0% 2px",
+			stagger: 0.8,
 		}, .8);
 }
 
@@ -416,7 +424,8 @@ function reset() {
 		document.getElementById("points").innerHTML = "Points: " + points;
 		document.getElementById("bootscreen").style.display = "none";
 		document.getElementById("welcome").style.transition = "all 1s";
-		document.getElementById("welcome").style.paddingTop = "0";
+		document.getElementById("welcome").style.marginTop = "0";
+		document.getElementById("asterisk").style.gridTemplateRow = "1fr 1fr";
 		document.getElementById("stat-container").style.opacity = "1";
 		showboot = false;
 		game_run = true;

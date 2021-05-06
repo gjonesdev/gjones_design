@@ -1,5 +1,5 @@
 <!-- cSpell:enableCompoundWords -->
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,118 +7,65 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gaetano Jones</title>
 	<link rel="stylesheet" href="/styles/styles.css">
-	<script src="/scripts/index.js"></script>
-	<script src="/scripts/p5.min.js"></script>
-	<script src="/scripts/asterisk.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
 </head>
 
 <body data-barba="wrapper">
+
+	<div class="load-container">
+		<div></div>
+		<div>
+			<h1>:)</h1>
+		</div>
+	</div>
+
 	<div id="sidenav">
 		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
 		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
 		<div id="sidenav-content">
 			<div class="logo">
 				<u class="red-under">Gaetano</u> <br /> Jones </div>
-			<a href="/" > Home </a>
-			<a href="/about" >About Me</a>
-			<a href="/work" >My Work</a>
-			<a href="/other-stuff" >Other Stuff</a>
-			<a href="/contact" >Contact</a>
+			<a href="/" onClick="closeNav()"> Home </a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
 		</div>
 	</div>
 	<div id="sidenav-bar">
 	</div>
 	<div id="dim" onClick="closeNav()"></div>
 	<hr class="basebar" />
+
 	<main data-barba="container" data-barba-namespace="work">
-		<div>
+
+		<section class="load-content">
 			<div class="page-title">
 				<h1>UI and Web Design<span class="period">.</span></h1>
 				<h2>Designer by day, developer also by day.</h2>
 			</div>
-			<div class="site-link">
-				<div>
-					<Link to="/SwapStop">SwapStop<span class="period">.</span></Link><img src="#" alt="#" /></div>
-				<div>
-					<Link to="/FlettExchange">Flett Exchange<span class="period">.</span></Link><img src="#" alt="#" />
+			<div class="main-content">
+				<div class="project-link project">
+					<div>
+						<a to="/FlettExchange">Flett Exchange<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
+					<div>
+						<a to="/SwapStop">SwapStop<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
 				</div>
 			</div>
-			<div class="site-link">
+			<div class="project-link">
 				Some other non ui stuff blah blah blah
 			</div>
-		</div>
+		</section>
+
 	</main>
-	<script src="https://unpkg.com/@barba/core"></script>
-	<script src="https://unpkg.com/@barba/router"></script>
-	<script src="https://unpkg.com/@barba/prefetch"></script>
-
-	<script type="text/javascript">
-		const route_list = [{
-			path: 'index.html',
-			name: 'home'
-		}, {
-			path: '/page_components/work.html',
-			name: 'work'
-		}];
-
-		barba.use(barbaRouter, {
-			routes: route_list
-		});
-
-		barba.init({
-			preventRunning: true,
-
-			views: [{
-				namespace: 'home',
-				beforeEnter({
-					next
-				}) {
-					page_enter();
-					changeURL();
-				},
-
-				namespace: 'home',
-				afterLeave({
-					next
-				}) {
-					page_leave();
-				},
-			}],
-
-			transitions: [{
-					name: 'default-transition',
-					to: {
-						route: ['home']
-					},
-					enter(data) {
-						console.log(data.next.route.name);
-					}
-				},
-				{
-					name: 'default-transition',
-					to: {
-						route: ['work']
-					},
-					enter(data) {
-						console.log(data.next.route.name);
-					}
-				}
-			]
-		});
-
-		var links = document.querySelectorAll('a[href]');
-		var cbk = function (e) {
-			if (e.currentTarget.href === window.location.href) {
-				e.preventDefault();
-				e.stopPropagation();
-			}
-		};
-
-		for (var i = 0; i < links.length; i++) {
-			links[i].addEventListener('click', cbk);
-		}
-	</script>
 </body>
 
 </html>
