@@ -79,8 +79,6 @@ section {
 	grid-auto-flow: column;
 	grid-template-columns: .5fr 1fr 1fr 1fr 1fr .5fr;
 	grid-template-rows: .5fr 1fr 1fr 1fr 1fr .5fr;
-	grid-gap: 20px;
-
 }
 
 /* Navigation menu */
@@ -212,6 +210,11 @@ section {
 	font-size: 20vw;
 	text-align: center;
 	justify-content: center;
+	margin-left: 1000px;
+}
+
+.load-container div:last-child h1 {
+	padding-bottom: 13vh;
 }
 
 .scroller {

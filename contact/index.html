@@ -7,13 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Gaetano Jones</title>
 	<link rel="stylesheet" href="/styles/styles.css">
-		<script src="https://unpkg.com/@barba/core"></script>
-		<script src="https://unpkg.com/@barba/router"></script>
-		<script src="https://unpkg.com/@barba/prefetch"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
-		<script src="/scripts/index.js" async></script>
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
 </head>
 
 <body data-barba="wrapper">
@@ -51,16 +51,14 @@
 				<h2>Drop a line.</h2>
 			</div>
 
-			<div>
-				<div>
-					<form method="POST" action="/index.php" id="contact-form">
-						<h2>Contact us</h2>
-						<p><label>First Name:</label> <input name="name" type="text" /></p>
-						<p><label>Email Address:</label> <input name="email" type="text" /></p>
-						<p><label>Message:</label> <textarea name="message"></textarea> </p>
-						<p><input name="sendflag" type="submit" value="send" /></p>
-					</form>
-				</div>
+			<div class="main-content">
+				<form method="POST" action="/index.php" id="contact-form">
+					<h2>Contact Me</h2>
+					<p><label>First Name:</label> <input name="name" type="text" /></p>
+					<p><label>Email Address:</label> <input name="email" type="text" /></p>
+					<p><label>Message:</label> <textarea name="message"></textarea> </p>
+					<p><input name="sendflag" type="submit" value="send" /></p>
+				</form>
 			</div>
 		</section>
 
