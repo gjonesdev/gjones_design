@@ -4,15 +4,58 @@ function openNav() {
 	document.getElementById("navclosebtn").style.visibility = "visible";
 	document.getElementById("navopenbtn").style.visibility = "hidden";
 	document.getElementById("sidenav").style.marginLeft = "0px";
-	document.getElementById("dim").style.height = "100%";
+	document.getElementById("nav-dim").style.height = "100%";
 }
 
 function closeNav() {
 	document.getElementById("navclosebtn").style.visibility = "hidden";
 	document.getElementById("navopenbtn").style.visibility = "visible";
 	document.getElementById("sidenav").style.marginLeft = "-310px";
-	document.getElementById("dim").style.height = "0%";
+	document.getElementById("nav-dim").style.height = "0%";
 };
+
+function showPopup() {
+	document.getElementById("popup-container").style.display = "flex";
+	document.getElementById("popup-dim").style.height = "100%";
+}
+
+function hidePopup() {
+	document.getElementById("popup-container").style.display = "none";
+	document.getElementById("popup-dim").style.height = "0%";
+}
+
+function galleryLeft() {
+	var gallery_items = document.getElementsByClassName("gallery");
+	var current = document.getElementById("current");
+	for (var i = 0; i <= gallery_items.length; i++) {
+		if (gallery_items[i] === current) {
+			if (gallery_items[i - 1] != null && gallery_items[i - 2] != null) {
+				gallery_items[i].id = "last";
+				gallery_items[i - 1].id = "current";
+				gallery_items[i - 2].id = "first";
+			}
+		}
+	}
+}
+
+function galleryRight() {
+	var gallery_items = document.getElementsByClassName("gallery");
+	var current = document.getElementById("current");
+	for (var i = 0; i <= gallery_items.length; i++) {
+		if (gallery_items[i] === current) {
+			if (gallery_items[i + 1] != null && gallery_items[i + 2] != null) {
+				gallery_items[i].id = "first";
+				gallery_items[i + 1].id = "current";
+				gallery_items[i + 2].id = "last";
+			}
+		}
+	}
+}
+
+// document.getElementById("first") = "prev";
+// 	document.getElementById("middle") = "first";
+// 	document.getElementById("last") = "middle";
+// 	document.getElementById("next") = "last";
 
 // window.addEventListener('keydown', function (e) {
 // 	console.log(`You pressed ${e.key}`);
@@ -81,7 +124,8 @@ barba.init({
 		},
 
 		async once(data) {
-			reloadContentAnimation();
+			contentAnimation();
+			// linkAnimation();
 		},
 	}]
 });
@@ -107,7 +151,69 @@ barba.hooks.enter((data) => {
 
 /* Beginning of GSAP Code.------------------------------------------------------*/
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
+
+function delay(n) {
+	n = n || 2000;
+	return new Promise((done) => {
+		setTimeout(() => {
+			done();
+		}, n);
+	});
+}
+
+function pageTransition() {
+	var tl = gsap.timeline();
+	tl.set("#nav-dim", {
+			height: "100%"
+		})
+		.to(".load-container div", {
+			duration: .8,
+			width: "100%",
+			left: "0%",
+			stagger: .2,
+			ease: "power3.in",
+		})
+		.set("#nav-dim", {
+			height: "0%"
+		})
+		.to(".load-container div", {
+			duration: .8,
+			width: "100%",
+			left: "100%",
+			stagger: .3,
+			ease: "Expo.easeInOut",
+		})
+		.set(".load-container div", {
+			stagger: .3,
+			left: "-100%",
+		});
+}
+
+function contentAnimation() {
+	var tl = gsap.timeline();
+	tl.from(".load-content div", {
+			duration: 1,
+			y: 30,
+			opacity: 0,
+			stagger: 0.4,
+			delay: 0.2,
+		})
+		.from("u", {
+			duration: 1.2,
+			backgroundSize: "0% 4px",
+			stagger: 0.8,
+		}, .8);
+}
+
+function linkAnimation() {
+	var tl = gsap.timeline();
+	tl.from(".project-link a", {
+		duration: 1.2,
+		width: "0",
+		stagger: 0.8,
+	}, 1.8);
+}
 
 // const firstElem = document.querySelector(".panel");
 
@@ -137,76 +243,6 @@ barba.hooks.enter((data) => {
 // 		onEnterBack: () => goToSection(i),
 // 	});
 // });
-
-function delay(n) {
-	n = n || 2000;
-	return new Promise((done) => {
-		setTimeout(() => {
-			done();
-		}, n);
-	});
-}
-
-function pageTransition() {
-	var tl = gsap.timeline();
-	tl.set("#dim", {
-			height: "100%"
-		})
-		.to(".load-container div", {
-			duration: .8,
-			width: "100%",
-			left: "0%",
-			stagger: .2,
-			ease: "power3.in",
-		})
-		.set("#dim", {
-			height: "0%"
-		})
-		.to(".load-container div", {
-			duration: .8,
-			width: "100%",
-			left: "100%",
-			stagger: .3,
-			ease: "Expo.easeInOut",
-		})
-		.set(".load-container div", {
-			stagger: .3,
-			left: "-100%"
-		});
-}
-
-function contentAnimation() {
-	console.log("starting animation");
-	var tl = gsap.timeline();
-	tl.from(".load-content div", {
-			duration: 1,
-			y: 30,
-			opacity: 0,
-			stagger: 0.4,
-			delay: 0.2,
-		})
-		.from("u", {
-			duration: 1.2,
-			backgroundSize: "0% 2px",
-			stagger: 0.8,
-		}, .8);
-}
-
-function reloadContentAnimation() {
-	var tl = gsap.timeline();
-	tl.from(".load-content div", {
-			duration: 1,
-			y: 30,
-			opacity: 0,
-			stagger: 0.4,
-			delay: 0.2,
-		})
-		.from("u", {
-			duration: 1.2,
-			backgroundSize: "0% 2px",
-			stagger: 0.8,
-		}, .8);
-}
 
 /* End of GSAP Code.----------------------------------------------------------------*/
 

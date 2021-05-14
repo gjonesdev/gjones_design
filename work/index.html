@@ -40,28 +40,41 @@
 	</div>
 	<div id="sidenav-bar">
 	</div>
-	<div id="dim" onClick="closeNav()"></div>
+	<div id="nav-dim" onClick="closeNav()"></div>
 	<hr class="basebar" />
 
 	<main data-barba="container" data-barba-namespace="work">
 
 		<section class="load-content">
 			<div class="page-title">
-				<h1>UI and Web Design<span class="period">.</span></h1>
-				<h2>Designer by day, developer also by day.</h2>
-			</div>
-			<div class="main-content">
-				<div class="project-link project">
-					<div>
-						<a to="/FlettExchange">Flett Exchange<span class="period">.</span></a><img src="#" alt="#" />
-					</div>
-					<div>
-						<a to="/SwapStop">SwapStop<span class="period">.</span></a><img src="#" alt="#" />
-					</div>
+				<div>
+					<h1>UI and Web Design<span class="period">.</span></h1>
+				</div>
+				<div>
+					<h2>Designer by day, developer also by day.</h2>
 				</div>
 			</div>
-			<div class="project-link">
-				Some other non ui stuff blah blah blah
+			<div class="main-content">
+				<span class="project-link project">
+					<i class="fa fa-times fa-3x" onClick="galleryLeft()"></i>
+					<div class="gallery" id="first">
+						<a to="/FlettExchange">Flett Exchange<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
+					<div class="gallery" id="current">
+						<a to="#">JonesBoys<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
+					<div class="gallery" id="last">
+						<a to="#">Tell the World<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
+					<div class="gallery">
+						<a to="/SwapStop">SwapStop<span class="period">.</span></a><img src="#" alt="#" />
+					</div>
+					<i class="fa fa-bars fa-3x" onClick="galleryRight()"></i>
+
+				</span>
+				<div>
+					Curious about the <a href="/other-stuff/">other stuff?</a>
+				</div>
 			</div>
 		</section>
 
