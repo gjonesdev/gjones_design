@@ -24,33 +24,37 @@ function hidePopup() {
 	document.getElementById("popup-dim").style.height = "0%";
 }
 
-function galleryLeft() {
-	var gallery_items = document.getElementsByClassName("gallery");
-	var current = document.getElementById("current");
-	for (var i = 0; i <= gallery_items.length; i++) {
-		if (gallery_items[i] === current) {
-			if (gallery_items[i - 1] != null && gallery_items[i - 2] != null) {
-				gallery_items[i].id = "last";
-				gallery_items[i - 1].id = "current";
-				gallery_items[i - 2].id = "first";
-			}
-		}
-	}
-}
+// function carouselLeft() {
+// 	var carousel_items = document.getElementsByClassName("carousel-item");
+// 	var current = document.getElementById("current");
+// 	for (var i = 0; i <= carousel_items.length; i++) {
+// 		if (carousel_items[i] === current) {
+// 			if (carousel_items[i - 1] != null && carousel_items[i - 2] != null) {
+// 				carousel_items[i + 1].id = "carousel-hidden";
+// 				carousel_items[i].id = "last";
+// 				carousel_items[i - 1].id = "current";
+// 				carousel_items[i - 2].id = "first";
+// 			}
+// 		}
+// 	}
+// }
 
-function galleryRight() {
-	var gallery_items = document.getElementsByClassName("gallery");
-	var current = document.getElementById("current");
-	for (var i = 0; i <= gallery_items.length; i++) {
-		if (gallery_items[i] === current) {
-			if (gallery_items[i + 1] != null && gallery_items[i + 2] != null) {
-				gallery_items[i].id = "first";
-				gallery_items[i + 1].id = "current";
-				gallery_items[i + 2].id = "last";
-			}
-		}
-	}
-}
+// function carouselRight() {
+// 	var carousel_items = document.getElementsByClassName("carousel-item");
+// 	var current = document.getElementById("current");
+// 	for (var i = 0; i <= carousel_items.length; i++) {
+// 		if (carousel_items[i] === current) {
+// 			if (carousel_items[i + 1] != null && carousel_items[i + 2] != null) {
+// 				carousel_items[i - 1].id = "carousel-hidden";
+// 				carousel_items[i].id = "first";
+// 				carousel_items[i + 1].id = "current";
+// 				carousel_items[i + 2].id = "last";
+// 			}
+// 		}
+// 	}
+// }
+
+
 
 // document.getElementById("first") = "prev";
 // 	document.getElementById("middle") = "first";
@@ -108,6 +112,51 @@ barba.init({
 		}) {
 			asterisk_page_leave();
 		},
+
+		namespace: 'flett-exchange',
+		beforeEnter({
+			carousel
+		}) {
+			const slider = document.querySelector(".items");
+			const slides = document.querySelectorAll(".item");
+			const button = document.querySelectorAll(".button");
+
+			let current = 0;
+			let prev = 4;
+			let next = 1;
+
+			for (let i = 0; i < button.length; i++) {
+				button[i].addEventListener("click", () => i == 0 ? gotoPrev() : gotoNext());
+			}
+
+			const gotoPrev = () => current > 0 ? gotoNum(current - 1) : gotoNum(slides.length - 1);
+
+			const gotoNext = () => current < 4 ? gotoNum(current + 1) : gotoNum(0);
+
+			const gotoNum = number => {
+				current = number;
+				prev = current - 1;
+				next = current + 1;
+
+				for (let i = 0; i < slides.length; i++) {
+					slides[i].classList.remove("active");
+					slides[i].classList.remove("prev");
+					slides[i].classList.remove("next");
+				}
+
+				if (next == 5) {
+					next = 0;
+				}
+
+				if (prev == -1) {
+					prev = 4;
+				}
+
+				slides[current].classList.add("active");
+				slides[prev].classList.add("prev");
+				slides[next].classList.add("next");
+			}
+		},
 	}],
 
 	transitions: [{
@@ -125,6 +174,7 @@ barba.init({
 
 		async once(data) {
 			contentAnimation();
+			// imageLoad();
 			// linkAnimation();
 		},
 	}]
@@ -164,19 +214,25 @@ function delay(n) {
 
 function pageTransition() {
 	var tl = gsap.timeline();
-	tl.set("#nav-dim", {
-			height: "100%"
-		})
-		.to(".load-container div", {
+	tl.to(".load-container div", {
 			duration: .8,
 			width: "100%",
 			left: "0%",
 			stagger: .2,
 			ease: "power3.in",
 		})
-		.set("#nav-dim", {
-			height: "0%"
-		})
+		// .set("#sidenav", {
+		// 	marginLeft: "-310px"
+		// })
+		// .set("#navopenbtn", {
+		// 	visibility: "visible"
+		// })
+		// .set("#navclosebtn", {
+		// 	visibility: "hidden"
+		// })
+		// .set("#nav-dim", {
+		// 	height: "0%"
+		// })
 		.to(".load-container div", {
 			duration: .8,
 			width: "100%",
@@ -205,6 +261,17 @@ function contentAnimation() {
 			stagger: 0.8,
 		}, .8);
 }
+
+// function imageLoad() {
+// 	var tl = gsap.timeline();
+// 	tl.from(".image-load", {
+// 		duration: 1,
+// 		y: 30,
+// 		opacity: 0,
+// 		stagger: 0.4,
+// 		delay: 0.2,
+// 	}, 4);
+// }
 
 function linkAnimation() {
 	var tl = gsap.timeline();
