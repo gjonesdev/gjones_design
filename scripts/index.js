@@ -24,42 +24,43 @@ function hidePopup() {
 	document.getElementById("popup-dim").style.height = "0%";
 }
 
-// function carouselLeft() {
-// 	var carousel_items = document.getElementsByClassName("carousel-item");
-// 	var current = document.getElementById("current");
-// 	for (var i = 0; i <= carousel_items.length; i++) {
-// 		if (carousel_items[i] === current) {
-// 			if (carousel_items[i - 1] != null && carousel_items[i - 2] != null) {
-// 				carousel_items[i + 1].id = "carousel-hidden";
-// 				carousel_items[i].id = "last";
-// 				carousel_items[i - 1].id = "current";
-// 				carousel_items[i - 2].id = "first";
-// 			}
-// 		}
-// 	}
-// }
+function carouselLeft() {
+	var carousel_items = document.getElementsByClassName("carousel-item");
+	var current = document.getElementById("current");
+	for (var i = 0; i <= carousel_items.length; i++) {
+		if (carousel_items[i] === current) {
+			if (carousel_items[i - 1] != null) {
+				carousel_items[i - 1].id = "current";
+				carousel_items[i].id = "next";
+				if (carousel_items[i - 2] != null) {
+					carousel_items[i - 2].id = "prev";
+				}
+				if (carousel_items[i + 1] != null) {
+					carousel_items[i + 1].id = "carousel-hidden-right";
+				}
+			}
+		}
+	}
+}
 
-// function carouselRight() {
-// 	var carousel_items = document.getElementsByClassName("carousel-item");
-// 	var current = document.getElementById("current");
-// 	for (var i = 0; i <= carousel_items.length; i++) {
-// 		if (carousel_items[i] === current) {
-// 			if (carousel_items[i + 1] != null && carousel_items[i + 2] != null) {
-// 				carousel_items[i - 1].id = "carousel-hidden";
-// 				carousel_items[i].id = "first";
-// 				carousel_items[i + 1].id = "current";
-// 				carousel_items[i + 2].id = "last";
-// 			}
-// 		}
-// 	}
-// }
-
-
-
-// document.getElementById("first") = "prev";
-// 	document.getElementById("middle") = "first";
-// 	document.getElementById("last") = "middle";
-// 	document.getElementById("next") = "last";
+function carouselRight() {
+	var carousel_items = document.getElementsByClassName("carousel-item");
+	var current = document.getElementById("current");
+	for (var i = 0; i <= carousel_items.length; i++) {
+		if (carousel_items[i] === current) {
+			if (carousel_items[i + 1] != null) {
+				carousel_items[i].id = "prev";
+				carousel_items[i + 1].id = "current";
+				if (carousel_items[i + 2] != null) {
+					carousel_items[i + 2].id = "next";
+				}
+				if (carousel_items[i - 1] != null) {
+					carousel_items[i - 1].id = "carousel-hidden-left";
+				}
+			}
+		}
+	}
+}
 
 // window.addEventListener('keydown', function (e) {
 // 	console.log(`You pressed ${e.key}`);
@@ -111,51 +112,6 @@ barba.init({
 			next
 		}) {
 			asterisk_page_leave();
-		},
-
-		namespace: 'flett-exchange',
-		beforeEnter({
-			carousel
-		}) {
-			const slider = document.querySelector(".items");
-			const slides = document.querySelectorAll(".item");
-			const button = document.querySelectorAll(".button");
-
-			let current = 0;
-			let prev = 4;
-			let next = 1;
-
-			for (let i = 0; i < button.length; i++) {
-				button[i].addEventListener("click", () => i == 0 ? gotoPrev() : gotoNext());
-			}
-
-			const gotoPrev = () => current > 0 ? gotoNum(current - 1) : gotoNum(slides.length - 1);
-
-			const gotoNext = () => current < 4 ? gotoNum(current + 1) : gotoNum(0);
-
-			const gotoNum = number => {
-				current = number;
-				prev = current - 1;
-				next = current + 1;
-
-				for (let i = 0; i < slides.length; i++) {
-					slides[i].classList.remove("active");
-					slides[i].classList.remove("prev");
-					slides[i].classList.remove("next");
-				}
-
-				if (next == 5) {
-					next = 0;
-				}
-
-				if (prev == -1) {
-					prev = 4;
-				}
-
-				slides[current].classList.add("active");
-				slides[prev].classList.add("prev");
-				slides[next].classList.add("next");
-			}
 		},
 	}],
 

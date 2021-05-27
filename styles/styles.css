@@ -40,6 +40,7 @@ body {
 	background-color: var(--background-color);
 	font-family: Helvetica Neue, sans-serif;
 	color: whitesmoke;
+	overflow: hidden;
 }
 
 u {
@@ -443,87 +444,78 @@ section {
 
 /* Carousel Elements */
 
-.items {
+.carousel {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	grid-column: 2 / 6;
 	grid-row: 3 / 5;
 }
 
-.items .item {
+.carousel .carousel-item {
 	position: absolute;
-	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 250px;
-	height: 250px;
-
+	transform: translate(-50%, 0%);
+	width: 28vw;
+	height: 15vw;
 	overflow: hidden;
 	transition: all 300ms ease-in-out;
 	z-index: -1;
 	opacity: 0;
 }
 
-.item img {
+.carousel-item img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.item.active {
+#carousel-hidden-left {
+	transform: translate(-125%, 0%) scale(0.8);
+}
+
+#carousel-hidden-right {
+	transform: translate(25%, 0%) scale(0.8);
+}
+
+#current {
 	opacity: 1;
 	z-index: 99;
 	box-shadow: 0px 0px 105px -35px rgba(0, 0, 0, 0.75);
 }
 
-.item.prev {
+#prev {
 	z-index: 2;
 	opacity: 0.25;
-	transform: translate(-125%, -50%);
+	transform: translate(-125%, 0%) scale(0.8);
 }
 
-.item.next {
+#next {
 	z-index: 2;
 	opacity: 0.25;
-	transform: translate(25%, -50%);
+	transform: translate(25%, 0%) scale(0.8);
 }
 
-.items .button-container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 1000px;
-	z-index: 100;
-}
-
-.button-container .button {
-	color: #fff;
-	font-size: 32px;
-	cursor: pointer;
-	position: relative;
-	opacity: 0.75;
-	transition: all 300ms ease-in-out;
-}
-
-.button-container .button:hover {
+.button-left:hover,
+.button-right:hover {
 	opacity: 1;
+	cursor: pointer;
+	transition: all 200ms ease-in-out;
 }
 
-.button-container .button:before {
-	content: "";
+
+.button-left {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 50px;
-	height: 50px;
-	background-color: rgba(0, 0, 0, 1);
-	z-index: -99;
+	align-self: flex-start;
+	opacity: .25;
+	z-index: 75;
+	transition: all 200ms ease-in-out;
 }
 
-.button-container .button:nth-child(1) {
-	float: left;
-}
-
-.button-container .button:nth-child(2) {
-	float: right;
+.button-right {
+	position: absolute;
+	align-self: flex-end;
+	opacity: .25;
+	z-index: 75;
+	transition: all 200ms ease-in-out;
 }
