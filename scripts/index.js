@@ -118,18 +118,19 @@ barba.init({
 	transitions: [{
 		async leave(data) {
 			const done = this.async();
-
 			pageTransition();
 			await delay(1000);
 			done();
 		},
 
 		async after(data) {
-			contentAnimation();
+			// contentAnimation();
+			scrollContentAnimation();
 		},
 
 		async once(data) {
-			contentAnimation();
+			// contentAnimation();
+			scrollContentAnimation();
 			// imageLoad();
 			// linkAnimation();
 		},
@@ -216,6 +217,18 @@ function contentAnimation() {
 			backgroundSize: "0% 4px",
 			stagger: 0.8,
 		}, .8);
+}
+
+function scrollContentAnimation() {
+	var tl = gsap.timeline();
+	tl.from(".scroll-content", {
+		scrollTrigger: ".scroll-content",
+		duration: 1,
+		y: 30,
+		opacity: 0,
+		stagger: 0.4,
+		delay: 0.2,
+	});
 }
 
 // function imageLoad() {

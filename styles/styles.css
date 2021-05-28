@@ -40,7 +40,7 @@ body {
 	background-color: var(--background-color);
 	font-family: Helvetica Neue, sans-serif;
 	color: whitesmoke;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 u {
@@ -385,11 +385,6 @@ section {
 .selection {
 	display: flex;
 	justify-content: space-between;
-}
-
-.selection a {
-	padding-left: 0px;
-	padding-right: 0px;
 }
 
 .selection img {
