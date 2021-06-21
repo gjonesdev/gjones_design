@@ -70,30 +70,6 @@ function carouselRight() {
 
 /* Beginning of Barba Code.------------------------------------------------------*/
 
-barba.use(barbaPrefetch);
-
-const route_list = [{
-	path: 'index.html',
-	name: 'home'
-}, {
-	path: '/about/index.html',
-	name: 'about'
-
-}, {
-	path: '/work/index.html',
-	name: 'work'
-}, {
-	path: '/other-stuff/index.html',
-	name: 'other-stuff'
-}, {
-	path: '/contact/index.html',
-	name: 'contact'
-}];
-
-barba.use(barbaRouter, {
-	routes: route_list
-});
-
 barba.init({
 	preventRunning: true,
 	views: [{
@@ -106,16 +82,23 @@ barba.init({
 			next.container.appendChild(script);
 			asterisk_page_enter();
 		},
-
-		namespace: 'home',
 		afterLeave({
 			next
 		}) {
 			asterisk_page_leave();
 		},
+		namespace: 'contact',
+		beforeEnter({
+			next
+		}) {
+			let script = document.createElement('script');
+			script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"'; // location of your draggable js file that is responsible for that image loading and dragging functionality
+			next.container.appendChild(script);
+		},
 	}],
 
 	transitions: [{
+		name: "default-transition",
 		async leave(data) {
 			const done = this.async();
 			pageTransition();
@@ -124,12 +107,33 @@ barba.init({
 		},
 
 		async after(data) {
-			// contentAnimation();
+			contentAnimation();
+		},
+
+		async once(data) {
+			contentAnimation();
+			// imageLoad();
+			// linkAnimation();
+		}
+	}, {
+		name: "scroller-transition",
+		to: {
+			namespace: ['home', 'about']
+		},
+		async leave(data) {
+			const done = this.async();
+			pageTransition();
+			await delay(1000);
+			done();
+		},
+
+		async after(data) {
+			contentAnimation();
 			scrollContentAnimation();
 		},
 
 		async once(data) {
-			// contentAnimation();
+			contentAnimation();
 			scrollContentAnimation();
 			// imageLoad();
 			// linkAnimation();
@@ -220,14 +224,16 @@ function contentAnimation() {
 }
 
 function scrollContentAnimation() {
-	var tl = gsap.timeline();
-	tl.from(".scroll-content", {
-		scrollTrigger: ".scroll-content",
+	gsap.from(".scroll-content div", {
+		scrollTrigger: {
+			scroller: ".scroller",
+			trigger: ".scroll-content div",
+		},
 		duration: 1,
 		y: 30,
 		opacity: 0,
 		stagger: 0.4,
-		delay: 0.2,
+		// delay: 0.2,
 	});
 }
 
@@ -282,6 +288,9 @@ function linkAnimation() {
 
 /* End of GSAP Code.----------------------------------------------------------------*/
 
+/* Beginning of APIs Code.----------------------------------------------------------*/
+
+/* End of APIs Code.----------------------------------------------------------------*/
 
 /* Beginning of Asterisk Code.------------------------------------------------------*/
 

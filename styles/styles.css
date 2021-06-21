@@ -8,6 +8,7 @@
 	--main-color: #09CCCC;
 	--red-underline: 1px dashed red;
 	--background-color: #222222;
+	--subheader-color: #ACACAC;
 }
 
 * {
@@ -40,7 +41,7 @@ body {
 	background-color: var(--background-color);
 	font-family: Helvetica Neue, sans-serif;
 	color: whitesmoke;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 u {
@@ -253,7 +254,8 @@ section {
 #welcome h2 {
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #ACACAC;
+	color: var(--subheader-color);
+	;
 	font-size: 2rem;
 }
 
@@ -348,7 +350,8 @@ section {
 }
 
 .page-title h2 {
-	color: #ACACAC;
+	color: var(--subheader-color);
+	;
 	font-size: 2rem;
 }
 
@@ -395,18 +398,22 @@ section {
 	background-color: var(--main-color);
 }
 
-/* .gallery img {
-	display: block;
-	width: 450px;
-	height: 320px;
-	background-color: var(--main-color);
-} */
+.other-selection img {
+	width: 420px;
+}
 
 .other-stuff {
 	font-size: 1.5rem;
 	grid-column: 2 / 6;
 	grid-row: 5 / 6;
 	align-self: center;
+}
+
+.other-stuff a {
+	border-bottom: 2px solid var(--main-color);
+	content: "";
+	/* display: block; */
+	width: min-content;
 }
 
 .project-description {
@@ -513,4 +520,87 @@ section {
 	opacity: .25;
 	z-index: 75;
 	transition: all 200ms ease-in-out;
+}
+
+/* Contact Form */
+
+#contact-links {
+	/* float: left; */
+	/* width: 50%; */
+	/* height: 100%; */
+}
+
+#form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#contact-form {
+	width: 80%;
+}
+
+#contact-form ul {
+	padding-left: 0px;
+	margin-top: 0px;
+}
+
+#contact-form li {
+	list-style: none;
+	margin-bottom: 20px;
+
+}
+
+#name,
+#email {
+	width: 49%;
+	float: left;
+}
+
+#email {
+	margin-left: 2%;
+}
+
+#submit-button {
+	/* margin-top: 20px; */
+	width: 20%;
+	background-image: linear-gradient(var(--main-color), var(--main-color));
+	background-size: 0% 100%;
+	/* border: 2px solid var(--main-color); */
+	background-repeat: no-repeat;
+	transition: .4s ease-out;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#submit-button:hover {
+	background-size: 100% 100%;
+	cursor: pointer;
+	color: white;
+}
+
+input,
+textarea {
+	width: 100%;
+	font-size: 1.5rem;
+	line-height: 2rem;
+	background-color: #363636;
+	border-radius: 3px;
+	border: none;
+	border-bottom: 2px solid var(--main-color);
+	padding: 10px;
+	color: var(--subheader-color);
+	transition: all 100ms ease-in-out;
+	outline: none;
+}
+
+input:focus,
+textarea:focus {
+	background-color: #4b4b4b;
+	transition: all 100ms ease-in-out;
+	/* line-height: 2.5rem; */
+}
+
+label {
+	display: none;
 }
