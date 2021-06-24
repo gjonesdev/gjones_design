@@ -148,7 +148,7 @@ section {
 #navopenbtn {
 	position: fixed;
 	left: 15px;
-	top: 5px;
+	top: 10px;
 	color: white;
 	cursor: pointer;
 }
@@ -429,19 +429,18 @@ section {
 	margin-bottom: 40px;
 }
 
-/* .project-scroll {
-	align-self: center;
-	text-align: center;
-	font-size: 1.5rem;
-	grid-column: 3 / 5;
-	grid-row: 6 / 7;
-} */
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(8, 5%);
+	grid-gap: 15px;
+}
 
-/* .project-showroom {
-	font-size: 1.5rem;
-	grid-column: 2 / 6;
-	grid-row: 2 / 4;
-} */
+.gallery_img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 
 /* Carousel Elements */
 
@@ -524,9 +523,26 @@ section {
 /* Contact Form */
 
 #contact-links {
-	/* float: left; */
-	/* width: 50%; */
-	/* height: 100%; */
+	text-align: center;
+}
+
+#contact-links p {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#github {
+	display: inline-block;
+	margin-right: 10px;
+	height: max-content;
+	padding-top: 2px;
+}
+
+#linkedin {
+	display: inline-block;
+	margin-left: 10px;
+	height: max-content;
+	padding-top: 2px;
 }
 
 #form-container {
@@ -537,12 +553,12 @@ section {
 
 #form-container p {
 	margin-top: 0px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	text-align: center;
 }
 
 #form-container p:first-of-type {
-	margin-top: -20px;
+	margin-top: -30px;
 	margin-bottom: 10px;
 }
 
