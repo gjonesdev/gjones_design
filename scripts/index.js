@@ -87,14 +87,6 @@ barba.init({
 		}) {
 			asterisk_page_leave();
 		},
-		namespace: 'contact',
-		beforeEnter({
-			next
-		}) {
-			let script = document.createElement('script');
-			script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"'; // location of your draggable js file that is responsible for that image loading and dragging functionality
-			next.container.appendChild(script);
-		},
 	}],
 
 	transitions: [{
