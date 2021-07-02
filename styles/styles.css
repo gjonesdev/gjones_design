@@ -439,6 +439,17 @@ section {
 	display: inline-block;
 	width: 300px;
 	height: 300px;
+	object-fit: cover;
+	border: 1px solid #222222;
+	box-sizing: border-box;
+}
+
+.gallery div {
+	background-color: #4b4b4b;
+}
+
+.logo-design {
+	background-color: white !important;
 }
 
 .img-overlay {
@@ -448,11 +459,37 @@ section {
 	height: 100%;
 	opacity: 0;
 	transition: all .4s ease-in-out;
+	padding: 0px;
+	border-bottom: none !important;
 }
 
 .img-overlay:hover {
 	opacity: .9;
 	transition: all .4s ease-in-out;
+}
+
+.img-overlay ul {
+	margin-top: 0;
+	padding: 20px;
+}
+
+.img-overlay li {
+	margin: 0;
+	font-size: 1.3rem;
+	list-style: none;
+	overflow-wrap: normal;
+}
+
+.img-overlay li:first-of-type {
+	margin-bottom: 10px;
+	font-size: 2rem;
+	border-bottom: 3px solid white;
+	width: max-content;
+}
+
+.img-overlay li:nth-of-type(2) {
+	margin-bottom: 20px;
+	font-size: 1.5rem;
 }
 
 /* Carousel Elements */
