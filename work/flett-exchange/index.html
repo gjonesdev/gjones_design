@@ -1,0 +1,157 @@
+<!-- cSpell:enableCompoundWords -->
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles/styles.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
+</head>
+
+<body data-barba="wrapper">
+
+	<div class="load-container">
+		<div></div>
+		<div>
+			<h1>:)</h1>
+		</div>
+	</div>
+
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()">Home</a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
+		</div>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="nav-dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+
+	<main data-barba="container" data-barba-namespace="flett-exchange">
+
+		<section class="load-content">
+			<div class="page-title">
+				<div>
+					<h1>Flett Exchange<span class="period">.</span></h1>
+				</div>
+				<div>
+					<h2>24/7 Brokerage for your solar investments.</h2>
+				</div>
+			</div>
+
+
+			<div class="carousel">
+				<span class="carousel-item" id="current">
+					<img src="http://placeimg.com/640/480/any">
+				</span>
+				<span class="carousel-item" id="next">
+					<img src="http://placeimg.com/640/480/tech">
+				</span>
+				<span class="carousel-item" id="carousel-hidden-right">
+					<img src="http://placeimg.com/640/480/people">
+				</span>
+				<span class="carousel-item" id="carousel-hidden-right">
+					<img src="http://placeimg.com/640/480/architecture">
+				</span>
+				<span class="carousel-item" id="carousel-hidden-right">
+					<img src="http://placeimg.com/640/480/sepia">
+				</span>
+				<i class="fas fa-caret-square-left fa-3x button-left" onClick="carouselLeft()"></i>
+				<i class="fas fa-caret-square-right fa-3x button-right" onClick="carouselRight()"></i>
+			</div>
+
+			<div class="project-description">
+				<h2><u>The Project<span class="period">.</span></u></h2>
+				<p>Flett Exchange is a leading environmental brokerage company, known most as being a leader in
+					solar credit trading. As a growing company, the Flett Exchange site was in need of in need of
+					new webpages, as well as an aesthetic refresher to make company visuals a little more modern.
+					To allow established users an opportunity to grow accustomed to new changes, these updates are
+					rolled out incrementally.</p>
+				<a href="https://www.flettexchange.com/" target="_blank">Visit the Flett Exchange Website<i
+						class="fas fa-arrow-alt-circle-right"></i></a>
+			</div>
+			<!-- <div class="project-scroll">
+				<p>View the Results</p>
+				<i class="fas fa-angle-down"></i>
+			</div> -->
+
+			<!-- 
+			<span class="carousel gallery">
+				<div class="carousel-container">
+					<div class="carousel-item" id="first">
+						<img />
+					</div>
+					<div class="carousel-item" id="current">
+						<img />
+					</div>
+					<div class="carousel-item" id="last">
+						<img />
+					</div>
+					<div class="carousel-item" id="carousel-hidden">
+						<img />
+					</div>
+				</div>
+			</span> -->
+
+		</section>
+		<!-- <section>
+			<div class="project-showroom">
+				<div>
+					<h2><u>The Project<span class="period">.</span></u></h2>
+					<p>Flett Exchange is a leading environmental brokerage company, known most as being a leader in
+						solar credit trading. As a growing company, the Flett Exchange site was in need of in need of
+						new webpages, as well as an aesthetic refresher to make company visuals a little more modern.
+						The challenge
+						with this was making
+						sure not to alienate loyal users
+						that were already accustomed to the current layout of the site. </p>
+
+					<h2><u>The Approach<span class="period">.</span></u></h2>
+					<p>In Adobe XD software, I began prototyping new webpages by retrofitting old pages with
+						a new layout and design system.
+						This allowed me to give webpages a much needed visual update while also keeping similar
+						navigation and usage. The webpages were
+						all then programmed to the exact specs of the prototype, but not implemented fully to allow
+						users to get used incremental changes
+						in the system, and also make proper fixes to any errors.</p>
+					<ul>
+						<p>Here are a list of tools involved in this Project: </p>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>Django Python</li>
+						<li>Adobe XD</li>
+						<li>Javascript</li>
+						<li>AWS and Git Versioning</li>
+						<li>Bootstrap</li>
+						<li>Adobe Illustrator</li>
+					</ul>
+					<p>Click here to visit Flett Exchange</p>
+					<p>(Please keep in mind that changes are rolled out over time and thus you
+						may not find some designs you see on this page).</p>
+				</div>
+
+
+			</div>
+		</section> -->
+
+	</main>
+
+</body>
+
+</html>

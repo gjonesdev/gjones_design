@@ -1,0 +1,163 @@
+<!-- cSpell:enableCompoundWords -->
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles/styles.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
+</head>
+
+<body data-barba="wrapper">
+
+	<div class="load-container">
+		<div></div>
+		<div>
+			<h1>:)</h1>
+		</div>
+	</div>
+
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()"> Home </a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
+		</div>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="nav-dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+
+	<main data-barba="container" data-barba-namespace="graphic-design">
+
+		<section class="load-content">
+			<div class="page-title">
+				<div>
+					<h1>Graphic Design<span class="period">.</span></h1>
+				</div>
+				<div>
+					<h2>It's a passion.</h2>
+				</div>
+			</div>
+			<span id="popup-container">
+				<img id="img-popup" src="#">
+				<i class="fa fa-times fa-3x" id="lightbox-close-button" onClick="hidePopup()"></i>
+				<span id="popup-dim" onClick="hidePopup()"></span>
+			</span>
+			<div class="main-content">
+				<span class="gallery">
+					<div class="gallery_img">
+						<span class="img-overlay" onClick="lightbox('BorowskiComposition.png')">
+							<ul>
+								<li>Borowski</li>
+								<li>Typeface Composition</li>
+								<li>-Typography</li>
+								<li>-Composition</li>
+								<li>-Photo Manipulation</li>
+							</ul>
+						</span>
+						<img src="/styles/images/BorowskiComposition.png">
+					</div>
+					<div class="gallery_img">
+						<span class="img-overlay" onClick="lightbox('ItsLoomingMerch.png')">
+							<ul>
+								<li>It's Looming</li>
+								<li>Climate Change Campaign</li>
+								<li>-Typography</li>
+								<li>-Composition</li>
+								<li>-Photography</li>
+								<li>-Fabrication</li>
+							</ul>
+						</span>
+						<img src="/styles/images/ItsLoomingMerch.png"> </div>
+					<div class="gallery_img">
+						<span class="img-overlay" onClick="lightbox('DataDiveInfographic.gif')">
+							<ul>
+								<li>Data Dive</li>
+								<li>Animated Infographic</li>
+								<li>-Typography</li>
+								<li>-Composition</li>
+								<li>-Animation</li>
+							</ul>
+						</span>
+						<img src="/styles/images/DataDiveInfographic.gif">
+					</div>
+					<div class="gallery_img">
+						<span class="img-overlay" onClick="lightbox('TPAlbumPoster.jpg')">
+							<ul>
+								<li>Nah, Shut Up</li>
+								<li>Album cover</li>
+								<li>-Typography</li>
+								<li>-Composition</li>
+								<li>-Photo Manipulation</li>
+							</ul>
+						</span>
+						<img src="/styles/images/TPAlbumPoster.jpg">
+					</div>
+					<div class="gallery_img logo-design">
+						<span class="img-overlay" onClick="lightbox('FightClubLogo.png')">
+							<ul>
+								<li>Stevens <br />Fight Club</li>
+								<li>Logo</li>
+								<li>-Typography</li>
+								<li>-Logo Design</li>
+							</ul>
+						</span>
+						<img src="/styles/images/FightClubLogo.png">
+					</div>
+					<div class="gallery_img logo-design">
+						<span class="img-overlay" onClick="lightbox('TippsLogo.png')"">
+							<ul>
+								<li>Tipps</li>
+								<li>Logo</li>
+								<li>-Typography</li>
+								<li>-Logo Design</li>
+							</ul>
+						</span>
+						<img src="/styles/images/TippsLogo.png"> </div> <div class="gallery_img logo-design">
+							<span class="img-overlay" onClick="lightbox('ToothlessLogo.png')">
+								<ul>
+									<li>Toothless</li>
+									<li>Logo</li>
+									<li>-Typography</li>
+									<li>-Logo Design</li>
+								</ul>
+							</span>
+							<img src="/styles/images/ToothlessLogo.png">
+					</div>
+					<div class="gallery_img">
+						<span class="img-overlay" onClick="lightbox('FlockOfGeese.jpg')">
+							<ul>
+								<li>Flock <br />of Geese</li>
+								<li>Photo Composition</li>
+								<li>-Composition</li>
+								<li>-Photo Manipulation</li>
+							</ul>
+						</span>
+						<img src="/styles/images/FlockOfGeese.jpg">
+					</div>
+				</span>
+			</div>
+
+		</section>
+
+	</main>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!-- cSpell:enableCompoundWords -->
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles/styles.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
+</head>
+
+<body data-barba="wrapper">
+
+	<div class="load-container">
+		<div></div>
+		<div>
+			<h1>:)</h1>
+		</div>
+	</div>
+
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()">Home</a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
+		</div>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="nav-dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+
+	<main data-barba="container" data-barba-namespace="about" class="scroller">
+
+		<section class="load-content">
+			<div class="page-title">
+				<div>
+					<h1>About Me<span class="period">.</span></h1>
+				</div>
+				<div>
+					<h2>Allow me to reintroduce myself:</h2>
+				</div>
+			</div>
+			<div class="main-content">
+				<div>
+					<h2><u>I'm the Guy<span class="period">.</span></u></h2>
+					<div>
+						<p>At least that's what my friends like to call me. Partially because it's my name, but also
+							because
+							I'm
+							the
+							Guy that does the thing that you need to do:</p>
+					</div>
+					<div>
+						<ul>
+							<li>Need a clean, memorable front page for your website? I've got you covered.</li>
+							<li>Visuals a little out of date and need modernizing? I'm on it.</li>
+							<li>Miscellaneous design work that wasn't in the job description? No problem.</li>
+							<li>Need someone lively, handsome, and funny to boost morale? I'm your Guy.</li>
+						</ul>
+					</div>
+					<div>
+						<p>As I've said before, I spent years studying design before delving into development. That
+							means my
+							expertise doesn't just end at making you a website; <u>it ends at making you a really
+								<i>cool</i>
+								looking website.</u></p>
+					</div>
+				</div>
+		</section>
+
+		<section class="scroll-content">
+			<div class="main-content">
+				<div>
+					<p>Plus, sometimes making a website ends up being more than just coding a front end. You need a
+						UI that is adaptable, interesting, and most of all nice to
+						use, with a uniform visual framework for use in emails, ads, and other communication.
+						With my background in both design and in development, I can fill these gaps.
+						Any task you might have, I'm the Guy for it.</p>
+				</div>
+				<div>
+					<p>Here's a formal list of my skills and expertise:
+						You can also get this in an easy to read pdf document by clicking HERE.</p>
+				</div>
+			</div>
+		</section>
+
+		</div>
+	</main>
+</body>
+
+</html>

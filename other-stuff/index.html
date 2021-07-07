@@ -1,0 +1,86 @@
+<!-- cSpell:enableCompoundWords -->
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gaetano Jones</title>
+	<link rel="stylesheet" href="/styles/styles.css">
+	<script src="https://unpkg.com/@barba/core"></script>
+	<script src="https://unpkg.com/@barba/router"></script>
+	<script src="https://unpkg.com/@barba/prefetch"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+	<script src="/scripts/index.js" async></script>
+</head>
+
+<body data-barba="wrapper">
+
+	<div class="load-container">
+		<div></div>
+		<div>
+			<h1>:)</h1>
+		</div>
+	</div>
+
+	<div id="sidenav">
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<div id="sidenav-content">
+			<div class="logo">
+				<u class="red-under">Gaetano</u> <br /> Jones </div>
+			<a href="/" onClick="closeNav()"> Home </a>
+			<a href="/about/" onClick="closeNav()">About Me</a>
+			<a href="/work/" onClick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onClick="closeNav()">Contact</a>
+		</div>
+	</div>
+	<div id="sidenav-bar">
+	</div>
+	<div id="nav-dim" onClick="closeNav()"></div>
+	<hr class="basebar" />
+
+	<main data-barba="container" data-barba-namespace="otherstuff">
+		<section class="load-content">
+			<div class="page-title">
+				<div>
+					<h1>Other Stuff<span class="period">.</span></h1>
+				</div>
+				<div>
+					<h2>Everyone has a junk drawer, right?</h2>
+				</div>
+			</div>
+			<div class="main-content">
+				<span class="selection other-selection">
+					<!-- <div>
+						<a href="/other-stuff/logo-design/">Logo<br />Design<span class="period">.</span></a>
+						<img src="http://placeimg.com/640/480/any">
+					</div> -->
+					<div>
+						<a href="/other-stuff/graphic-design/">Graphic Design<span class="period">.</span></a>
+						<img src="http://placeimg.com/640/480/architecture">
+					</div>
+					<div>
+						<a href="/other-stuff/augmented-reality/">Augmented Reality<span class="period">.</span></a>
+						<img src="http://placeimg.com/640/480/tech">
+					</div>
+					<div>
+						<a href="/other-stuff/creative-coding/">Creative Coding<span class="period">.</span></a>
+						<img src="http://placeimg.com/640/480/tech">
+					</div>
+				</span>
+			</div>
+			<div class="other-stuff">
+				<div>
+					More interested in <a href="/work/">my work?</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+</body>
+
+</html>
