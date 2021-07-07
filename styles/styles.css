@@ -440,12 +440,13 @@ section {
 	width: 300px;
 	height: 300px;
 	object-fit: cover;
-	border: 1px solid #222222;
+	/* border: 1px solid #222222; */
 	box-sizing: border-box;
 }
 
 .gallery div {
-	background-color: #4b4b4b;
+	/* background-color: #4b4b4b; */
+	margin: 1.5px;
 }
 
 .logo-design {
