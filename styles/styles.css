@@ -296,7 +296,9 @@ section {
 	height: 100%;
 	justify-content: center;
 	align-items: center;
+	/* opacity: 0; */
 	z-index: 5;
+	transition: all 1s;
 }
 
 #popup-dim {
@@ -305,7 +307,7 @@ section {
 	position: fixed;
 	left: 0;
 	top: 0;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 #popup-close-button {
@@ -468,7 +470,7 @@ section {
 }
 
 .img-overlay:hover {
-	opacity: .9;
+	opacity: .96;
 	background-size: 100% 100%;
 	transition: all .4s ease-in-out;
 }
@@ -498,6 +500,8 @@ section {
 }
 
 #img-popup {
+	max-height: 85%;
+	max-width: 85%;
 	position: relative;
 	z-index: 96;
 }
@@ -538,6 +542,7 @@ section {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	object-position: 0% 0%;
 }
 
 #carousel-hidden-left {

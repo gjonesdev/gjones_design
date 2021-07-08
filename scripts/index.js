@@ -16,11 +16,14 @@ function closeNav() {
 
 function showPopup() {
 	document.getElementById("popup-container").style.display = "flex";
+	// document.getElementById("popup-container").style.opacity = "1";
 	document.getElementById("popup-dim").style.height = "100%";
+	popupAnimation();
 }
 
 function hidePopup() {
 	document.getElementById("popup-container").style.display = "none";
+	// document.getElementById("popup-container").style.opacity = "0";
 	document.getElementById("popup-dim").style.height = "0%";
 }
 
@@ -260,6 +263,23 @@ function linkAnimation() {
 		width: "0",
 		stagger: 0.8,
 	}, 1.8);
+}
+
+function popupAnimation() {
+	var tl = gsap.timeline();
+	tl.from("#popup-dim", {
+		duration: .5,
+		display: 30,
+		opacity: 0,
+		scale: .9,
+	})
+	tl.from("#img-popup", {
+		duration: .5,
+		display: 30,
+		opacity: 0,
+		scale: .9,
+		stagger: .2,
+	}, .2);
 }
 
 // const firstElem = document.querySelector(".panel");

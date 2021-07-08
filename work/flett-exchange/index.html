@@ -55,22 +55,30 @@
 				</div>
 			</div>
 
+			<span id="popup-container">
+				<img id="img-popup" src="#">
+				<i class="fa fa-times fa-3x" id="lightbox-close-button" onClick="hidePopup()"></i>
+				<span id="popup-dim" onClick="hidePopup()"></span>
+			</span>
 
 			<div class="carousel">
-				<span class="carousel-item" id="current">
-					<img src="http://placeimg.com/640/480/any">
+				<span class="carousel-item" id="current" onClick="lightbox('flettexchange/Home.png')">
+					<img src="/styles/images/flettexchange/Home.png">
 				</span>
-				<span class="carousel-item" id="next">
-					<img src="http://placeimg.com/640/480/tech">
+				<span class="carousel-item" id="next" onClick="lightbox('flettexchange/Markets.png')">
+					<img src="/styles/images/flettexchange/Markets.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right">
-					<img src="http://placeimg.com/640/480/people">
+				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/About.png')">
+					<img src="/styles/images/flettexchange/About.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right">
-					<img src="http://placeimg.com/640/480/architecture">
+				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Register.png')">
+					<img src="/styles/images/flettexchange/Register.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right">
-					<img src="http://placeimg.com/640/480/sepia">
+				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Contact.png')">
+					<img src="/styles/images/flettexchange/Contact.png">
+				</span>
+				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Blog.png')">
+					<img src="/styles/images/flettexchange/Blog.png">
 				</span>
 				<i class="fas fa-caret-square-left fa-3x button-left" onClick="carouselLeft()"></i>
 				<i class="fas fa-caret-square-right fa-3x button-right" onClick="carouselRight()"></i>
