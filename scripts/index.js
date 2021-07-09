@@ -15,16 +15,11 @@ function closeNav() {
 };
 
 function showPopup() {
-	document.getElementById("popup-container").style.display = "flex";
-	// document.getElementById("popup-container").style.opacity = "1";
-	document.getElementById("popup-dim").style.height = "100%";
 	popupAnimation();
 }
 
 function hidePopup() {
-	document.getElementById("popup-container").style.display = "none";
-	// document.getElementById("popup-container").style.opacity = "0";
-	document.getElementById("popup-dim").style.height = "0%";
+	popupClose();
 }
 
 function lightbox(img_path) {
@@ -267,19 +262,42 @@ function linkAnimation() {
 
 function popupAnimation() {
 	var tl = gsap.timeline();
-	tl.from("#popup-dim", {
+	tl.to("#popup-container", {
+		duration: .1,
+		display: "flex",
+	})
+	tl.to("#popup-dim", {
 		duration: .5,
-		display: 30,
+		opacity: 1,
+	})
+	tl.to("#popup-close-button", {
+		opacity: "1",
+	}, .3)
+	tl.to("#img-popup", {
+		duration: .5,
+		opacity: 1,
+		scale: 1,
+	}, .2);
+}
+
+function popupClose() {
+	var tl = gsap.timeline();
+	tl.to("#img-popup", {
+		duration: .3,
 		opacity: 0,
 		scale: .9,
 	})
-	tl.from("#img-popup", {
-		duration: .5,
-		display: 30,
+	tl.to("#popup-close-button", {
+		opacity: "0",
+	}, .1)
+	tl.to("#popup-dim", {
+		duration: .3,
 		opacity: 0,
-		scale: .9,
-		stagger: .2,
-	}, .2);
+	}, .2)
+	tl.to("#popup-container", {
+		duration: .01,
+		display: "none",
+	});
 }
 
 // const firstElem = document.querySelector(".panel");
