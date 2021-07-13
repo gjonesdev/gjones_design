@@ -341,9 +341,16 @@ section {
 	width: min-content;
 }
 
-/* .project {
-	font-size: 1.5rem;
-} */
+.project-link {
+	display: block;
+	width: 320px;
+	height: 320px;
+}
+
+.project-link a {
+	height: 320px;
+	width: 320px;
+}
 
 /* .project img {
 	display: block;
@@ -364,6 +371,8 @@ section {
 	width: 320px;
 	height: 320px;
 	background-color: var(--main-color);
+	object-fit: cover;
+	object-position: 0% 0%;
 }
 
 .other-selection img {
@@ -423,6 +432,7 @@ section {
 }
 
 .img-overlay {
+	display: block;
 	position: absolute;
 	height: 100%;
 	width: 100%;
