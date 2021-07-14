@@ -26,27 +26,28 @@
 	</div>
 
 	<div id="sidenav">
-		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
-		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onclick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onclick="closeNav()"></i>
 		<div id="sidenav-content">
 			<div class="logo">
 				<u class="red-under">Gaetano</u> <br /> Jones </div>
-			<a href="/" onClick="closeNav()">Home</a>
-			<a href="/about/" onClick="closeNav()">About Me</a>
-			<a href="/work/" onClick="closeNav()">My Work</a>
-			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
-			<a href="/contact/" onClick="closeNav()">Contact</a>
+			<a href="/" onclick="closeNav()">Home</a>
+			<a href="/about/" onclick="closeNav()">About Me</a>
+			<a href="/work/" onclick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onclick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onclick="closeNav()">Contact</a>
 		</div>
 	</div>
 	<div id="sidenav-bar">
 	</div>
-	<div id="nav-dim" onClick="closeNav()"></div>
+	<div id="nav-dim" onclick="closeNav()"></div>
 	<hr class="basebar" />
 
 	<main data-barba="container" data-barba-namespace="swap-stop">
 
 		<section class="load-content">
 			<div class="page-title">
+				<a href="/work/" class="back"><i class="fas fa-arrow-alt-circle-left"></i> Back to selection</a>
 				<div>
 					<h1>Swap Stop<span class="period">.</span></h1>
 				</div>
@@ -57,59 +58,69 @@
 
 			<span id="popup-container">
 				<img id="img-popup" src="#">
-				<i class="fa fa-times fa-3x" id="popup-close-button" onClick="hidePopup()"></i>
-				<span id="popup-dim" onClick="hidePopup()"></span>
+				<i class="fa fa-times fa-3x" id="popup-close-button" onclick="hidePopup()"></i>
+				<span id="popup-dim" onclick="hidePopup()"></span>
 			</span>
 
 			<div class="carousel">
-				<span class="carousel-item" id="current" onClick="lightbox('swapstop/Home.png')">
+				<span class="carousel-item" id="current" onclick="carouselLightbox('swapstop/Home.png', this.id)">
 					<img src="/styles/images/swapstop/Home.png">
 				</span>
-				<span class="carousel-item" id="next" onClick="lightbox('swapstop/About.png')">
+				<span class="carousel-item" id="next" onclick="carouselLightbox('swapstop/About.png', this.id)">
 					<img src="/styles/images/swapstop/About.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/Catalog.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/Catalog.png')">
 					<img src="/styles/images/swapstop/Catalog.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/Register.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/Register.png', this.id)">
 					<img src="/styles/images/swapstop/Register.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/Profile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/Profile.png', this.id)">
 					<img src="/styles/images/swapstop/Profile.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/Message.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/Message.png', this.id)">
 					<img src="/styles/images/swapstop/Message.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/TradeConfirm.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/TradeConfirm.png', this.id)">
 					<img src="/styles/images/swapstop/TradeConfirm.png">
 				</span>
 
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/HomeMobile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/HomeMobile.png', this.id)">
 					<img src="/styles/images/swapstop/HomeMobile.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/AboutMobile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/AboutMobile.png', this.id)">
 					<img src="/styles/images/swapstop/AboutMobile.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/CatalogMobile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/CatalogMobile.png', this.id)">
 					<img src="/styles/images/swapstop/CatalogMobile.png">
 				</span>
 				<span class="carousel-item" id="carousel-hidden-right"
-					onClick="lightbox('swapstop/RegisterMobile.png')">
+					onclick="carouselLightbox('swapstop/RegisterMobile.png', this.id)">
 					<img src="/styles/images/swapstop/RegisterMobile.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/ProfileMobile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/ProfileMobile.png', this.id)">
 					<img src="/styles/images/swapstop/ProfileMobile.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('swapstop/MessageMobile.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('swapstop/MessageMobile.png', this.id)">
 					<img src="/styles/images/swapstop/MessageMobile.png">
 				</span>
 				<span class="carousel-item" id="carousel-hidden-right"
-					onClick="lightbox('swapstop/TradeConfirmMobile.png')">
+					onclick="carouselLightbox('swapstop/TradeConfirmMobile.png', this.id)">
 					<img src="/styles/images/swapstop/TradeConfirmMobile.png">
 				</span>
 
-				<i class="fas fa-caret-square-left fa-3x button-left" onClick="carouselLeft()"></i>
-				<i class="fas fa-caret-square-right fa-3x button-right" onClick="carouselRight()"></i>
+				<i class="fas fa-caret-square-left fa-3x button-left" onclick="carouselLeft()"></i>
+				<i class="fas fa-caret-square-right fa-3x button-right" onclick="carouselRight()"></i>
 			</div>
 
 			<div class="project-description">

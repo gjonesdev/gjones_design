@@ -27,6 +27,20 @@ function lightbox(img_path) {
 	showPopup();
 }
 
+function carouselLightbox(img_path, iscurr) {
+	console.log(iscurr);
+	if (iscurr === "current") {
+		document.getElementById("img-popup").src = "/styles/images/" + img_path;
+		showPopup();
+	}
+}
+
+// document.getElementById("prev"); item.onclick = carouselLeft();
+// var el = document.getElementById("next").onclick = function () {
+// 	carouselRight();
+// };
+
+// window.onload = el;
 // function lightbox(img_path) {
 // 	var item = document.getElementById(selection).cloneNode();
 // 	item.id = "focus";
@@ -34,6 +48,20 @@ function lightbox(img_path) {
 // 	document.getElementById("img-popup").appendChild(item);
 // 	showPopup();
 // }
+function carouselLoad() {
+	if (document.getElementById("prev") != null) {
+		document.getElementById("prev").addEventListener("click", carouselLeft);
+		console.log("added left");
+	}
+	if (document.getElementById("next") != null) {
+		document.getElementById("next").addEventListener("click", carouselRight);
+		console.log("added right");
+	}
+	if (document.getElementById("current") != null) {
+		document.getElementById("current").removeEventListener("click", carouselRight);
+		document.getElementById("current").removeEventListener("click", carouselLeft);
+	}
+}
 
 function carouselLeft() {
 	var carousel_items = document.getElementsByClassName("carousel-item");
@@ -52,6 +80,7 @@ function carouselLeft() {
 			}
 		}
 	}
+	carouselLoad();
 }
 
 function carouselRight() {
@@ -71,7 +100,10 @@ function carouselRight() {
 			}
 		}
 	}
+	carouselLoad();
 }
+
+carouselLoad();
 
 // window.addEventListener('keydown', function (e) {
 // 	console.log(`You pressed ${e.key}`);
@@ -158,7 +190,7 @@ for (var i = 0; i < as.length; i++) {
 }
 
 barba.hooks.enter((data) => {
-	console.log("entered page");
+	carouselLoad();
 });
 
 /* End of of Barba Code.--------------------------------------------------------*/
@@ -223,7 +255,12 @@ function contentAnimation() {
 			duration: 1.2,
 			backgroundSize: "0% 4px",
 			stagger: 0.8,
-		}, .8);
+		}, .8)
+		.to(".back", {
+			duration: 1,
+			y: 30,
+			opacity: 1,
+		}, 2);
 }
 
 function scrollContentAnimation() {
@@ -273,7 +310,7 @@ function popupAnimation() {
 	tl.to("#popup-close-button", {
 		opacity: "1",
 	}, .3)
-	tl.to("#img-popup", {
+	tl.to("#img-popup, #info-popup", {
 		duration: .5,
 		opacity: 1,
 		scale: 1,
@@ -282,7 +319,7 @@ function popupAnimation() {
 
 function popupClose() {
 	var tl = gsap.timeline();
-	tl.to("#img-popup", {
+	tl.to("#img-popup, #info-popup", {
 		duration: .3,
 		opacity: 0,
 		scale: .9,

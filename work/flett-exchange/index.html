@@ -26,27 +26,28 @@
 	</div>
 
 	<div id="sidenav">
-		<i class="fa fa-bars fa-3x" id="navopenbtn" onClick="openNav()"></i>
-		<i class="fa fa-times fa-3x" id="navclosebtn" onClick="closeNav()"></i>
+		<i class="fa fa-bars fa-3x" id="navopenbtn" onclick="openNav()"></i>
+		<i class="fa fa-times fa-3x" id="navclosebtn" onclick="closeNav()"></i>
 		<div id="sidenav-content">
 			<div class="logo">
 				<u class="red-under">Gaetano</u> <br /> Jones </div>
-			<a href="/" onClick="closeNav()">Home</a>
-			<a href="/about/" onClick="closeNav()">About Me</a>
-			<a href="/work/" onClick="closeNav()">My Work</a>
-			<a href="/other-stuff/" onClick="closeNav()">Other Stuff</a>
-			<a href="/contact/" onClick="closeNav()">Contact</a>
+			<a href="/" onclick="closeNav()">Home</a>
+			<a href="/about/" onclick="closeNav()">About Me</a>
+			<a href="/work/" onclick="closeNav()">My Work</a>
+			<a href="/other-stuff/" onclick="closeNav()">Other Stuff</a>
+			<a href="/contact/" onclick="closeNav()">Contact</a>
 		</div>
 	</div>
 	<div id="sidenav-bar">
 	</div>
-	<div id="nav-dim" onClick="closeNav()"></div>
+	<div id="nav-dim" onclick="closeNav()"></div>
 	<hr class="basebar" />
 
 	<main data-barba="container" data-barba-namespace="flett-exchange">
 
 		<section class="load-content">
 			<div class="page-title">
+				<a href="/work/" class="back"><i class="fas fa-arrow-alt-circle-left"></i> Back to selection</a>
 				<div>
 					<h1>Flett Exchange<span class="period">.</span></h1>
 				</div>
@@ -57,31 +58,35 @@
 
 			<span id="popup-container">
 				<img id="img-popup" src="#">
-				<i class="fa fa-times fa-3x" id="popup-close-button" onClick="hidePopup()"></i>
-				<span id="popup-dim" onClick="hidePopup()"></span>
+				<i class="fa fa-times fa-3x" id="popup-close-button" onclick="hidePopup()"></i>
+				<span id="popup-dim" onclick="hidePopup()"></span>
 			</span>
 
 			<div class="carousel">
-				<span class="carousel-item" id="current" onClick="lightbox('flettexchange/Home.png')">
+				<span class="carousel-item" id="current" onclick="carouselLightbox('flettexchange/Home.png', this.id)">
 					<img src="/styles/images/flettexchange/Home.png">
 				</span>
-				<span class="carousel-item" id="next" onClick="lightbox('flettexchange/Markets.png')">
+				<span class="carousel-item" id="next" onclick="carouselLightbox('flettexchange/Markets.png', this.id)">
 					<img src="/styles/images/flettexchange/Markets.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/About.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('flettexchange/About.png', this.id)">
 					<img src="/styles/images/flettexchange/About.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Register.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('flettexchange/Register.png', this.id)">
 					<img src="/styles/images/flettexchange/Register.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Contact.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('flettexchange/Contact.png', this.id)">
 					<img src="/styles/images/flettexchange/Contact.png">
 				</span>
-				<span class="carousel-item" id="carousel-hidden-right" onClick="lightbox('flettexchange/Blog.png')">
+				<span class="carousel-item" id="carousel-hidden-right"
+					onclick="carouselLightbox('flettexchange/Blog.png', this.id)">
 					<img src="/styles/images/flettexchange/Blog.png">
 				</span>
-				<i class="fas fa-caret-square-left fa-3x button-left" onClick="carouselLeft()"></i>
-				<i class="fas fa-caret-square-right fa-3x button-right" onClick="carouselRight()"></i>
+				<i class="fas fa-caret-square-left fa-3x button-left" onclick="carouselLeft()"></i>
+				<i class="fas fa-caret-square-right fa-3x button-right" onclick="carouselRight()"></i>
 			</div>
 
 			<div class="project-description">
