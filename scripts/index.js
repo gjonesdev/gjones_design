@@ -35,6 +35,43 @@ function carouselLightbox(img_path, iscurr) {
 	}
 }
 
+function pageUp() {
+	console.log("pageUp");
+	var gallery_items = document.getElementsByClassName("gallery-item");
+	var first_item = document.getElementById("first-item");
+	var index;
+	for (index = 0; index < gallery_items.length; index++) {
+		if (gallery_items[index] === first_item && index - 8 > 0) {
+			console.log("true");
+			for (var j = index; j < index + 7; j++) {
+				gallery_items[j].style.display = "none";
+			}
+			for (var j = index; j > index - 7; j--) {
+				gallery_items[j].style.display = "block";
+			}
+		}
+	}
+}
+
+function pageDown() {
+	console.log("pageDown");
+	var gallery_items = document.getElementsByClassName("gallery-item");
+	var last_item = document.getElementById("last-item");
+	var index;
+	for (index = 0; index < gallery_items.length; index++) {
+		console.log("true");
+		if (gallery_items[index] === last_item && index + 8 < gallery_items.length) {
+			for (var j = index; j < index + 7; j++) {
+				gallery_items[j].style.display = "block";
+			}
+			for (var j = index; j > index - 7; j--) {
+				gallery_items[j].style.display = "none";
+			}
+		}
+	}
+}
+
+
 // document.getElementById("prev"); item.onclick = carouselLeft();
 // var el = document.getElementById("next").onclick = function () {
 // 	carouselRight();
@@ -434,8 +471,16 @@ function asterisk_page_enter() {
 	if (showboot) {
 		bootscreen();
 	} else if (lives <= 0) {
+		document.getElementById("welcome").style.marginTop = "0";
+		document.getElementById("scroll-home").style.marginBottom = "5%";
+		document.getElementById("scroll-home").style.alignSelf = "end";
+		document.getElementById("scroll-home").style.gridRow = "3 / 4";
 		gameoverscreen();
 	} else {
+		document.getElementById("scroll-home").style.marginBottom = "5%";
+		document.getElementById("scroll-home").style.alignSelf = "end";
+		document.getElementById("scroll-home").style.gridRow = "3 / 4";
+		document.getElementById("welcome").style.marginTop = "0";
 		document.getElementById("bootscreen").innerHTML = "<h1>Asterisk* is paused. You can resume the game by pressing P.</h1>";
 		document.getElementById("lives").innerHTML = "Lives: " + lives;
 		document.getElementById("points").innerHTML = "Points: " + points;
@@ -586,6 +631,9 @@ function reset() {
 		document.getElementById("bootscreen").style.display = "none";
 		document.getElementById("welcome").style.transition = "all 1s";
 		document.getElementById("welcome").style.marginTop = "0";
+		document.getElementById("scroll-home").style.marginBottom = "5%";
+		document.getElementById("scroll-home").style.alignSelf = "end";
+		document.getElementById("scroll-home").style.gridRow = "3 / 4";
 		document.getElementById("asterisk").style.gridTemplateRow = "1fr 1fr";
 		document.getElementById("stat-container").style.opacity = "1";
 		showboot = false;

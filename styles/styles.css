@@ -248,6 +248,25 @@ section {
 	scroll-snap-align: start;
 }
 
+.scroll-indicator {
+	margin-top: 150px;
+	align-self: center;
+	justify-self: center;
+	grid-column: 3 / 5;
+	animation: float 2s ease-in-out infinite;
+	text-shadow: 0px 10px 5px rgba(0, 0, 0, 0.6);
+}
+
+#scroll-about {
+	grid-row: 5 / 7;
+}
+
+@keyframes float {
+	50% {
+		transform: translate(0px, 20px);
+	}
+}
+
 /* Page Structure */
 
 .period {
@@ -350,8 +369,6 @@ section {
 	width: 420px;
 }
 
-
-
 .portfolio-link {
 	font-size: 1.5rem;
 	grid-column: 2 / 6;
@@ -388,7 +405,7 @@ section {
 	flex-wrap: wrap;
 }
 
-.gallery-img {
+.gallery-item {
 	cursor: pointer;
 }
 
@@ -565,14 +582,17 @@ section {
 }
 
 .button-left:hover,
-.button-right:hover {
+.button-right:hover,
+.button-up:hover,
+.button-down:hover {
 	opacity: 1;
 	cursor: pointer;
 	transition: all 200ms ease-in-out;
 }
 
 
-.button-left {
+.button-left,
+.button-up {
 	position: absolute;
 	align-self: flex-start;
 	opacity: .25;
@@ -580,7 +600,8 @@ section {
 	transition: all 200ms ease-in-out;
 }
 
-.button-right {
+.button-right,
+.button-down {
 	position: absolute;
 	align-self: flex-end;
 	opacity: .25;
@@ -617,6 +638,16 @@ section {
 	;
 	font-size: 2rem;
 }
+
+/* #press-enter {
+	animation: enter 2s ease-in-out infinite;
+}
+
+@keyframes enter {
+	50% {
+		margin-left: 5px;
+	}
+} */
 
 #asterisk-canvas {
 	position: fixed;
@@ -779,4 +810,3 @@ textarea:focus {
 
 label {
 	display: none;
-}
