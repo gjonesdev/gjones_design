@@ -477,14 +477,14 @@ function asterisk_page_enter() {
 		document.getElementById("scroll-home").style.gridRow = "3 / 4";
 		gameoverscreen();
 	} else {
+		document.getElementById("stat-container").style.opacity = "1";
 		document.getElementById("scroll-home").style.marginBottom = "5%";
 		document.getElementById("scroll-home").style.alignSelf = "end";
 		document.getElementById("scroll-home").style.gridRow = "3 / 4";
 		document.getElementById("welcome").style.marginTop = "0";
 		document.getElementById("bootscreen").innerHTML = "<h1>Asterisk* is paused. You can resume the game by pressing P.</h1>";
-		document.getElementById("lives").innerHTML = "Lives: " + lives;
-		document.getElementById("points").innerHTML = "Points: " + points;
-		document.getElementById("paused").style.visibility = "visible";
+		document.getElementById("lives").innerHTML = "Game Paused.";
+		document.getElementById("points").innerHTML = "Press P to resume.";
 		paused = true;
 	}
 }
@@ -578,8 +578,8 @@ function gameoverscreen() {
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points;
 	document.getElementById("bootscreen").style.display = "block";
 
-	document.getElementById("lives").innerHTML = "GAMEOVER.";
-	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS. PRESS ENTER TO PLAY AGAIN.";
+	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
+	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 }
 
@@ -597,14 +597,16 @@ function pause() {
 	if (game_run) {
 		if (!paused) {
 			paused = true;
-			document.getElementById("paused").style.visibility = "visible";
 			document.getElementById("asterisk-canvas").style.visibility = "hidden";
 			document.getElementById("bootscreen").innerHTML = "<h1>Asterisk* is paused. You can resume the game by pressing P.</h1>";
 			document.getElementById("bootscreen").style.display = "block";
+			document.getElementById("lives").innerHTML = "Game Paused.";
+			document.getElementById("points").innerHTML = "Press P to resume.";
 			noLoop();
 		} else {
 			paused = false;
-			document.getElementById("paused").style.visibility = "hidden";
+			document.getElementById("lives").innerHTML = "Lives: " + lives;
+			document.getElementById("points").innerHTML = "Points: " + points;
 			document.getElementById("asterisk-canvas").style.visibility = "visible";
 			document.getElementById("bootscreen").style.display = "none";
 			loop();
