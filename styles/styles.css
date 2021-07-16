@@ -314,13 +314,13 @@ section {
 
 .project-link {
 	display: block;
-	width: 320px;
-	height: 320px;
+	width: 300px;
+	height: 300px;
 }
 
 .project-link a {
-	height: 320px;
-	width: 320px;
+	height: 300px;
+	width: 300px;
 }
 
 
@@ -341,8 +341,8 @@ section {
 .project-selection img {
 	display: block;
 	margin-top: 40px;
-	width: 320px;
-	height: 320px;
+	width: 300px;
+	height: 300px;
 	background-color: var(--main-color);
 	object-fit: cover;
 	object-position: 0% 0%;
@@ -352,7 +352,7 @@ section {
 	display: block;
 	margin-top: 40px;
 	width: 420px;
-	height: 320px;
+	height: 300px;
 	background-color: var(--main-color);
 	object-fit: cover;
 	object-position: 0% 0%;
@@ -360,12 +360,12 @@ section {
 
 .otherstuff-link {
 	display: block;
-	width: 320px;
+	width: 300px;
 	height: 420px;
 }
 
 .otherstuff-link a {
-	height: 320px;
+	height: 300px;
 	width: 420px;
 }
 
@@ -423,9 +423,9 @@ section {
 	margin: 1.5px;
 }
 
-.logo-design {
+/* .logo-design {
 	background-color: white !important;
-}
+} */
 
 .img-overlay {
 	display: block;

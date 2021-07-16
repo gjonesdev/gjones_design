@@ -53,6 +53,11 @@
 					<h2>Everyone has a junk drawer, right?</h2>
 				</div>
 			</div>
+			<span id="popup-container">
+				<img id="img-popup" src="#">
+				<i class="fa fa-times fa-3x" id="popup-close-button" onclick="hidePopup()"></i>
+				<span id="popup-dim" onclick="hidePopup()"></span>
+			</span>
 			<div class="main-content">
 				<span class="gallery">
 					<div class="gallery-item" id="first-item">
@@ -103,7 +108,7 @@
 						</span>
 						<img src="/styles/images/design/TPAlbumPoster.png">
 					</div>
-					<div class="gallery-item logo-design">
+					<div class="gallery-item">
 						<span class="img-overlay" onclick="lightbox('design/FightClubLogo.png')">
 							<ul>
 								<li>Stevens <br />Fight Club</li>
@@ -114,25 +119,27 @@
 						</span>
 						<img src="/styles/images/design/FightClubLogo.png">
 					</div>
-					<div class="gallery-item logo-design">
-						<span class="img-overlay" onclick="lightbox('design/TippsLogo.png')"">
-									<ul>
-										<li>Tipps</li>
-										<li>Logo</li>
-										<li>-Typography</li>
-										<li>-Logo Design</li>
-									</ul>
-								</span>
-								<img src="/styles/images/design/TippsLogo.png"> </div> <div class="gallery-item logo-design">
-							<span class="img-overlay" onclick="lightbox('design/ToothlessLogo.png')">
-								<ul>
-									<li>Toothless</li>
-									<li>Logo</li>
-									<li>-Typography</li>
-									<li>-Logo Design</li>
-								</ul>
-							</span>
-							<img src="/styles/images/design/ToothlessLogo.png">
+					<div class="gallery-item">
+						<span class="img-overlay" onclick="lightbox('design/TippsLogo.png')">
+							<ul>
+								<li>Tipps</li>
+								<li>Logo</li>
+								<li>-Typography</li>
+								<li>-Logo Design</li>
+							</ul>
+						</span>
+						<img src="/styles/images/design/TippsLogo.png">
+					</div>
+					<div class="gallery-item">
+						<span class="img-overlay" onclick="lightbox('design/ToothlessLogo.png')">
+							<ul>
+								<li>Toothless</li>
+								<li>Logo</li>
+								<li>-Typography</li>
+								<li>-Logo Design</li>
+							</ul>
+						</span>
+						<img src="/styles/images/design/ToothlessLogo.png">
 					</div>
 					<div class="gallery-item" id="last-item">
 						<span class="img-overlay" onclick="lightbox('design/FlockOfGeese.png')">
