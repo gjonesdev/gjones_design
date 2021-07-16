@@ -184,7 +184,6 @@ barba.init({
 
 		async once(data) {
 			contentAnimation();
-			// imageLoad();
 			// linkAnimation();
 		}
 	}, {
@@ -288,12 +287,19 @@ function contentAnimation() {
 			stagger: 0.4,
 			delay: 0.2,
 		})
+		.from(".project-item, .gallery-item", {
+			duration: 1,
+			y: 30,
+			opacity: 0,
+			stagger: 0.3,
+			delay: 0.2,
+		}, .8)
 		.from("u", {
 			duration: 1.2,
 			backgroundSize: "0% 4px",
 			stagger: 0.8,
 		}, .8)
-		.to(".back", {
+		.to(".back, .website-link", {
 			duration: 1,
 			y: 30,
 			opacity: 1,
@@ -314,25 +320,14 @@ function scrollContentAnimation() {
 	});
 }
 
-// function imageLoad() {
+// function linkAnimation() {
 // 	var tl = gsap.timeline();
-// 	tl.from(".image-load", {
-// 		duration: 1,
-// 		y: 30,
-// 		opacity: 0,
-// 		stagger: 0.4,
-// 		delay: 0.2,
-// 	}, 4);
+// 	tl.from(".project-link a", {
+// 		duration: 1.2,
+// 		width: "0",
+// 		stagger: 0.8,
+// 	}, 1.8);
 // }
-
-function linkAnimation() {
-	var tl = gsap.timeline();
-	tl.from(".project-link a", {
-		duration: 1.2,
-		width: "0",
-		stagger: 0.8,
-	}, 1.8);
-}
 
 function popupAnimation() {
 	var tl = gsap.timeline();
@@ -373,35 +368,6 @@ function popupClose() {
 		display: "none",
 	});
 }
-
-// const firstElem = document.querySelector(".panel");
-
-// function goToSection(i, anim) {
-// 	gsap.to(window, {
-// 		scrollTo: {
-// 			y: i * innerHeight + firstElem.offsetTop,
-// 			autoKill: false
-// 		},
-// 		duration: 1
-// 	});
-
-// 	if (anim) {
-// 		anim.restart();
-// 	}
-// }
-
-// gsap.utils.toArray(".panel").forEach((panel, i) => {
-// 	ScrollTrigger.create({
-// 		trigger: panel,
-// 		onEnter: () => goToSection(i)
-// 	});
-
-// 	ScrollTrigger.create({
-// 		trigger: panel,
-// 		start: "bottom bottom",
-// 		onEnterBack: () => goToSection(i),
-// 	});
-// });
 
 /* End of GSAP Code.----------------------------------------------------------------*/
 
