@@ -13,9 +13,9 @@ if ( $sendflag == "send" )
                 $a = mail($mail_to_send_to, $subject, $message, $headers);
                 if ($a)
                 {
-                     print("Message was sent, you can send another one");
+                     print("Message received. I apologize for this rudimentary confirmation page while I work on a more appealing message. Speak to you soon!");
                 } else {
-                     print("Message wasn't sent, please check that you have changed emails in the bottom");
+                     print("There has been an error sending your message, please make sure your email is valid. I apologize for this rudimentary page while I work on a more appealing message.");
                 }
         }
 		?>
