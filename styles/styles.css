@@ -302,6 +302,15 @@ section {
 	width: min-content;
 }
 
+.the-guy {
+	text-align: center;
+	margin-top: 80px;
+}
+
+.the-guy p {
+	margin-bottom: 20px;
+}
+
 /* Category Pages */
 
 .project-gallery {
@@ -476,6 +485,16 @@ section {
 	opacity: 0;
 	z-index: 5;
 }
+
+#controls {
+	margin-bottom: 30px;
+}
+
+#controls h1,
+#change-log h1 {
+	margin-bottom: 10px;
+}
+
 
 #img-popup {
 	max-height: 85%;
@@ -780,3 +799,4 @@ textarea:focus {
 
 label {
 	display: none;
+}
