@@ -157,15 +157,19 @@ barba.init({
 		beforeEnter({
 			next
 		}) {
-			let script = document.createElement('script');
-			script.src = '/scripts/p5.min.js'; // location of your draggable js file that is responsible for that image loading and dragging functionality
-			next.container.appendChild(script);
-			asterisk_page_enter();
+			if (screen.width >= 720) {
+				let script = document.createElement('script');
+				script.src = '/scripts/p5.min.js'; // location of your draggable js file that is responsible for that image loading and dragging functionality
+				next.container.appendChild(script);
+				asterisk_page_enter();
+			}
 		},
 		afterLeave({
 			next
 		}) {
-			asterisk_page_leave();
+			if (screen.width >= 820) {
+				asterisk_page_leave();
+			}
 		},
 	}],
 
@@ -189,7 +193,7 @@ barba.init({
 	}, {
 		name: "scroller-transition",
 		to: {
-			namespace: ['home', 'about']
+			namespace: ['home']
 		},
 		async leave(data) {
 			const done = this.async();
