@@ -551,6 +551,25 @@ function gameoverscreen() {
 	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
+
+	fetch('leaderboard.json')
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			leader(data);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+}
+
+function leader(scores) {
+	for (var i = 0; i < scores.length; i++) {
+		var li = document.createElement("li");
+		li.innerHTML = scores[i].user + ', ' + scores[i].score;
+		document.getElementById("bootscreen").appendChild(li);
+	}
 }
 
 //////////////////
