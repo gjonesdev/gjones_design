@@ -429,12 +429,25 @@ function draw() {
 	if (showboot) {
 		bootscreen();
 	} else if (lives <= 0) {
+		let data = {
+			"user": "niz",
+			"score": points
+		};
+
+		fetch("/post/data/here", {
+			method: "POST",
+			body: JSON.stringify(data)
+		}).then(res => {
+			console.log("Request complete! response:", res);
+		});
 		gameoverscreen();
 	} else {
 		asterisk();
 	}
 
 }
+
+
 
 function asterisk_page_enter() {
 	setup();
