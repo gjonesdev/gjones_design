@@ -34,3 +34,10 @@
    catch (Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
    }
+
+
+   <form action="/leaderboard.php" method="POST">
+					<input type="text" name="user">
+					<input type="text" name="score">
+					<input type="submit" value="Submit">
+				</form>

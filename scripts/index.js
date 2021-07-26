@@ -434,7 +434,7 @@ function draw() {
 			"score": points
 		};
 
-		fetch("/post/data/here", {
+		fetch("/leaderboard.json", {
 			method: "POST",
 			body: JSON.stringify(data)
 		}).then(res => {
