@@ -8,7 +8,7 @@ function leader_sort($a, $b) {
 	   //Get form data
 	   $new_score = array(
 		'user'=> $_POST['user'],
-		'score'=> $_POST['score'],
+		'score'=> (int) $_POST['score'],
 	 );
 
 	   //Get data from existing json file
