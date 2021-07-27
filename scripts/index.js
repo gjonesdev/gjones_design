@@ -569,7 +569,7 @@ function gameoverscreen() {
 
 function leader(scores) {
 	scores.sort(function (a, b) {
-		return a.score - b.score;
+		return b.score - a.score;
 	});
 	var ul = document.createElement("ul");
 	document.getElementById("bootscreen").appendChild(ul);
