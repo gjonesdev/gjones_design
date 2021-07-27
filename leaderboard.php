@@ -20,7 +20,7 @@ function leader_sort($a, $b) {
 	   // Push user data to array
 	   array_push($leader_array,$new_score);
 
-	   usort($leader_array, 'leader_sort');
+	//    usort($leader_array, 'leader_sort');
 
        //Convert updated array to JSON
 	   $json_leader = json_encode($leader_array, JSON_PRETTY_PRINT);

@@ -558,7 +558,7 @@ function bootscreen() {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST'> <input type='number' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
