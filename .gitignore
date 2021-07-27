@@ -25,3 +25,4 @@ error_log
 .eslintcache
 .htaccess
 .cpanel.yml
+leaderboard.json
