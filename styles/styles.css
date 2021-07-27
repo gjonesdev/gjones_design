@@ -819,7 +819,6 @@ section {
 }
 
 #score {
-	-moz-appearance: textfield;
 	display: block;
 	background-color: transparent;
 	border-bottom: none;
