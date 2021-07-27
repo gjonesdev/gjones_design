@@ -582,7 +582,7 @@ function gameoverscreen() {
 function leader(scores) {
 	var ul = document.createElement("ul");
 	document.getElementById("bootscreen").appendChild(ul);
-	for (var i = 0; i < 10; i++) {
+	for (var i = 0; i < scores.length || i > 10; i++) {
 		var li = document.createElement("li");
 		li.style.listStyle = "none";
 		li.innerHTML = scores[i].user + " - " + scores[i].score;
