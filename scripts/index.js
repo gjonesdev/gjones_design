@@ -557,8 +557,11 @@ function bootscreen() {
 
 function gameoverscreen() {
 	game_run = false;
-	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points;
+	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
+		"<form action='/leaderboard.php' method='POST'> <input type='number' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
+	document.getElementById("bootscreen").style.gridRow = "2/4";
+	document.getElementById("bootscreen").style.alignSelf = "center";
 
 	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
@@ -577,10 +580,13 @@ function gameoverscreen() {
 }
 
 function leader(scores) {
+	var ul = document.createElement("ul");
+	document.getElementById("bootscreen").appendChild(ul);
 	for (var i = 0; i < scores.length; i++) {
 		var li = document.createElement("li");
-		li.innerHTML = scores[i].user + ', ' + scores[i].score;
-		document.getElementById("bootscreen").appendChild(li);
+		li.style.listStyle = "none";
+		li.innerHTML = scores[i].user + " - " + scores[i].score;
+		ul.appendChild(li);
 	}
 }
 

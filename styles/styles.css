@@ -40,7 +40,7 @@ html {
 body {
 	background-color: var(--background-color);
 	font-family: Helvetica Neue, sans-serif;
-	color: whitesmoke;
+	color: #f5f5f5;
 	overflow: hidden;
 }
 
@@ -56,7 +56,7 @@ u {
 a {
 	padding: 0px 5px;
 	font-weight: bold;
-	color: whitesmoke;
+	color: #f5f5f5;
 	text-decoration: none;
 	background-image: linear-gradient(var(--main-color), var(--main-color));
 	background-size: 0% 100%;
@@ -75,11 +75,6 @@ a:hover {
 .back {
 	font-size: 1.2rem;
 	opacity: 0;
-}
-
-ul {
-	padding-left: 40px;
-	margin-top: 40px;
 }
 
 section {
@@ -340,6 +335,11 @@ section {
 	content: "";
 	/* display: block; */
 	width: min-content;
+}
+
+.main-content ul {
+	padding-left: 40px;
+	margin-top: 40px;
 }
 
 .the-guy {
@@ -804,6 +804,39 @@ section {
 
 #bootscreen u {
 	padding: 10px 0px !important;
+}
+
+#bootscreen form {
+	margin-top: 20px;
+}
+
+#bootscreen input[type=text] {
+	line-height: 1rem;
+	padding: 10px 0px;
+	width: 25%;
+	margin-top: 20px;
+	text-align: center;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+	background-color: transparent;
+	border-bottom: none;
+	padding: 0;
+	text-align: center;
+	color: #f5f5f5;
+	cursor: default;
+}
+
+input[type=number]:focus {
+	background-color: transparent;
+}
+
+#bootscreen input[type=submit] {
+	margin: 20px auto;
+	display: block;
+	width: 10%;
+	padding: 5px 0px;
 }
 
 #stat-container {
