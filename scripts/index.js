@@ -429,18 +429,18 @@ function draw() {
 	if (showboot) {
 		bootscreen();
 	} else if (lives <= 0) {
-		fetch('index.html/post', {
-				method: 'post',
-				headers: {
-					'Accept': 'application/json, text/plain, */*',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					user: "test",
-					score: points
-				})
-			}).then(res => res.json())
-			.then(res => console.log(res));
+		// fetch('leaderboard.php', {
+		// 		method: 'post',
+		// 		headers: {
+		// 			'Accept': 'application/json, text/plain, */*',
+		// 			'Content-Type': 'application/json'
+		// 		},
+		// 		body: JSON.stringify({
+		// 			user: "test",
+		// 			score: points
+		// 		})
+		// 	}).then(res => res.json())
+		// 	.then(res => console.log(res));
 		gameoverscreen();
 	} else {
 		asterisk();
@@ -558,7 +558,7 @@ function bootscreen() {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST'> <input type='number' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST'> <input type='number' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
