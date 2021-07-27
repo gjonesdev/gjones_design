@@ -429,18 +429,6 @@ function draw() {
 	if (showboot) {
 		bootscreen();
 	} else if (lives <= 0) {
-		// fetch('leaderboard.php', {
-		// 		method: 'post',
-		// 		headers: {
-		// 			'Accept': 'application/json, text/plain, */*',
-		// 			'Content-Type': 'application/json'
-		// 		},
-		// 		body: JSON.stringify({
-		// 			user: "test",
-		// 			score: points
-		// 		})
-		// 	}).then(res => res.json())
-		// 	.then(res => console.log(res));
 		gameoverscreen();
 	} else {
 		asterisk();
