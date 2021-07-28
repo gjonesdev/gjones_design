@@ -546,7 +546,7 @@ function bootscreen() {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='3'> <input type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
@@ -571,13 +571,18 @@ function leader(scores) {
 	scores.sort(function (a, b) {
 		return b.score - a.score;
 	});
-	var ul = document.createElement("ul");
-	document.getElementById("bootscreen").appendChild(ul);
-	for (var i = 0; i < scores.length || i > 10; i++) {
-		var li = document.createElement("li");
-		li.style.listStyle = "none";
-		li.innerHTML = scores[i].user + " - " + scores[i].score;
-		ul.appendChild(li);
+	var table = document.createElement("table");
+	var thead = document.createElement("thead");
+	var tbody = document.createElement("tbody");
+	thead.innerHTML = "<tr><th>User</th><th>Score</th></tr>";
+	table.appendChild(thead);
+	table.appendChild(tbody);
+	// table.innerHTML = "<tr><th>User</th><th>Score</th></tr>";
+	document.getElementById("bootscreen").appendChild(table);
+	for (var i = 0; i < scores.length && i < 5; i++) {
+		var tr = document.createElement("tr");
+		tr.innerHTML = "<td>" + scores[i].user + "</td>" + "<td>" + scores[i].score + "</td>"
+		tbody.appendChild(tr);
 	}
 }
 
@@ -746,5 +751,15 @@ function keyReleased() {
 			break;
 	}
 }
+
+/* Changelog:
+Current Version 
+ver 1.02:
+Added leader board functionality
+
+Previous Versions:
+ver 1.01: 
+Performance upgrades
+Added pause and hide feature
 
 /* End of Asterisk Code.------------------------------------------------------------*/
