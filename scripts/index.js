@@ -563,14 +563,13 @@ async function create_leader() {
 	table.appendChild(tbody);
 	document.getElementById("bootscreen").appendChild(table);
 	for (var i = 0; i < leader_array.length && i < 5; i++) {
-		console.log(leader_array[i]);
-		console.log(leader_array[i].user);
-		console.log(leader_array[i].score);
 		var tr = document.createElement("tr");
 		tr.innerHTML = "<td>" + leader_array[i].user + "</td>" + "<td>" + leader_array[i].score + "</td>"
 		tbody.appendChild(tr);
 	}
 }
+
+
 
 function update_leader() {
 	console.log(leader_array[0]);
@@ -589,6 +588,7 @@ function gameoverscreen() {
 	noLoop();
 
 	create_leader();
+	console.log(leader_array[0]);
 }
 
 //////////////////
