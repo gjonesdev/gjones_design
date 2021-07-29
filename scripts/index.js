@@ -470,8 +470,6 @@ async function fetch_leader(url) {
 	return response.json();
 }
 
-leader_array = await fetch_leader('leaderboard.json');
-
 ///////////
 //classes//
 //////////
@@ -551,7 +549,8 @@ function bootscreen() {
 	noLoop();
 }
 
-function create_leader(scores) {
+async function create_leader() {
+	leader_array = await fetch_leader('leaderboard.json');
 	// console.log(scores.data[0]);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
