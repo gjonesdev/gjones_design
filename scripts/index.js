@@ -404,6 +404,7 @@ var paused;
 
 var points;
 var showboot = true;
+var leader_array;
 
 // var font;
 
@@ -546,7 +547,7 @@ function bootscreen() {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST'>.> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
@@ -555,19 +556,24 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	fetch('leaderboard.json')
+	get_leaderboard('leaderboard.json', create_leader(data));
+}
+
+function get_leaderboard(url, callback) {
+
+	fetch(url)
 		.then(function (response) {
 			return response.json();
 		})
 		.then(function (data) {
-			leader(data);
+			callback(data);
 		})
 		.catch(function (error) {
 			console.log(error);
 		});
 }
 
-function leader(scores) {
+function create_leader(scores) {
 	scores.sort(function (a, b) {
 		return b.score - a.score;
 	});
@@ -585,6 +591,10 @@ function leader(scores) {
 		tbody.appendChild(tr);
 	}
 }
+
+// function update_leader() {
+
+// }
 
 //////////////////
 //game mechanics//

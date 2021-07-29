@@ -21,16 +21,18 @@
 	   $json_leader = json_encode($leader_array, JSON_PRETTY_PRINT);
 	   
 	   //write json data into data.json file
-	   if(file_put_contents("leaderboard.json", $json_leader)) {
-	        echo 'Data successfully saved';
-	    }
-	   else 
-	        echo "error";
+	   file_put_contents("leaderboard.json", $json_leader);
 
-   }
-   catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
-   }
+// 	   (file_put_contents("leaderboard.json", $json_leader)) {
+// 	        echo 'Data successfully saved';
+// 	    }
+// 	   else 
+// 	        echo "error";
+
+//    }
+//    catch (Exception $e) {
+//             echo 'Caught exception: ',  $e->getMessage(), "\n";
+//    }
 
    /** 
 	solution 1:
