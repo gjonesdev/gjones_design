@@ -565,6 +565,7 @@ async function leaderscreen(new_user, new_score) {
 		leader_array.push({
 			new_user: new_score
 		});
+		document.getElementById("bootscreen").removeChild(table);
 	}
 	leader_array.sort(function (a, b) {
 		return b.score - a.score;
