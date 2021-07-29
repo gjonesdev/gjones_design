@@ -557,9 +557,10 @@ async function leaderscreen(new_user, new_score) {
 					'Accept': 'application/json, text/plain, */*',
 					'Content-Type': 'application/json'
 				},
-				body: [{
-					new_user: new_score
-				}]
+				body: JSON.stringify({
+					new_user,
+					new_score
+				})
 			}).then(res => res.json())
 			.then(res => console.log(res));
 		leader_array.push({
