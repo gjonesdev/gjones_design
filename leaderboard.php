@@ -3,14 +3,9 @@
   try
   {
 	   //Get form data
-	//    $new_score = array(
-	// 	'user'=> $_POST['user'],
-	// 	'score'=> (int) $_POST['score'],
-	//  );
+	   $json_entry = file_get_contents('php://input');
 
-	$json_data = file_get_contents('php://input');
-
-	$json_score = json_decode($json_data);
+	   $new_score = json_decode($json_entry);
 
 	   //Get data from existing json file
 	   $json_leader = file_get_contents("leaderboard.json");
@@ -25,18 +20,16 @@
 	   $json_leader = json_encode($leader_array, JSON_PRETTY_PRINT);
 	   
 	   //write json data into data.json file
-	   file_put_contents("leaderboard.json", $json_leader);
+	   if(file_put_contents("leaderboard.json", $json_leader)) {
+	        echo 'Data successfully saved';
+	    }
+	   else 
+	        echo "error";
 
-// 	   (file_put_contents("leaderboard.json", $json_leader)) {
-// 	        echo 'Data successfully saved';
-// 	    }
-// 	   else 
-// 	        echo "error";
-
-//    }
-//    catch (Exception $e) {
-//             echo 'Caught exception: ',  $e->getMessage(), "\n";
-//    }
+   }
+   catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+   }
 
    /** 
 	solution 1:
