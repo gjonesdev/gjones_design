@@ -549,8 +549,10 @@ function bootscreen() {
 }
 
 async function leaderscreen(new_user, new_score) {
-	var leader_array = await fetch_leader('leaderboard.json');
-	e.preventDefault();
+	var leader_array = [{
+		new_user: new_score
+	}]
+	// var leader_array = await fetch_leader('leaderboard.json');
 	// if (new_score != null) {
 	// 	console.log(new_score, new_user);
 	// 	fetch('leaderboard.php', {
@@ -568,9 +570,9 @@ async function leaderscreen(new_user, new_score) {
 	// 		new_user: new_score
 	// 	});
 	// }
-	leader_array.sort(function (a, b) {
-		return b.score - a.score;
-	});
+	// leader_array.sort(function (a, b) {
+	// 	return b.score - a.score;
+	// });
 	var table = document.createElement("table");
 	var thead = document.createElement("thead");
 	var tbody = document.createElement("tbody");
