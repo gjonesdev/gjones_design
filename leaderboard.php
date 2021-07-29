@@ -8,7 +8,7 @@
 	// 	'score'=> (int) $_POST['score'],
 	//  );
 
-	$json_daata = file_get_contents('php://input');
+	$json_data = file_get_contents('php://input');
 
 	$json_score = json_decode($json_data);
 
