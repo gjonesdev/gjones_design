@@ -3,10 +3,12 @@
   try
   {
 	   //Get form data
-	   $new_score = array(
-		'user'=> $_POST['user'],
-		'score'=> (int) $_POST['score'],
-	 );
+	//    $new_score = array(
+	// 	'user'=> $_POST['user'],
+	// 	'score'=> (int) $_POST['score'],
+	//  );
+
+	 $json_score = json_decode(file_get_contents('php://input'));
 
 	   //Get data from existing json file
 	   $json_leader = file_get_contents("leaderboard.json");
