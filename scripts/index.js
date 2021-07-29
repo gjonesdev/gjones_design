@@ -466,12 +466,12 @@ function asterisk_page_leave() {
 }
 
 async function fetch_leader(url) {
-	const response = fetch(url);
+	const response = await fetch(url);
 
 	return response.json();
 }
 
-leader_array = await fetch_leader('leaderboard.json');
+leader_array = fetch_leader('leaderboard.json');
 
 ///////////
 //classes//
