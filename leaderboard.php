@@ -8,7 +8,9 @@
 	// 	'score'=> (int) $_POST['score'],
 	//  );
 
-	 $json_score = json_decode(file_get_contents('php://input'));
+	$json_daata = file_get_contents('php://input');
+
+	$json_score = json_decode($json_data);
 
 	   //Get data from existing json file
 	   $json_leader = file_get_contents("leaderboard.json");
