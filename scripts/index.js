@@ -580,9 +580,8 @@ function gameoverscreen() {
 
 	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
-	noLoop();
-
 	create_leader(leader_array);
+	noLoop();
 }
 
 
