@@ -583,7 +583,7 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	create_leader(leader_array);
+	create_leader();
 }
 
 //////////////////
