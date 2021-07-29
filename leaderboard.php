@@ -7,6 +7,8 @@
 
 	   $new_score = json_decode($json_entry);
 
+	   $new_score->score = (int)$new_score->score;
+
 	   //Get data from existing json file
 	   $json_leader = file_get_contents("leaderboard.json");
 
