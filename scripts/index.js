@@ -564,6 +564,9 @@ function create_leader(scores) {
 	table.appendChild(tbody);
 	document.getElementById("bootscreen").appendChild(table);
 	for (var i = 0; i < scores.length && i < 5; i++) {
+		console.log(scores[i]);
+		console.log(scores[i].user);
+		console.log(scores[i].score);
 		var tr = document.createElement("tr");
 		tr.innerHTML = "<td>" + scores[i].user + "</td>" + "<td>" + scores[i].score + "</td>"
 		tbody.appendChild(tr);
