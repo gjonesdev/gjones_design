@@ -404,7 +404,6 @@ var paused;
 
 var points;
 var showboot = true;
-var leader_array;
 
 // var font;
 
@@ -549,9 +548,13 @@ function bootscreen() {
 	noLoop();
 }
 
-async function create_leader() {
-	leader_array = await fetch_leader('leaderboard.json');
-	// console.log(scores.data[0]);
+async function leaderscreen(new_user, new_score) {
+	var leader_array = await fetch_leader('leaderboard.json');
+	if (new_score != null) {
+		leader_array.push({
+			new_user: new_score
+		});
+	}
 	leader_array.sort(function (a, b) {
 		return b.score - a.score;
 	});
@@ -569,16 +572,10 @@ async function create_leader() {
 	}
 }
 
-
-
-function update_leader() {
-	console.log(leader_array[0]);
-}
-
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST' onsubmit='update_leader(this.score.value)'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST' onsubmit='leaderscreen(this.score.value)'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
@@ -587,8 +584,7 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	create_leader();
-	console.log(leader_array[0]);
+	leaderscreen(null, null);
 }
 
 //////////////////
