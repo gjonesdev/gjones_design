@@ -549,25 +549,24 @@ function bootscreen() {
 }
 
 async function leaderscreen(new_user, new_score) {
-	event.preventDefault();
 	var leader_array = await fetch_leader('leaderboard.json');
-	if (new_score != null) {
-		console.log(new_score, new_user);
-		fetch('leaderboard.php', {
-				method: 'post',
-				headers: {
-					'Accept': 'application/json, text/plain, */*',
-					'Content-Type': 'application/json'
-				},
-				body: {
-					new_user: new_score
-				}
-			}).then(res => res.json())
-			.then(res => console.log(res));
-		leader_array.push({
-			new_user: new_score
-		});
-	}
+	// if (new_score != null) {
+	// 	console.log(new_score, new_user);
+	// 	fetch('leaderboard.php', {
+	// 			method: 'post',
+	// 			headers: {
+	// 				'Accept': 'application/json, text/plain, */*',
+	// 				'Content-Type': 'application/json'
+	// 			},
+	// 			body: {
+	// 				new_user: new_score
+	// 			}
+	// 		}).then(res => res.json())
+	// 		.then(res => console.log(res));
+	// 	leader_array.push({
+	// 		new_user: new_score
+	// 	});
+	// }
 	leader_array.sort(function (a, b) {
 		return b.score - a.score;
 	});
