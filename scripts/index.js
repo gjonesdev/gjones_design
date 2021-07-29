@@ -465,13 +465,13 @@ function asterisk_page_leave() {
 	noLoop();
 }
 
-async function getData(url) {
+async function fetch_leader(url) {
 	const response = await fetch(url);
 
 	return response.json();
 }
 
-const data = await getData('leaderboard.json');
+leader_array = await fetch_leader('leaderboard.json');
 
 ///////////
 //classes//
