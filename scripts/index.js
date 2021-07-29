@@ -466,8 +466,10 @@ function asterisk_page_leave() {
 }
 
 async function fetch_leader(url) {
-	var response = await fetch(url);
-	return response.json();
+	fetch(url)
+		.then(function (response) {
+			return response.json();
+		})
 }
 
 leader_array = fetch_leader('leaderboard.json');
@@ -552,7 +554,7 @@ function bootscreen() {
 }
 
 function create_leader(scores) {
-	console.log(scores.value[0]);
+	// console.log(scores.data[0]);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
 	// });
