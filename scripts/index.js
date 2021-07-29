@@ -551,20 +551,21 @@ function bootscreen() {
 async function leaderscreen(new_user, new_score) {
 	var leader_array = await fetch_leader('leaderboard.json');
 	if (new_score != null) {
+		var new_entry = JSON.stringify({
+			user: new_user,
+			score: new_score
+		})
 		fetch('leaderboard.php', {
 				method: 'post',
 				headers: {
 					'Accept': 'application/json, text/plain, */*',
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({
-					new_user,
-					new_score
-				})
+				body: new_entry,
 			}).then(res => res.json())
 			.then(res => console.log(res));
 		leader_array.push({
-			new_user: new_score
+			new_entry
 		});
 		document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points + "<h2>Submission Successful!</h2>"
 	}
