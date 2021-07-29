@@ -471,7 +471,6 @@ async function fetch_leader(url) {
 }
 
 leader_array = fetch_leader('leaderboard.json');
-console.log(leader_array);
 
 ///////////
 //classes//
@@ -553,6 +552,7 @@ function bootscreen() {
 }
 
 function create_leader(scores) {
+	console.log(scores);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
 	// });
@@ -562,7 +562,6 @@ function create_leader(scores) {
 	thead.innerHTML = "<tr><th>User</th><th>Score</th></tr>";
 	table.appendChild(thead);
 	table.appendChild(tbody);
-	// table.innerHTML = "<tr><th>User</th><th>Score</th></tr>";
 	document.getElementById("bootscreen").appendChild(table);
 	for (var i = 0; i < scores.length && i < 5; i++) {
 		var tr = document.createElement("tr");
@@ -585,23 +584,6 @@ function gameoverscreen() {
 
 	create_leader(leader_array);
 }
-
-
-
-// function get_leaderboard(url) {
-// 	fetch(url)
-// 		.then(function (response) {
-// 			console.log(response.json());
-// 			return response.json();
-// 		})
-// 		.catch(function (error) {
-// 			console.log(error);
-// 		});
-// }
-
-// function update_leader() {
-
-// }
 
 //////////////////
 //game mechanics//
