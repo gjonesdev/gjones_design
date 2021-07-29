@@ -404,7 +404,6 @@ var paused;
 
 var points;
 var showboot = true;
-var leader_array;
 
 // var font;
 
@@ -550,7 +549,7 @@ function bootscreen() {
 }
 
 async function create_leader() {
-	leader_array = await fetch_leader('leaderboard.json');
+	var scores = await fetch_leader('leaderboard.json');
 	// console.log(scores.data[0]);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
