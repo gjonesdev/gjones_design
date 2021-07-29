@@ -552,7 +552,7 @@ function bootscreen() {
 }
 
 function create_leader(scores) {
-	console.log(scores);
+	// console.log(scores);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
 	// });
