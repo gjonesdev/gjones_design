@@ -466,13 +466,11 @@ function asterisk_page_leave() {
 }
 
 async function fetch_leader(url) {
-	fetch(url)
-		.then(function (response) {
-			return response.json();
-		})
+	var response = await fetch(url);
+	return response.json();
 }
 
-leader_array = fetch_leader('leaderboard.json');
+// leader_array = fetch_leader('leaderboard.json');
 
 ///////////
 //classes//
@@ -554,7 +552,7 @@ function bootscreen() {
 }
 
 function create_leader(scores) {
-	console.log(scores[0]);
+	// console.log(scores.data[0]);
 	// scores.sort(function (a, b) {
 	// 	return b.score - a.score;
 	// });
@@ -587,7 +585,7 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	create_leader(leader_array);
+	create_leader(fetch_leader('leaderboard.json'));
 }
 
 //////////////////
