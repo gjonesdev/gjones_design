@@ -467,7 +467,6 @@ function asterisk_page_leave() {
 
 async function fetch_leader(url) {
 	const response = await fetch(url);
-
 	return response.json();
 }
 
@@ -553,9 +552,9 @@ function bootscreen() {
 }
 
 function create_leader(scores) {
-	scores.sort(function (a, b) {
-		return b.score - a.score;
-	});
+	// scores.sort(function (a, b) {
+	// 	return b.score - a.score;
+	// });
 	var table = document.createElement("table");
 	var thead = document.createElement("thead");
 	var tbody = document.createElement("tbody");
