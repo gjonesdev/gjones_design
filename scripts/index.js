@@ -471,6 +471,7 @@ async function fetch_leader(url) {
 }
 
 leader_array = fetch_leader('leaderboard.json');
+console.log(leader_array);
 
 ///////////
 //classes//
@@ -580,8 +581,9 @@ function gameoverscreen() {
 
 	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
-	create_leader(leader_array);
 	noLoop();
+
+	create_leader(leader_array);
 }
 
 
