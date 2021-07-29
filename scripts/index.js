@@ -551,6 +551,7 @@ function bootscreen() {
 async function leaderscreen(new_user, new_score) {
 	var leader_array = await fetch_leader('leaderboard.json');
 	if (new_score != null) {
+		console.log(new_score, new_user);
 		fetch('leaderboard.php', {
 				method: 'post',
 				headers: {
@@ -586,7 +587,7 @@ async function leaderscreen(new_user, new_score) {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form method='POST' onsubmit='return leaderscreen(this.user.value, this.score.value)'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+		"<form onsubmit='return leaderscreen(this.user.value, this.score.value)'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
