@@ -470,7 +470,7 @@ async function fetch_leader(url) {
 	return response.json();
 }
 
-// leader_array = fetch_leader('leaderboard.json');
+leader_array = await fetch_leader('leaderboard.json');
 
 ///////////
 //classes//
@@ -585,7 +585,7 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	create_leader(fetch_leader('leaderboard.json'));
+	create_leader(leader_array);
 }
 
 //////////////////
