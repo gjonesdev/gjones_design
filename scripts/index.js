@@ -547,7 +547,7 @@ function bootscreen() {
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST'>.> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST' > <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
@@ -556,17 +556,13 @@ function gameoverscreen() {
 	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
 	noLoop();
 
-	get_leaderboard('leaderboard.json', create_leader(data));
+	create_leader(get_leaderboard('leaderboard.json'));
 }
 
-function get_leaderboard(url, callback) {
-
+function get_leaderboard(url) {
 	fetch(url)
 		.then(function (response) {
 			return response.json();
-		})
-		.then(function (data) {
-			callback(data);
 		})
 		.catch(function (error) {
 			console.log(error);
