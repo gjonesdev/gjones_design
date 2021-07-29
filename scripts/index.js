@@ -562,6 +562,7 @@ function gameoverscreen() {
 function get_leaderboard(url) {
 	fetch(url)
 		.then(function (response) {
+			console.log(response.json());
 			return response.json();
 		})
 		.catch(function (error) {
