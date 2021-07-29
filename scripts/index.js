@@ -466,7 +466,7 @@ function asterisk_page_leave() {
 }
 
 async function fetch_leader(url) {
-	const response = await fetch(url);
+	var response = await fetch(url);
 	return response.json();
 }
 
