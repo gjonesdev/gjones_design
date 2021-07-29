@@ -550,6 +550,7 @@ function bootscreen() {
 
 async function leaderscreen(new_user, new_score) {
 	var leader_array = await fetch_leader('leaderboard.json');
+	e.preventDefault();
 	// if (new_score != null) {
 	// 	console.log(new_score, new_user);
 	// 	fetch('leaderboard.php', {
