@@ -404,6 +404,7 @@ var paused;
 
 var points;
 var showboot = true;
+var leader_array;
 
 // var font;
 
@@ -549,11 +550,11 @@ function bootscreen() {
 }
 
 async function create_leader() {
-	var scores = await fetch_leader('leaderboard.json');
+	leader_array = await fetch_leader('leaderboard.json');
 	// console.log(scores.data[0]);
-	// scores.sort(function (a, b) {
-	// 	return b.score - a.score;
-	// });
+	leader_array.sort(function (a, b) {
+		return b.score - a.score;
+	});
 	var table = document.createElement("table");
 	var thead = document.createElement("thead");
 	var tbody = document.createElement("tbody");
@@ -561,20 +562,24 @@ async function create_leader() {
 	table.appendChild(thead);
 	table.appendChild(tbody);
 	document.getElementById("bootscreen").appendChild(table);
-	for (var i = 0; i < scores.length && i < 5; i++) {
-		console.log(scores[i]);
-		console.log(scores[i].user);
-		console.log(scores[i].score);
+	for (var i = 0; i < leader_array.length && i < 5; i++) {
+		console.log(leader_array[i]);
+		console.log(leader_array[i].user);
+		console.log(leader_array[i].score);
 		var tr = document.createElement("tr");
-		tr.innerHTML = "<td>" + scores[i].user + "</td>" + "<td>" + scores[i].score + "</td>"
+		tr.innerHTML = "<td>" + leader_array[i].user + "</td>" + "<td>" + leader_array[i].score + "</td>"
 		tbody.appendChild(tr);
 	}
+}
+
+function update_leader() {
+	console.log(leader_array[0]);
 }
 
 function gameoverscreen() {
 	game_run = false;
 	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST' > <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+		"<form action='/leaderboard.php' method='POST' onsubmit='update_leader(this.score.value)'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
 	document.getElementById("bootscreen").style.display = "block";
 	document.getElementById("bootscreen").style.gridRow = "2/4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
