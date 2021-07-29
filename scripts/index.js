@@ -564,9 +564,7 @@ async function leaderscreen(new_user, new_score) {
 				body: new_entry,
 			}).then(res => res.json())
 			.then(res => console.log(res));
-		// leader_array.push({
-		// 	new_entry
-		// });
+		leader_array.push(new_entry);
 		document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points + "<h2>Submission Successful!</h2>"
 	}
 	leader_array.sort(function (a, b) {
