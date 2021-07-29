@@ -465,6 +465,14 @@ function asterisk_page_leave() {
 	noLoop();
 }
 
+async function getData(url) {
+	const response = await fetch(url);
+
+	return response.json();
+}
+
+const data = await getData('leaderboard.json');
+
 ///////////
 //classes//
 //////////
@@ -544,32 +552,6 @@ function bootscreen() {
 	noLoop();
 }
 
-function gameoverscreen() {
-	game_run = false;
-	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form action='/leaderboard.php' method='POST' > <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
-	document.getElementById("bootscreen").style.display = "block";
-	document.getElementById("bootscreen").style.gridRow = "2/4";
-	document.getElementById("bootscreen").style.alignSelf = "center";
-
-	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
-	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
-	noLoop();
-
-	create_leader(get_leaderboard('leaderboard.json'));
-}
-
-function get_leaderboard(url) {
-	fetch(url)
-		.then(function (response) {
-			console.log(response.json());
-			return response.json();
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-}
-
 function create_leader(scores) {
 	scores.sort(function (a, b) {
 		return b.score - a.score;
@@ -588,6 +570,34 @@ function create_leader(scores) {
 		tbody.appendChild(tr);
 	}
 }
+
+function gameoverscreen() {
+	game_run = false;
+	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
+		"<form action='/leaderboard.php' method='POST' > <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+	document.getElementById("bootscreen").style.display = "block";
+	document.getElementById("bootscreen").style.gridRow = "2/4";
+	document.getElementById("bootscreen").style.alignSelf = "center";
+
+	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
+	document.getElementById("points").innerHTML = "YOUR FINAL SCORE IS " + points + " POINTS.";
+	noLoop();
+
+	create_leader(data);
+}
+
+
+
+// function get_leaderboard(url) {
+// 	fetch(url)
+// 		.then(function (response) {
+// 			console.log(response.json());
+// 			return response.json();
+// 		})
+// 		.catch(function (error) {
+// 			console.log(error);
+// 		});
+// }
 
 // function update_leader() {
 
