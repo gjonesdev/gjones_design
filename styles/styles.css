@@ -784,16 +784,6 @@ section {
 	font-size: 2rem;
 }
 
-/* #press-enter {
-	animation: enter 2s ease-in-out infinite;
-}
-
-@keyframes enter {
-	50% {
-		margin-left: 5px;
-	}
-} */
-
 #asterisk-canvas {
 	position: fixed;
 	z-index: -1;
@@ -815,18 +805,6 @@ section {
 	padding: 10px 0px !important;
 }
 
-#bootscreen form {
-	margin-top: 20px;
-}
-
-#bootscreen input[type=text] {
-	line-height: 1rem;
-	padding: 10px 0px;
-	width: 25%;
-	margin-top: 20px;
-	text-align: center;
-}
-
 #score {
 	display: block;
 	background-color: transparent;
@@ -838,15 +816,36 @@ section {
 	cursor: default;
 }
 
-input[type=number]:focus {
-	background-color: transparent;
+#bootscreen input[type=text] {
+	padding: 10px 0px;
+	width: 20%;
+	text-align: center;
 }
 
-#bootscreen input[type=submit] {
-	margin: 20px auto;
-	display: block;
-	width: 10%;
-	padding: 5px 0px;
+#bootscreen button[type=submit] {
+	margin-left: 10px;
+	background-color: transparent;
+	border: none;
+	color: #f5f5f5;
+}
+
+#user-input input[type=text] {
+	margin-left: 53px;
+}
+
+#user-input {
+	display: flex;
+	justify-content: center;
+}
+
+#user-input i {
+	opacity: .25;
+	transition: all 200ms ease-in-out;
+}
+
+#user-input i:hover {
+	cursor: pointer;
+	opacity: 1;
 }
 
 #stat-container {

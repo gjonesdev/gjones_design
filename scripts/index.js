@@ -22,6 +22,20 @@ function hidePopup() {
 	popupClose();
 }
 
+function contact_submit() {
+	// console.log("submit");
+	var email = document.getElementById("email");
+	var message = document.getElementById("message");
+	var form = document.getElementById("form-container");
+	if (email != "" && message != "") {
+		form.innerHTML = "<h1>Message Sent! Speak to you soon!</h1>";
+		return true;
+	} else {
+		alert('Please make sure you have included your message and an email I can contact you with!')
+		return false;
+	}
+}
+
 function lightbox(img_path) {
 	document.getElementById("img-popup").src = "/styles/images/" + img_path;
 	showPopup();
@@ -564,16 +578,11 @@ async function leaderscreen(new_user, new_score) {
 				body: new_entry,
 			}).then(res => res.json())
 			.then(res => console.log(res));
-		console.log(new_entry);
-		console.log({
-			"user": new_user,
-			"score": new_score
-		});
 		leader_array.push({
 			"user": new_user,
 			"score": new_score
 		});
-		document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" + points + "<h2>Submission Successful!</h2>"
+		document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Submission Successful!</h2>"
 	}
 	leader_array.sort(function (a, b) {
 		return b.score - a.score;
@@ -594,10 +603,11 @@ async function leaderscreen(new_user, new_score) {
 
 function gameoverscreen() {
 	game_run = false;
-	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h1>Your Final Score:</h1>" +
-		"<form onsubmit='leaderscreen(this.user.value, this.score.value);return false;'> <input id='score' type='text' name='score' value='" + points + "' readonly> <input type='text' name='user' placeholder='Your Username' maxlength='5'> <input class='submit-button' type='submit' value='Submit'> </form>";
+	document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Your Final Score:</h2>" +
+		"<form onsubmit='leaderscreen(this.user.value, this.score.value);return false;'> <input id='score' type='text' name='score' value='" + points +
+		"' readonly> <span id='user-input'><input type='text' name='user' placeholder='Your Username' maxlength='3'> <button type='submit' value='Submit'><i class='fas fa-caret-square-right fa-4x'></i></button><span> </form>";
 	document.getElementById("bootscreen").style.display = "block";
-	document.getElementById("bootscreen").style.gridRow = "2/4";
+	document.getElementById("bootscreen").style.gridRow = "1 / 4";
 	document.getElementById("bootscreen").style.alignSelf = "center";
 
 	document.getElementById("lives").innerHTML = "GAMEOVER. PRESS ENTER TO PLAY AGAIN.";
