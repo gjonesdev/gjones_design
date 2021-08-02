@@ -60,7 +60,8 @@
 						<p>Have a project for me? Feedback? Questions? Just want to say hi?</p>
 						<p>Just fill out the form and I'll get back to you quick.</p>
 					</div>
-					<form method="POST" action="/index.php" id="contact-form" onsubmit="contact_submit();">
+					<form method="POST" action="/index.php" id="contact-form"
+						onsubmit="contact_submit(); return false;">
 						<div>
 							<ul>
 								<li><label>Name:</label> <input id="name" name="name" placeholder="Name" type="text" />
