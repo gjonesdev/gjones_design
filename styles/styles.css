@@ -75,6 +75,7 @@ a:hover {
 table {
 	margin: auto;
 	border-spacing: 15px 15px;
+	text-transform: uppercase;
 }
 
 thead th {
@@ -831,6 +832,7 @@ section {
 
 #user-input input[type=text] {
 	margin-left: 53px;
+	text-transform: uppercase;
 }
 
 #user-input {
