@@ -60,7 +60,8 @@
 						<p>Have a project for me? Feedback? Questions? Just want to say hi?</p>
 						<p>Just fill out the form and I'll get back to you quick.</p>
 					</div>
-					<form method="POST" action="/index.php" id="contact-form">
+					<form method="POST" action="/index.php" id="contact-form"
+						onsubmit="contact_submit(); return false;">
 						<div>
 							<ul>
 								<li><label>Name:</label> <input id="name" name="name" placeholder="Name" type="text" />
@@ -72,7 +73,9 @@
 								<li><label>Message:</label> <textarea id="message" name="message" placeholder="Message"
 										rows="4"></textarea>
 								</li>
-								<li><input class="submit-button" name="sendflag" type="submit" value="send" /></li>
+								<li><input id="submit-button" name="sendflag" type="submit" value="send" />
+									<h3 id="confirmation"></h3>
+								</li>
 							</ul>
 						</div>
 					</form>

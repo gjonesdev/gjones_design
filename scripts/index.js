@@ -26,14 +26,24 @@ function contact_submit() {
 	// console.log("submit");
 	var email = document.getElementById("email");
 	var message = document.getElementById("message");
-	var form = document.getElementById("form-container");
-	if (email != "" && message != "") {
-		form.innerHTML = "<h1>Message Sent! Speak to you soon!</h1>";
-		return true;
+	var confirmation = document.getElementById("confirmation");
+	var form = document.getElementById("contact-form");
+	if (email.value === "") {
+		confirmation.innerHTML = "Please make sure you have included your email.";
+		confirmation.style.opacity = "1";
+		confirmation.style.transform = "translateY(0px)";
+	} else if (message.value === "") {
+		confirmation.innerHTML = "Please make sure you have included your message.";
+		confirmation.style.opacity = "1";
+		confirmation.style.transform = "translateY(0px)";
 	} else {
-		alert('Please make sure you have included your message and an email I can contact you with!')
-		return false;
+		form.reset();
+		confirmation.innerHTML = "Message received! Speak to you soon!";
+		confirmation.style.opacity = "1";
+		confirmation.style.transform = "translateY(0px)";
+		return true;
 	}
+	return false;
 }
 
 function lightbox(img_path) {
