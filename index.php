@@ -1,4 +1,5 @@
 <?
+var_dump(file_get_contents('php://input'));
 $mail_to_send_to = "mail@gjones.design";
 $from_email = "inquiry@gjones.design";
 $sendflag = $_REQUEST['sendflag'];    
