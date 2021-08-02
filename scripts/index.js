@@ -51,6 +51,10 @@ function contact_submit() {
 	return false;
 }
 
+function onSubmit(token) {
+	document.getElementById("contact-form").submit();
+}
+
 function lightbox(img_path) {
 	document.getElementById("img-popup").src = "/styles/images/" + img_path;
 	showPopup();
