@@ -64,14 +64,16 @@
 						onsubmit="contact_submit(); return false;">
 						<div>
 							<ul>
-								<li><label>Name:</label> <input id="name" name="name" placeholder="Name" type="text" />
+								<li><label>Name:</label> <input id="name" name="name" placeholder="Name" type="text"
+										oninput="hide_confirmation()" />
 									<label>Email:</label> <input id="email" name="email" placeholder="Email"
-										type="text" />
+										type="email" oninput="hide_confirmation()" required />
 								</li>
-								<li><label>Subject:</label> <input name="subject" placeholder="Subject" type="text" />
+								<li><label>Subject:</label> <input name="subject" placeholder="Subject" type="text"
+										oninput="hide_confirmation()" />
 								</li>
 								<li><label>Message:</label> <textarea id="message" name="message" placeholder="Message"
-										rows="4"></textarea>
+										rows="4" oninput="hide_confirmation()" required></textarea>
 								</li>
 								<li><input id="submit-button" name="sendflag" type="submit" value="send" />
 									<h3 id="confirmation"></h3>

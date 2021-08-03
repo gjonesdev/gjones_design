@@ -23,36 +23,25 @@ function hidePopup() {
 }
 
 function contact_submit() {
-	// console.log("submit");
-	var email = document.getElementById("email");
-	var message = document.getElementById("message");
 	var confirmation = document.getElementById("confirmation");
 	var form = document.getElementById("contact-form");
-	if (email.value === "") {
-		confirmation.innerHTML = "Please make sure you have included your email.";
-		confirmation.style.opacity = "1";
-		confirmation.style.transform = "translateY(0px)";
-	} else if (message.value === "") {
-		confirmation.innerHTML = "Please make sure you have included your message.";
-		confirmation.style.opacity = "1";
-		confirmation.style.transform = "translateY(0px)";
-	} else {
-		fetch('/index.php', {
-				method: 'post',
-				body: new FormData(document.getElementById("contact-form")),
-			}).then(res => res.json())
-			.then(res => console.log(res));
-		form.reset();
-		confirmation.innerHTML = "Message received! Speak to you soon!";
-		confirmation.style.opacity = "1";
-		confirmation.style.transform = "translateY(0px)";
-		return true;
-	}
-	return false;
+
+	fetch('/index.php', {
+			method: 'post',
+			body: new FormData(document.getElementById("contact-form")),
+		}).then(res => res.json())
+		.then(res => console.log(res));
+	form.reset();
+	confirmation.innerHTML = "Message received! Speak to you soon!";
+	confirmation.style.opacity = "1";
+	confirmation.style.transform = "translateY(0px)";
+	return true;
 }
 
-function onSubmit(token) {
-	document.getElementById("contact-form").submit();
+function hide_confirmation() {
+	var confirmation = document.getElementById("confirmation");
+	confirmation.style.opacity = '0';
+	confirmation.style.transform = "translateY(30px)";
 }
 
 function lightbox(img_path) {
@@ -584,24 +573,32 @@ function bootscreen() {
 async function leaderscreen(new_user, new_score) {
 	var leader_array = await fetch_leader('leaderboard.json');
 	if (new_score != null) {
-		var new_entry = JSON.stringify({
-			user: new_user,
-			score: new_score
-		})
-		fetch('leaderboard.php', {
-				method: 'post',
-				headers: {
-					'Accept': 'application/json, text/plain, */*',
-					'Content-Type': 'application/json'
-				},
-				body: new_entry,
-			}).then(res => res.json())
-			.then(res => console.log(res));
-		leader_array.push({
-			"user": new_user,
-			"score": new_score
-		});
-		document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Submission Successful!</h2>"
+		console.log(new_user);
+		if (new_user.length === 0) {
+			return false;
+		} else {
+			if (new_user.length != 3) {
+				new_user = new_user + "-".repeat(3 - new_user.length);
+			}
+			var new_entry = JSON.stringify({
+				user: new_user,
+				score: new_score
+			})
+			fetch('leaderboard.php', {
+					method: 'post',
+					headers: {
+						'Accept': 'application/json, text/plain, */*',
+						'Content-Type': 'application/json'
+					},
+					body: new_entry,
+				}).then(res => res.json())
+				.then(res => console.log(res));
+			leader_array.push({
+				"user": new_user,
+				"score": new_score
+			});
+			document.getElementById("bootscreen").innerHTML = "<h1>Game Over. Press Enter to play Again.</h1> <h2>Submission Successful!</h2>"
+		}
 	}
 	leader_array.sort(function (a, b) {
 		return b.score - a.score;

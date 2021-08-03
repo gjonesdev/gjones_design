@@ -72,10 +72,21 @@ a:hover {
 	background-size: 100% 100%;
 }
 
+::-webkit-validation-bubble {
+	color: black;
+}
+
 table {
 	margin: auto;
+	margin-top: 50px;
+	margin-bottom: -110px;
 	border-spacing: 15px 15px;
 	text-transform: uppercase;
+	font-size: 1.2rem;
+}
+
+td {
+	font-family: monospace;
 }
 
 thead th {
@@ -1013,7 +1024,7 @@ label {
 #confirmation {
 	float: right;
 	margin-top: 5px;
-	transform: translateY(-30px);
+	transform: translateY(30px);
 	opacity: 0;
 	border-bottom: 2px solid var(--main-color);
 	transition: all 400ms ease-in-out;
