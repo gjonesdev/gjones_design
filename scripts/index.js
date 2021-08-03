@@ -50,48 +50,43 @@ function lightbox(img_path) {
 }
 
 function carouselLightbox(img_path, iscurr) {
-	console.log(iscurr);
 	if (iscurr === "current") {
 		document.getElementById("img-popup").src = "/styles/images/" + img_path;
 		showPopup();
 	}
 }
 
-function pageUp() {
-	console.log("pageUp");
-	var gallery_items = document.getElementsByClassName("gallery-item");
-	var first_item = document.getElementById("first-item");
-	var index;
-	for (index = 0; index < gallery_items.length; index++) {
-		if (gallery_items[index] === first_item && index - 8 > 0) {
-			console.log("true");
-			for (var j = index; j < index + 7; j++) {
-				gallery_items[j].style.display = "none";
-			}
-			for (var j = index; j > index - 7; j--) {
-				gallery_items[j].style.display = "block";
-			}
-		}
-	}
-}
+// function pageUp() {
+// 	var gallery_items = document.getElementsByClassName("gallery-item");
+// 	var first_item = document.getElementById("first-item");
+// 	var index;
+// 	for (index = 0; index < gallery_items.length; index++) {
+// 		if (gallery_items[index] === first_item && index - 8 > 0) {
+// 			for (var j = index; j < index + 7; j++) {
+// 				gallery_items[j].style.display = "none";
+// 			}
+// 			for (var j = index; j > index - 7; j--) {
+// 				gallery_items[j].style.display = "block";
+// 			}
+// 		}
+// 	}
+// }
 
-function pageDown() {
-	console.log("pageDown");
-	var gallery_items = document.getElementsByClassName("gallery-item");
-	var last_item = document.getElementById("last-item");
-	var index;
-	for (index = 0; index < gallery_items.length; index++) {
-		console.log("true");
-		if (gallery_items[index] === last_item && index + 8 < gallery_items.length) {
-			for (var j = index; j < index + 7; j++) {
-				gallery_items[j].style.display = "block";
-			}
-			for (var j = index; j > index - 7; j--) {
-				gallery_items[j].style.display = "none";
-			}
-		}
-	}
-}
+// function pageDown() {
+// 	var gallery_items = document.getElementsByClassName("gallery-item");
+// 	var last_item = document.getElementById("last-item");
+// 	var index;
+// 	for (index = 0; index < gallery_items.length; index++) {
+// 		if (gallery_items[index] === last_item && index + 8 < gallery_items.length) {
+// 			for (var j = index; j < index + 7; j++) {
+// 				gallery_items[j].style.display = "block";
+// 			}
+// 			for (var j = index; j > index - 7; j--) {
+// 				gallery_items[j].style.display = "none";
+// 			}
+// 		}
+// 	}
+// }
 
 
 // document.getElementById("prev"); item.onclick = carouselLeft();
@@ -110,11 +105,9 @@ function pageDown() {
 function carouselLoad() {
 	if (document.getElementById("prev") != null) {
 		document.getElementById("prev").addEventListener("click", carouselLeft);
-		console.log("added left");
 	}
 	if (document.getElementById("next") != null) {
 		document.getElementById("next").addEventListener("click", carouselRight);
-		console.log("added right");
 	}
 	if (document.getElementById("current") != null) {
 		document.getElementById("current").removeEventListener("click", carouselRight);
@@ -573,7 +566,6 @@ function bootscreen() {
 async function leaderscreen(new_user, new_score) {
 	var leader_array = await fetch_leader('leaderboard.json');
 	if (new_score != null) {
-		console.log(new_user);
 		if (new_user.length === 0) {
 			return false;
 		} else {
