@@ -310,9 +310,9 @@ function contentAnimation() {
 			duration: 1,
 			y: 30,
 			opacity: 0,
-			stagger: 0.3,
+			stagger: 0.2,
 			delay: 0.2,
-		}, .8)
+		}, 1.5)
 		.from("u", {
 			duration: 1.2,
 			backgroundSize: "0% 4px",

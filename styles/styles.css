@@ -363,9 +363,23 @@ section {
 	margin-top: 40px;
 }
 
+.main-content li {
+	margin-bottom: 5px;
+}
+
+.check {
+	/* color: var(--main-color); */
+	border: 2px solid var(--main-color);
+	border-radius: 5px;
+}
+
+.plus {
+	margin-left: 5px;
+}
+
 .the-guy {
 	text-align: center;
-	margin-top: 80px;
+	margin-top: 50px;
 }
 
 .the-guy p {
